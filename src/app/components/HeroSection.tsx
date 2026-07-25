@@ -80,9 +80,8 @@ export function HeroSection() {
         }}
       />
 
-      <div style={{ maxWidth: "1100px", margin: "0 auto", width: "100%", position: "relative", zIndex: 1 }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr auto", gap: "48px", alignItems: "center" }}>
-          <div>
+      <div style={{ maxWidth: "900px", margin: "0 auto", width: "100%", position: "relative", zIndex: 1 }}>
+        <div>
             {/* Badge */}
             <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={stagger(0)}>
               <div style={{
@@ -121,18 +120,6 @@ export function HeroSection() {
             </motion.h1>
 
             {/* Sub */}
-            <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={stagger(2)}
-              style={{ fontSize: "17px", color: "#1A1A1A", opacity: 0.45, letterSpacing: "0.01em", marginBottom: "18px" }}>
-              Rathikan Muangmoon · Software Engineering Student
-            </motion.p>
-
-            <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={stagger(3)}
-              style={{ fontSize: "17px", color: "#5A4A40", lineHeight: "1.75", maxWidth: "540px", marginBottom: "36px" }}>
-              Final-year Software Engineering student with a strong focus on UX/UI Design
-              and hands-on development experience. Designs grounded in research, backed by a
-              technical eye for what can actually be built.
-            </motion.p>
-
             {/* Buttons */}
             <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={stagger(4)}
               style={{ display: "flex", gap: "12px", flexWrap: "wrap", marginBottom: "40px" }}>
@@ -182,43 +169,6 @@ export function HeroSection() {
               ))}
             </motion.div>
           </div>
-
-          {/* Floating skill cards */}
-          <motion.div
-            className="hidden md:block"
-            initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            style={{ position: "relative", width: "280px", height: "340px", flexShrink: 0 }}
-          >
-            {[
-              { label: "UX Research", emoji: "🔍", color: "#FF6B35", bg: "#FFF0EB", x: 0, y: 0, delay: 0, dur: 6 },
-              { label: "Figma", emoji: "✏️", color: "#A78BFA", bg: "#F3F0FF", x: 120, y: 30, delay: 0.5, dur: 7 },
-              { label: "Prototyping", emoji: "📱", color: "#2EC4B6", bg: "#EDFAF9", x: -20, y: 120, delay: 1, dur: 8 },
-              { label: "Flutter", emoji: "💙", color: "#3B82F6", bg: "#EFF6FF", x: 110, y: 160, delay: 0.3, dur: 6.5 },
-              { label: "Design System", emoji: "🧩", color: "#F59E0B", bg: "#FFFBEB", x: 20, y: 240, delay: 0.8, dur: 7.5 },
-              { label: "User Testing", emoji: "🧪", color: "#EC4899", bg: "#FDF2F8", x: 150, y: 260, delay: 0.2, dur: 9 },
-            ].map((card) => (
-              <motion.div
-                key={card.label}
-                animate={{ y: [0, -10, 0], rotate: [-1, 1, -1] }}
-                transition={{ duration: card.dur, repeat: Infinity, ease: "easeInOut", delay: card.delay }}
-                whileHover={{ scale: 1.1, zIndex: 10 }}
-                style={{
-                  position: "absolute", left: card.x, top: card.y,
-                  background: card.bg,
-                  borderRadius: "14px", padding: "10px 16px",
-                  display: "flex", alignItems: "center", gap: "8px",
-                  boxShadow: `0 8px 24px ${card.color}22, 0 2px 8px rgba(0,0,0,0.06)`,
-                  border: `1px solid ${card.color}22`,
-                  cursor: "default", whiteSpace: "nowrap",
-                }}
-              >
-                <span style={{ fontSize: "16px" }}>{card.emoji}</span>
-                <span style={{ fontSize: "13px", color: card.color, fontWeight: 500 }}>{card.label}</span>
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
       </div>
 
       {/* Scroll indicator */}

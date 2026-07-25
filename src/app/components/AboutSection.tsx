@@ -1,7 +1,8 @@
 import { motion, useInView } from "motion/react";
 import { useEffect, useRef, useState } from "react";
+import cmuLogo from "../../assets/cmu-logo.png";
 
-function CountUp({ target, suffix = "" }: { target: number; suffix?: string }) {
+function CountUp({ target, suffix = "", decimals = 0 }: { target: number; suffix?: string; decimals?: number }) {
   const [count, setCount] = useState(0);
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true });
@@ -15,19 +16,17 @@ function CountUp({ target, suffix = "" }: { target: number; suffix?: string }) {
     const timer = setInterval(() => {
       start += increment;
       if (start >= target) { setCount(target); clearInterval(timer); }
-      else setCount(Math.floor(start * 10) / 10);
+      else setCount(Number(start.toFixed(decimals)));
     }, step);
     return () => clearInterval(timer);
-  }, [inView, target]);
+  }, [inView, target, decimals]);
 
-  return <div ref={ref}>{count}{suffix}</div>;
+  return <div ref={ref}>{typeof count === "number" ? count.toFixed(decimals) : count}{suffix}</div>;
 }
 
 const STATS = [
-  { label: "Cumulative GPA", value: 3.80, suffix: "", display: "3.80", color: "#FF6B35" },
+  { label: "Cumulative GPA", value: 3.80, decimals: 2, color: "#FF6B35" },
   { label: "Expected graduation", raw: "Mar 2027", color: "#A78BFA" },
-  { label: "SUS score — Whisker Haven", value: 85, suffix: "", display: "85", color: "#2EC4B6" },
-  { label: "Task completion rate", raw: "100%", color: "#22C55E" },
 ];
 
 export function AboutSection() {
@@ -54,52 +53,71 @@ export function AboutSection() {
               color: "#1A1A1A", letterSpacing: "-0.02em",
               lineHeight: "1.1", marginBottom: "28px", fontWeight: 400,
             }}>
-            Still learning,
-            <br />
+            Still learning,{" "}
             <span style={{ fontStyle: "italic", color: "#FF6B35" }}>still growing.</span>
           </motion.h2>
 
           <motion.p
             initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}
-            style={{ fontSize: "16px", color: "#555", lineHeight: "1.75", marginBottom: "20px" }}>
-            Final-year Software Engineering student at Chiang Mai University
+            style={{ fontSize: "16px", color: "#555", lineHeight: "1.75", marginBottom: "24px" }}>
+            I'm <strong style={{ color: "#1A1A1A" }}>Rattikan</strong>, a final-year Software Engineering student at Chiang Mai University
             with a strong focus on UX/UI Design and hands-on development experience.
             Skilled in user research, wireframing, prototyping, and design systems.
           </motion.p>
 
-          <motion.p
-            initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.15 }}
-            style={{ fontSize: "16px", color: "#555", lineHeight: "1.75", marginBottom: "36px" }}>
-            My technical background grounds my designs in feasibility —
-            I understand what can actually be built and design with that in mind.
-            Seeking a Semester 2 Co-op Internship to bring a user-centred,
-            technically-informed design approach to real products.
-          </motion.p>
+          {/* University card */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.12 }}
+            style={{
+              background: "#1A1A1A", borderRadius: "12px", padding: "16px",
+              display: "flex", alignItems: "flex-start", gap: "12px",
+              marginBottom: "20px",
+            }}>
+            <div style={{
+              width: "48px", height: "48px", borderRadius: "12px",
+              background: "#FFFFFF",
+              display: "flex", alignItems: "center", justifyContent: "center",
+              flexShrink: 0, overflow: "hidden",
+            }}>
+              <img
+                src={cmuLogo}
+                alt="CMU Logo"
+                style={{ width: "100%", height: "100%", objectFit: "contain", padding: "6px" }}
+              />
+            </div>
+            <div>
+              <p style={{ fontSize: "13px", color: "#FFFFFF", marginBottom: "2px", lineHeight: "1.3" }}>
+                College of Arts, Media and Technology
+              </p>
+              <p style={{ fontSize: "12px", color: "#888", marginBottom: "1px", lineHeight: "1.3" }}>Chiang Mai University</p>
+              <p style={{ fontSize: "11px", color: "#555", lineHeight: "1.3" }}>BSc Software Engineering</p>
+            </div>
+          </motion.div>
 
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px" }}>
             {STATS.map((s, i) => (
               <motion.div key={s.label}
                 initial={{ opacity: 0, y: 20, scale: 0.95 }}
                 whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: 0.2 + i * 0.07, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 0.45, delay: 0.18 + i * 0.07, ease: [0.22, 1, 0.36, 1] }}
                 whileHover={{ y: -3, boxShadow: `0 8px 32px ${s.color}22` }}
                 style={{
-                  background: "#FFFFFF", borderRadius: "16px", padding: "22px",
+                  background: "#FFFFFF", borderRadius: "12px", padding: "16px",
                   border: "1px solid rgba(0,0,0,0.06)", cursor: "default",
                   transition: "box-shadow 0.3s",
                 }}>
                 <div style={{
-                  fontFamily: "var(--font-display)", fontSize: "34px",
-                  color: s.color, lineHeight: 1, marginBottom: "6px",
+                  fontFamily: "var(--font-display)", fontSize: "26px",
+                  color: s.color, lineHeight: 1, marginBottom: "4px",
                 }}>
                   {s.raw ? s.raw : (
-                    <CountUp target={s.value!} suffix={s.suffix} />
+                    <CountUp target={s.value!} decimals={s.decimals ?? 0} />
                   )}
                 </div>
-                <div style={{ fontSize: "12px", color: "#AAA", lineHeight: "1.4" }}>{s.label}</div>
+                <div style={{ fontSize: "11px", color: "#AAA", lineHeight: "1.3" }}>{s.label}</div>
               </motion.div>
             ))}
           </div>
@@ -127,48 +145,27 @@ export function AboutSection() {
             </div>
           </motion.div>
 
-          {/* University card */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}
-            style={{
-              background: "#1A1A1A", borderRadius: "16px", padding: "24px",
-              display: "flex", alignItems: "flex-start", gap: "16px",
-            }}>
-            <div style={{
-              width: "44px", height: "44px", borderRadius: "12px",
-              background: "linear-gradient(135deg, #FF6B35, #FF3D77)",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              fontSize: "20px", flexShrink: 0,
-            }}>🎓</div>
-            <div>
-              <p style={{ fontSize: "14px", color: "#FFFFFF", marginBottom: "4px" }}>
-                College of Arts, Media and Technology
-              </p>
-              <p style={{ fontSize: "13px", color: "#888", marginBottom: "2px" }}>Chiang Mai University</p>
-              <p style={{ fontSize: "12px", color: "#555" }}>BSc Software Engineering · GPA 3.80 · Expected Mar 2027</p>
-            </div>
-          </motion.div>
-
           {/* Languages */}
           <motion.div
-            initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.15 }}
+            initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }} transition={{ duration: 0.4, delay: 0.15 }}
             style={{
-              background: "#FFF8F5", borderRadius: "16px", padding: "20px 24px",
-              display: "flex", gap: "24px", border: "1px solid rgba(255,140,80,0.1)",
+              background: "#FAFAFA", borderRadius: "10px", padding: "12px 16px",
+              border: "1px solid rgba(0,0,0,0.04)",
             }}>
-            {[
-              { flag: "🇹🇭", lang: "Thai", level: "Native" },
-              { flag: "🇬🇧", lang: "English", level: "B1" },
-              { flag: "🇨🇳", lang: "Mandarin", level: "Elementary" },
-            ].map(({ flag, lang, level }) => (
-              <div key={lang} style={{ textAlign: "center" }}>
-                <div style={{ fontSize: "22px", marginBottom: "4px" }}>{flag}</div>
-                <p style={{ fontSize: "13px", color: "#333" }}>{lang}</p>
-                <p style={{ fontSize: "11px", color: "#AAA" }}>{level}</p>
-              </div>
-            ))}
+            <div style={{ display: "flex", justifyContent: "space-between", gap: "12px" }}>
+              {[
+                { flag: "🇹🇭", lang: "Thai", level: "Native" },
+                { flag: "🇬🇧", lang: "English", level: "Working Proficiency" },
+                { flag: "🇨🇳", lang: "Mandarin", level: "Elementary" },
+              ].map(({ flag, lang, level }) => (
+                <div key={lang} style={{ textAlign: "center", flex: 1 }}>
+                  <div style={{ fontSize: "18px", marginBottom: "2px" }}>{flag}</div>
+                  <p style={{ fontSize: "11px", color: "#666", lineHeight: "1.2" }}>{lang}</p>
+                  <p style={{ fontSize: "10px", color: "#999", lineHeight: "1.2" }}>{level}</p>
+                </div>
+              ))}
+            </div>
           </motion.div>
         </div>
       </div>

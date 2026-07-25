@@ -30,19 +30,31 @@ function ProjectCard({ project, isEven }: { project: typeof projects[0]; isEven:
       <div style={{ padding: "80px 32px", maxWidth: "1100px", margin: "0 auto", width: "100%" }}>
         <div style={{
           display: "grid",
-          gridTemplateColumns: isEven ? "auto 1fr" : "1fr auto",
-          gap: "64px", alignItems: "center",
+          gridTemplateColumns: isEven ? "1fr 500px" : "500px 1fr",
+          gap: "48px", alignItems: "center",
         }}>
-          {isEven && (
+          {isEven && project.image && (
+            <motion.img
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              src={project.image}
+              alt={project.title}
+              style={{
+                width: "100%",
+                borderRadius: "12px",
+                maxWidth: project.slug === "starmory" ? "350px" : "none",
+              }}
+            />
+          )}
+          {isEven && !project.image && (
             <motion.div
               whileHover={{ scale: 1.03, rotate: -1 }}
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
               style={{
-                width: "clamp(240px, 32vw, 400px)", aspectRatio: "4/3",
+                width: "100%", aspectRatio: "4/3",
                 background: "rgba(255,255,255,0.08)", borderRadius: "20px",
                 display: "flex", alignItems: "center", justifyContent: "center",
-                flexShrink: 0, border: `1px solid ${borderStyle}`,
-                boxShadow: "0 12px 40px rgba(0,0,0,0.1)",
+                border: `1px solid ${borderStyle}`,
               }}>
               <div style={{ textAlign: "center" }}>
                 <div style={{ fontSize: "40px", opacity: 0.3, marginBottom: "8px" }}>🖼</div>
@@ -129,16 +141,28 @@ function ProjectCard({ project, isEven }: { project: typeof projects[0]; isEven:
             </div>
           </div>
 
-          {!isEven && (
+          {!isEven && project.image && (
+            <motion.img
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              src={project.image}
+              alt={project.title}
+              style={{
+                width: "100%",
+                borderRadius: "12px",
+                maxWidth: project.slug === "starmory" ? "350px" : "none",
+              }}
+            />
+          )}
+          {!isEven && !project.image && (
             <motion.div
               whileHover={{ scale: 1.03, rotate: 1 }}
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
               style={{
-                width: "clamp(240px, 32vw, 400px)", aspectRatio: "4/3",
+                width: "100%", aspectRatio: "4/3",
                 background: "rgba(255,255,255,0.08)", borderRadius: "20px",
                 display: "flex", alignItems: "center", justifyContent: "center",
-                flexShrink: 0, border: `1px solid ${borderStyle}`,
-                boxShadow: "0 12px 40px rgba(0,0,0,0.1)",
+                border: `1px solid ${borderStyle}`,
               }}>
               <div style={{ textAlign: "center" }}>
                 <div style={{ fontSize: "40px", opacity: 0.3, marginBottom: "8px" }}>🖼</div>

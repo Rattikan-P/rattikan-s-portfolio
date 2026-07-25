@@ -23,6 +23,7 @@ export interface Project {
   textColor: string;
   tagBg: string;
   accent: string;
+  image?: string;
   stats?: { label: string; value: string }[];
   phases: CaseStudyPhase[];
   research?: string[];
@@ -46,10 +47,11 @@ export const projects: Project[] = [
     platform: "Mobile App (Flutter)",
     tags: ["UX Research", "UI Design", "Mobile App", "Flutter"],
     year: "2024",
-    bg: "#F5A623",
+    bg: "#FDB813",
     textColor: "#1A1A1A",
     tagBg: "rgba(0,0,0,0.08)",
     accent: "#7A4F00",
+    image: "/projects/whisker-haven/hero.png",
     stats: [
       { label: "Task completion rate", value: "100%" },
       { label: "SUS score — Grade A, 'Excellent'", value: "85" },
@@ -114,10 +116,11 @@ export const projects: Project[] = [
     platform: "Mobile App (Flutter)",
     tags: ["AI", "UX/UI Design", "Flutter", "Full-stack", "Spaced Repetition"],
     year: "2024",
-    bg: "#1C1B3A",
+    bg: "#8B5CF6",
     textColor: "#FFFFFF",
-    tagBg: "rgba(255,255,255,0.1)",
+    tagBg: "rgba(255,255,255,0.2)",
     accent: "#A78BFA",
+    image: "/projects/starmory/hero.png",
     stats: [
       { label: "Learning theories grounding the design", value: "6" },
       { label: "Core features shipped", value: "6" },
@@ -194,6 +197,7 @@ export const projects: Project[] = [
     textColor: "#FFFFFF",
     tagBg: "rgba(255,255,255,0.15)",
     accent: "#FFD4A8",
+    image: "/projects/healthy-taste/hero.png",
     phases: [
       {
         step: "01 — Research",
@@ -244,10 +248,11 @@ export const projects: Project[] = [
     platform: "Mobile App",
     tags: ["AI", "UX/UI Design", "Full-stack", "Team Project"],
     year: "2023",
-    bg: "#2D5016",
-    textColor: "#FFFFFF",
-    tagBg: "rgba(255,255,255,0.12)",
+    bg: "#aacb01",
+    textColor: "#1A1A1A",
+    tagBg: "rgba(0,0,0,0.1)",
     accent: "#86EFAC",
+    image: "/projects/terramon/hero.png",
     phases: [
       {
         step: "01 — Research",
@@ -302,6 +307,7 @@ export const projects: Project[] = [
     textColor: "#1A1A1A",
     tagBg: "rgba(0,0,0,0.07)",
     accent: "#C0405A",
+    image: "/projects/bingchilling/hero.png",
     phases: [
       {
         step: "01 — Research",
@@ -352,10 +358,11 @@ export const projects: Project[] = [
     platform: "Mobile App (iOS / Android)",
     tags: ["App Redesign", "UX Research", "Heuristic Evaluation", "Mobile"],
     year: "2025",
-    bg: "#1b2838",
+    bg: "#60A5FA",
     textColor: "#FFFFFF",
-    tagBg: "rgba(255,255,255,0.1)",
+    tagBg: "rgba(255,255,255,0.2)",
     accent: "#66C0F4",
+    image: "/projects/steam-redesign/hero.png",
     phases: [
       {
         step: "01 — Discover",
