@@ -43,7 +43,7 @@ export const projects: Project[] = [
     role: "UX/UI Designer",
     duration: "12 weeks",
     team: "Solo project",
-    tools: "Figma, Maze, Miro",
+    tools: "Figma, Maze",
     platform: "Mobile App (Flutter)",
     tags: ["UX Research", "UI Design", "Mobile App", "Flutter"],
     year: "2024",

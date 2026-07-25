@@ -35,14 +35,14 @@ function ProjectCard({ project, isEven }: { project: typeof projects[0]; isEven:
         }}>
           {isEven && project.image && (
             <motion.img
-              whileHover={{ scale: 1.02 }}
+              whileHover={{ scale: project.slug === "starmory" ? 1.45 : 1.02 }}
+              initial={{ scale: project.slug === "starmory" ? 1.4 : 1 }}
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
               src={project.image}
               alt={project.title}
               style={{
                 width: "100%",
                 borderRadius: "12px",
-                maxWidth: project.slug === "starmory" ? "350px" : "none",
               }}
             />
           )}
@@ -135,9 +135,20 @@ function ProjectCard({ project, isEven }: { project: typeof projects[0]; isEven:
                   View case study <ArrowUpRight size={13} />
                 </Link>
               </motion.div>
-              <span style={{ fontSize: "12px", color: project.textColor, opacity: 0.4 }}>
-                {project.role}
-              </span>
+              <motion.div whileHover={{ scale: 1.05, x: 2 }} whileTap={{ scale: 0.97 }}>
+                <a
+                  href="#"
+                  style={{
+                    background: "transparent", color: project.textColor,
+                    borderRadius: "100px", padding: "12px 24px", fontSize: "13px",
+                    textDecoration: "none", display: "inline-flex", alignItems: "center",
+                    gap: "6px", letterSpacing: "0.02em",
+                    border: `1.5px solid ${project.textColor}30`,
+                  }}
+                >
+                  View prototype <ArrowUpRight size={13} />
+                </a>
+              </motion.div>
             </div>
           </div>
 
@@ -150,7 +161,6 @@ function ProjectCard({ project, isEven }: { project: typeof projects[0]; isEven:
               style={{
                 width: "100%",
                 borderRadius: "12px",
-                maxWidth: project.slug === "starmory" ? "350px" : "none",
               }}
             />
           )}

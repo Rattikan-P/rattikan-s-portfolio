@@ -1,6 +1,6 @@
 import { motion, useInView } from "motion/react";
 import { useEffect, useRef, useState } from "react";
-import cmuLogo from "../../assets/cmu-logo.png";
+const cmuLogo = "/logos/cmu-logo.png";
 
 function CountUp({ target, suffix = "", decimals = 0 }: { target: number; suffix?: string; decimals?: number }) {
   const [count, setCount] = useState(0);
