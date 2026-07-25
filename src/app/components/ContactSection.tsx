@@ -21,7 +21,7 @@ export function ContactSection() {
           </h2>
           <p style={{ fontSize: "16px", color: "#666", lineHeight: "1.6", maxWidth: "460px", margin: "0 auto 48px" }}>
             Thank you for taking the time to look through my work.
-            I'm seeking a Semester 2 Co-op Internship — if you'd like to talk,
+            I'm seeking a Semester 2 Co-op Internship; if you'd like to talk,
             my inbox is always open.
           </p>
 

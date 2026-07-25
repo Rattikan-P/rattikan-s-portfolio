@@ -243,7 +243,7 @@ export function WhiskerHavenPage() {
             style={{ fontSize: "18px", color: DARK, opacity: 0.6, maxWidth: "540px", lineHeight: "1.7", marginBottom: "48px" }}
           >
             A booking platform designed to make reserving cat hotel stays simple and
-            stress-free — from early research through to a validated high-fidelity prototype.
+            stress-free: from early research through to a validated high-fidelity prototype.
           </motion.p>
 
           {/* Meta grid */}
@@ -277,7 +277,7 @@ export function WhiskerHavenPage() {
           >
             {[
               { value: "100%", label: "Task completion rate" },
-              { value: "85", label: "SUS score — Grade A" },
+              { value: "85", label: "SUS score: Grade A" },
             ].map((s) => (
               <div key={s.label}>
                 <div style={{ fontFamily: "var(--font-display)", fontSize: "54px", color: DARK, lineHeight: 1, marginBottom: "4px" }}>
@@ -307,12 +307,12 @@ export function WhiskerHavenPage() {
         phaseIndex={0}
         sectionRef={{ current: null } as unknown as React.RefObject<HTMLDivElement | null>}
         title="Mapping the cat owner's emotional experience"
-        description="Research started with a survey and in-depth interviews to understand not just what users do, but how they feel. The core finding: the primary problem isn't UX friction — it's anxiety."
+        description="Research started with a survey and in-depth interviews to understand not just what users do, but how they feel. The core finding: the primary problem isn't UX friction; it's anxiety."
       >
         <div ref={makeRef(0)} style={{ position: "absolute", top: 0, left: 0, width: 1, height: 1 }} />
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "20px" }}>
-          <Img src={surveyResults} alt="Google Form survey responses" caption="Survey — quantitative validation" />
-          <Img src={empathyMap} alt="Empathy map" caption="Empathy Map — Say · Think · Do · Feel" />
+          <Img src={surveyResults} alt="Google Form survey responses" caption="Survey: quantitative validation" />
+          <Img src={empathyMap} alt="Empathy map" caption="Empathy Map: Say · Think · Do · Feel" />
         </div>
       </PhaseSection>
 
@@ -326,11 +326,11 @@ export function WhiskerHavenPage() {
         <div ref={makeRef(1)} style={{ position: "absolute", top: 0, left: 0, width: 1, height: 1 }} />
         <div style={{ display: "flex", flexDirection: "column", gap: "8px", marginBottom: "28px" }}>
           {[
-            { name: "Emotional Anxiety", color: "#FFC5C5", insight: "Not knowing if the cat is okay is the single biggest concern — anxiety doesn't stop until owners are physically reunited." },
-            { name: "Emergency & Safety", color: "#C5E8FF", insight: "No emergency protocol exists. Owners found out days later their cat hadn't been eating — with no notification from the facility." },
+            { name: "Emotional Anxiety", color: "#FFC5C5", insight: "Not knowing if the cat is okay is the single biggest concern; anxiety doesn't stop until owners are physically reunited." },
+            { name: "Emergency & Safety", color: "#C5E8FF", insight: "No emergency protocol exists. Owners found out days later their cat hadn't been eating; with no notification from the facility." },
             { name: "Care & Profile Management", color: "#C5FFC8", insight: "Owners repeat the cat's diet, allergies, and behaviours at every visit. Staff gave the wrong food because notes weren't read." },
             { name: "Communication Gap", color: "#FFE8C5", insight: "Owners always initiate contact. Replies are vague or a blurry photo. Asking more feels like being a burden." },
-            { name: "Booking & Information", color: "#E8C5FF", insight: "Everything happens over LINE. No booking system, no pricing online — endless back-and-forth to confirm a date." },
+            { name: "Booking & Information", color: "#E8C5FF", insight: "Everything happens over LINE. No booking system, no pricing online; endless back-and-forth to confirm a date." },
           ].map((g, i) => (
             <motion.div
               key={g.name}
@@ -348,7 +348,7 @@ export function WhiskerHavenPage() {
             </motion.div>
           ))}
         </div>
-        <Img src={affinityDiagram} alt="Affinity diagram" caption="Affinity Diagram — grouped research insights" />
+        <Img src={affinityDiagram} alt="Affinity diagram" caption="Affinity Diagram: grouped research insights" />
       </PhaseSection>
 
       {/* ═══ 03 DEFINE ═══ */}
@@ -356,10 +356,10 @@ export function WhiskerHavenPage() {
         phaseIndex={2}
         sectionRef={{ current: null } as unknown as React.RefObject<HTMLDivElement | null>}
         title="Who we're designing for"
-        description="Research findings shaped a primary persona and an As-Is journey map showing exactly where emotional low points occur — and where design intervention matters most."
+        description="Research findings shaped a primary persona and an As-Is journey map showing exactly where emotional low points occur, and where design intervention matters most."
       >
         <div ref={makeRef(2)} style={{ position: "absolute", top: 0, left: 0, width: 1, height: 1 }} />
-        <Img src={persona} alt="Persona: Nat" caption="Persona — Nat, Sales Executive, cat owner of Mochi & Milo" />
+        <Img src={persona} alt="Persona: Nat" caption="Persona: Nat, Sales Executive, cat owner of Mochi & Milo" />
         <div style={{
           display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))",
           gap: "1px", background: "rgba(0,0,0,0.1)", borderRadius: "12px",
@@ -371,7 +371,7 @@ export function WhiskerHavenPage() {
             { label: "Location", value: "Bangkok (4–5× / yr)" },
             { label: "Cats", value: "Mochi & Milo, 5 yrs" },
             { label: "Device", value: "Smartphone, iPad" },
-            { label: "Tech comfort", value: "High — app-first" },
+            { label: "Tech comfort", value: "High: app-first" },
           ].map((d) => (
             <div key={d.label} style={{ background: "rgba(0,0,0,0.04)", padding: "14px 18px" }}>
               <p style={{ fontSize: "10px", color: "#999", letterSpacing: "0.07em", marginBottom: "3px" }}>{d.label.toUpperCase()}</p>
@@ -388,10 +388,10 @@ export function WhiskerHavenPage() {
             <p style={{ fontSize: "15px", color: DARK, lineHeight: "1.65", fontStyle: "italic" }}>
               "I have three days of client meetings in Chiang Mai, but I can't stop worrying if Mochi and Milo are okay."
             </p>
-            <p style={{ fontSize: "12px", color: "#AAA", marginTop: "8px" }}>— Nat</p>
+            <p style={{ fontSize: "12px", color: "#AAA", marginTop: "8px" }}>- Nat</p>
           </div>
         </FadeUp>
-        <Img src={userJourneyMap} alt="As-Is user journey map" caption="User Journey Map (As-Is) — Focused → Irritated → Frustrated → Exhausted → Anxious → Stressed → Annoyed" />
+        <Img src={userJourneyMap} alt="As-Is user journey map" caption="User Journey Map (As-Is): Focused → Irritated → Frustrated → Exhausted → Anxious → Stressed → Annoyed" />
       </PhaseSection>
 
       {/* ═══ 04 IDEATE ═══ */}
@@ -402,10 +402,10 @@ export function WhiskerHavenPage() {
         description="Each cluster was reframed as a How Might We question. 8 HMWs were scored on Impact vs Effort and filtered via MoSCoW, revealing MVP scope. Crazy 8s generated concepts in 8 minutes flat."
       >
         <div ref={makeRef(3)} style={{ position: "absolute", top: 0, left: 0, width: 1, height: 1 }} />
-        <Img src={howMightWe} alt="8 How Might We questions" caption="How Might We — 8 design opportunities" />
+        <Img src={howMightWe} alt="8 How Might We questions" caption="How Might We: 8 design opportunities" />
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px", margin: "16px 0" }}>
           <Img src={impactEffort} alt="Impact-Effort matrix" caption="Impact-Effort prioritisation" />
-          <Img src={moscow} alt="MoSCoW prioritisation" caption="MoSCoW — 7 Must Have, 1 Should Have" />
+          <Img src={moscow} alt="MoSCoW prioritisation" caption="MoSCoW: 7 Must Have, 1 Should Have" />
         </div>
         <FadeUp delay={0.1}>
           <div style={{
@@ -414,7 +414,7 @@ export function WhiskerHavenPage() {
             border: "1px solid rgba(0,0,0,0.07)", borderLeftWidth: "4px", borderLeftColor: "#2D6A4F",
           }}>
             <p style={{ fontSize: "10px", color: "#2D6A4F", letterSpacing: "0.08em", marginBottom: "10px", fontWeight: 600 }}>
-              QUICK WINS — HIGH IMPACT, LOW EFFORT
+              QUICK WINS: HIGH IMPACT, LOW EFFORT
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
               {["Self-managed bookings 24/7", "Instant booking status", "Proactive real-time updates", "Fast booking flow"].map((w) => (
@@ -426,7 +426,7 @@ export function WhiskerHavenPage() {
             </div>
           </div>
         </FadeUp>
-        <Img src={crazy8s} alt="Crazy 8s sketches" caption="Crazy 8s — rapid ideation" />
+        <Img src={crazy8s} alt="Crazy 8s sketches" caption="Crazy 8s: rapid ideation" />
       </PhaseSection>
 
       {/* ═══ 05 DESIGN ═══ */}
@@ -437,7 +437,7 @@ export function WhiskerHavenPage() {
         description="With scope defined, I established the visual language through a mood board, structured the app with a sitemap, then mapped the core booking task as a user flow before moving to hi-fi screens."
       >
         <div ref={makeRef(4)} style={{ position: "absolute", top: 0, left: 0, width: 1, height: 1 }} />
-        <Img src={moodBoard} alt="Whisker Haven mood board" caption="Mood board — Cozy · Calm · Warm · Homey" />
+        <Img src={moodBoard} alt="Whisker Haven mood board" caption="Mood board: Cozy · Calm · Warm · Homey" />
         <div style={{ display: "flex", gap: "10px", flexWrap: "wrap", margin: "20px 0 32px" }}>
           {[
             { name: "Warm Sienna", hex: "#C0714A" },
@@ -460,9 +460,9 @@ export function WhiskerHavenPage() {
             </motion.div>
           ))}
         </div>
-        <Img src={sitemap} alt="Sitemap" caption="Sitemap — information architecture" />
+        <Img src={sitemap} alt="Sitemap" caption="Sitemap: information architecture" />
         <div style={{ marginTop: "16px" }}>
-          <Img src={userFlow} alt="User flow" caption="User Flow — completing a room booking and payment" />
+          <Img src={userFlow} alt="User flow" caption="User Flow: completing a room booking and payment" />
         </div>
       </PhaseSection>
 
@@ -478,7 +478,7 @@ export function WhiskerHavenPage() {
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px", marginBottom: "32px" }}>
           {[
             { value: "100%", label: "Task completion", note: "across all participants" },
-            { value: "85", label: "SUS score", note: "Grade A — 'Excellent'" },
+            { value: "85", label: "SUS score", note: "Grade A: 'Excellent'" },
           ].map((s, i) => (
             <motion.div
               key={s.label}
@@ -505,7 +505,7 @@ export function WhiskerHavenPage() {
         <FadeUp delay={0.15}>
           <div style={{ borderLeft: "4px solid rgba(0,0,0,0.2)", paddingLeft: "24px", margin: "48px 0 0" }}>
             <p style={{ fontFamily: "var(--font-display)", fontSize: "20px", color: DARK, lineHeight: "1.55", fontStyle: "italic", fontWeight: 400 }}>
-              Whisker Haven proved that trust — not price — is the core conversion driver in care-service platforms. Transparent caregiver profiles and instant booking confirmation resolved the key friction points.
+              Whisker Haven proved that trust, not price, is the core conversion driver in care-service platforms. Transparent caregiver profiles and instant booking confirmation resolved the key friction points.
             </p>
           </div>
         </FadeUp>
@@ -524,7 +524,9 @@ export function WhiskerHavenPage() {
               </p>
             </div>
             <motion.a
-              href="#"
+              href="https://www.figma.com/proto/PkZWq94nimC2alRFRcTrlL/UI-Term-Project?node-id=89-227&starting-point-node-id=89%3A227&t=2iidHy6ASEbMyMS1-1"
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.97 }}
               style={{

@@ -132,7 +132,7 @@ export function BingChillingPage() {
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.25 }}
             style={{ fontSize: "18px", color: DARK, opacity: 0.6, maxWidth: "560px", lineHeight: "1.7", marginBottom: "48px" }}>
-            An e-commerce platform for art toy collectibles — designed for the collector who browses for the story,
+            An e-commerce platform for art toy collectibles: designed for the collector who browses for the story,
             not just the product. Two completely different user journeys built on one system.
           </motion.p>
 
@@ -161,7 +161,7 @@ export function BingChillingPage() {
             style={{ display: "flex", gap: "48px", marginTop: "40px", flexWrap: "wrap" }}>
             {[
               { value: "11", label: "Use cases implemented" },
-              { value: "2", label: "User journeys — shopper + admin" },
+              { value: "2", label: "User journeys: shopper + admin" },
               { value: "4", label: "Art toy brands" },
             ].map((s) => (
               <div key={s.label}>
@@ -202,15 +202,15 @@ export function BingChillingPage() {
               Understanding the art toy collector
             </h2>
             <p style={{ fontSize: "16px", color: "#666", lineHeight: "1.75", maxWidth: "640px", marginBottom: "40px" }}>
-              Art toy collectors don't browse the way typical shoppers do — they shop for the story, the scarcity, and the brand world.
+              Art toy collectors don't browse the way typical shoppers do; they shop for the story, the scarcity, and the brand world.
               We identified 4 user characteristics that shaped every design decision.
             </p>
           </FadeUp>
 
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px", marginBottom: "32px" }}>
             {[
-              { type: "Visually-driven shoppers", desc: "Prominent product images with multi-angle carousel slides. Thumbnail navigation for instant comparison. The product image is the first — and most important — trust signal." },
-              { type: "Detail-oriented collectors", desc: "Comprehensive product information. Clear variant options (single box vs. whole set). Detailed specifications — because collectors compare across platforms before committing." },
+              { type: "Visually-driven shoppers", desc: "Prominent product images with multi-angle carousel slides. Thumbnail navigation for instant comparison. The product image is the first, and most important, trust signal." },
+              { type: "Detail-oriented collectors", desc: "Comprehensive product information. Clear variant options (single box vs. whole set). Detailed specifications; because collectors compare across platforms before committing." },
               { type: "Impulse buyers", desc: "Visual discount badges and new arrival indicators create urgency without being aggressive. The brand story pulls them in; the deal closes them." },
               { type: "Multi-device users", desc: "Responsive Bootstrap grid ensures the collection browsing experience works on desktop (discovery mode) and mobile (deal checking on the go)." },
             ].map((u, i) => (
@@ -240,7 +240,7 @@ export function BingChillingPage() {
               <p style={{ fontSize: "11px", color: ACCENT, letterSpacing: "0.08em", marginBottom: "10px", fontWeight: 600 }}>KEY INSIGHT</p>
               <p style={{ fontSize: "15px", color: DARK, lineHeight: "1.65", opacity: 0.8 }}>
                 Art toy buyers are shopping for the <em>story and status</em> of an object, not just its function.
-                The product page must communicate brand world — scarcity, authenticity, and aesthetic — not just specs and price.
+                The product page must communicate brand world: scarcity, authenticity, and aesthetic; not just specs and price.
               </p>
             </div>
           </FadeUp>
@@ -264,8 +264,7 @@ export function BingChillingPage() {
               Two journeys. One design system.
             </h2>
             <p style={{ fontSize: "16px", color: "#666", lineHeight: "1.75", maxWidth: "640px", marginBottom: "40px" }}>
-              The core design challenge: a single visual system serving two completely different users —
-              the collector browsing limited drops, and the admin managing inventory in bulk.
+              The core design challenge: a single visual system serving two completely different users; the collector browsing limited drops, and the admin managing inventory in bulk.
             </p>
           </FadeUp>
 
@@ -274,12 +273,12 @@ export function BingChillingPage() {
             <div style={{ marginBottom: "28px" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "14px" }}>
                 <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: ACCENT }} />
-                <p style={{ fontSize: "12px", color: ACCENT, letterSpacing: "0.08em", fontWeight: 600 }}>CUSTOMER — 8 USE CASES</p>
+                <p style={{ fontSize: "12px", color: ACCENT, letterSpacing: "0.08em", fontWeight: 600 }}>CUSTOMER: 8 USE CASES</p>
               </div>
               <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
-                {["UC1 — Register & Login", "UC2 — Search Products", "UC3 — View Product Detail",
-                  "UC4 — Add to Cart", "UC5 — Manage Basket", "UC6 — Checkout",
-                  "UC7 — Order Completion", "UC8 — Contact Shop"].map((uc, i) => (
+                {["UC1: Register & Login", "UC2: Search Products", "UC3: View Product Detail",
+                  "UC4: Add to Cart", "UC5: Manage Basket", "UC6: Checkout",
+                  "UC7: Order Completion", "UC8: Contact Shop"].map((uc, i) => (
                   <motion.span key={uc}
                     initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
@@ -300,12 +299,12 @@ export function BingChillingPage() {
             <div style={{ marginBottom: "36px" }}>
               <div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "14px" }}>
                 <div style={{ width: "8px", height: "8px", borderRadius: "50%", background: DARK }} />
-                <p style={{ fontSize: "12px", color: DARK, letterSpacing: "0.08em", fontWeight: 600, opacity: 0.5 }}>ADMIN — 3 USE CASES</p>
+                <p style={{ fontSize: "12px", color: DARK, letterSpacing: "0.08em", fontWeight: 600, opacity: 0.5 }}>ADMIN: 3 USE CASES</p>
               </div>
               <div style={{ display: "flex", gap: "8px", flexWrap: "wrap" }}>
-                {["UC9 — Manage Products (CRUD + search, filter, sort, pagination)",
-                  "UC10 — Manage Categories",
-                  "UC11 — Sales Dashboard (weekly / monthly / yearly)"].map((uc, i) => (
+                {["UC9: Manage Products (CRUD + search, filter, sort, pagination)",
+                  "UC10: Manage Categories",
+                  "UC11: Sales Dashboard (weekly / monthly / yearly)"].map((uc, i) => (
                   <motion.span key={uc}
                     initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
@@ -323,7 +322,7 @@ export function BingChillingPage() {
           {/* User flow diagram */}
           <FadeUp delay={0.12}>
             <div style={{ marginBottom: "28px" }}>
-              <p style={{ fontSize: "11px", color: "#AAA", letterSpacing: "0.08em", marginBottom: "14px", fontWeight: 600 }}>USER FLOW — WEBSTORE PAGES</p>
+              <p style={{ fontSize: "11px", color: "#AAA", letterSpacing: "0.08em", marginBottom: "14px", fontWeight: 600 }}>USER FLOW: WEBSTORE PAGES</p>
               <motion.div
                 whileHover={{ scale: 1.01 }}
                 transition={{ duration: 0.3 }}
@@ -335,12 +334,12 @@ export function BingChillingPage() {
                 }}>
                 <ImageWithFallback
                   src={userFlowImg}
-                  alt="User flow diagram for BingChilling webstore pages — showing all customer and admin journeys"
+                  alt="User flow diagram for BingChilling webstore pages: showing all customer and admin journeys"
                   style={{ width: "100%", display: "block", objectFit: "contain" }}
                 />
               </motion.div>
               <p style={{ fontSize: "11px", color: "#BBB", marginTop: "10px", textAlign: "center" }}>
-                Complete user flow — from landing page through checkout, account management, and admin back-office
+                Complete user flow: from landing page through checkout, account management, and admin back-office
               </p>
             </div>
           </FadeUp>
@@ -349,9 +348,9 @@ export function BingChillingPage() {
           <FadeUp delay={0.15}>
             <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
               {[
-                { surface: "Storefront", approach: "Editorial product pages — brand world first, specs second. Carousel for multi-angle images. Variant buttons (single box / whole set) that update price and stock in real time. Scarcity and discount indicators." },
+                { surface: "Storefront", approach: "Editorial product pages: brand world first, specs second. Carousel for multi-angle images. Variant buttons (single box / whole set) that update price and stock in real time. Scarcity and discount indicators." },
                 { surface: "Admin dashboard", approach: "Designed for speed: statistics cards (orders, revenue), Chart.js sales graph (weekly / monthly / yearly), best sellers list, recent orders table with pagination." },
-                { surface: "Shared system", approach: "Single Figma component library across both surfaces — consistent typography, spacing, button hierarchy, and icon standards. Bootstrap grid for responsive behaviour across desktop and mobile." },
+                { surface: "Shared system", approach: "Single Figma component library across both surfaces; consistent typography, spacing, button hierarchy, and icon standards. Bootstrap grid for responsive behaviour across desktop and mobile." },
               ].map((d, i) => (
                 <motion.div key={d.surface}
                   initial={{ opacity: 0, x: -16 }}
@@ -389,7 +388,7 @@ export function BingChillingPage() {
               Database to front-end, end-to-end
             </h2>
             <p style={{ fontSize: "16px", color: "#666", lineHeight: "1.75", maxWidth: "640px", marginBottom: "40px" }}>
-              Built the full application stack — MySQL schema, RESTful Express.js API, EJS templates, and external API integrations.
+              Built the full application stack: MySQL schema, RESTful Express.js API, EJS templates, and external API integrations.
               Role-based sessions separate customer and admin throughout.
             </p>
           </FadeUp>
@@ -419,7 +418,7 @@ export function BingChillingPage() {
           {/* Back office flow diagram */}
           <FadeUp delay={0.08}>
             <div style={{ marginBottom: "28px" }}>
-              <p style={{ fontSize: "11px", color: "#AAA", letterSpacing: "0.08em", marginBottom: "14px", fontWeight: 600 }}>ADMIN BACK OFFICE — SYSTEM FLOW</p>
+              <p style={{ fontSize: "11px", color: "#AAA", letterSpacing: "0.08em", marginBottom: "14px", fontWeight: 600 }}>ADMIN BACK OFFICE: SYSTEM FLOW</p>
               <motion.div
                 whileHover={{ scale: 1.01 }}
                 transition={{ duration: 0.3 }}
@@ -431,12 +430,12 @@ export function BingChillingPage() {
                 }}>
                 <ImageWithFallback
                   src={backOfficeImg}
-                  alt="Admin back office flow — Login, Dashboard, Category Management (Add/Edit/Delete), Product Management (Add/Edit/Delete)"
+                  alt="Admin back office flow: Login, Dashboard, Category Management (Add/Edit/Delete), Product Management (Add/Edit/Delete)"
                   style={{ width: "100%", display: "block", objectFit: "contain" }}
                 />
               </motion.div>
               <p style={{ fontSize: "11px", color: "#BBB", marginTop: "10px", textAlign: "center" }}>
-                Admin flow — Login → Dashboard → Category & Product management with full CRUD operations
+                Admin flow: Login → Dashboard → Category & Product management with full CRUD operations
               </p>
             </div>
           </FadeUp>
@@ -448,8 +447,8 @@ export function BingChillingPage() {
                 { feature: "Shopping cart", detail: "Session-persistent cart updated in real time. Quantity validation against stock. Total price recalculates on every change without page reload." },
                 { feature: "Checkout & orders", detail: "Delivery method selection, payment method (QR, Bank Transfer, Credit/Debit, COD), order confirmation with duplicate-access prevention on refresh." },
                 { feature: "Admin dashboard", detail: "Chart.js sales graph with weekly / monthly / yearly toggle. Statistics cards (orders, revenue, products). Best sellers list. Recent orders with pagination." },
-                { feature: "Auth & sessions", detail: "bcrypt password hashing. express-session for role-based access — customers and admins handled separately. Login accepts both username and email." },
-                { feature: "Contact & maps", detail: "Contact form with nodemailer — saves to CONTACTS table + emails shop. Google Maps API embeds CAMT location on the contact page." },
+                { feature: "Auth & sessions", detail: "bcrypt password hashing. express-session for role-based access; customers and admins handled separately. Login accepts both username and email." },
+                { feature: "Contact & maps", detail: "Contact form with nodemailer; saves to CONTACTS table + emails shop. Google Maps API embeds CAMT location on the contact page." },
               ].map((f, i) => (
                 <motion.div key={f.feature}
                   initial={{ opacity: 0, x: -16 }}
@@ -484,7 +483,7 @@ export function BingChillingPage() {
               fontFamily: "var(--font-display)", fontSize: "clamp(26px, 3vw, 40px)",
               color: DARK, letterSpacing: "-0.02em", fontWeight: 400, lineHeight: 1.1, marginBottom: "14px",
             }}>
-              Shipped — desktop & mobile
+              Shipped: desktop & mobile
             </h2>
             <p style={{ fontSize: "16px", color: DARK, opacity: 0.55, lineHeight: "1.75", maxWidth: "640px", marginBottom: "40px" }}>
               Separate demo recordings for desktop and mobile, covering the complete customer and admin experience.
@@ -494,7 +493,7 @@ export function BingChillingPage() {
           <FadeUp delay={0.05}>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px", marginBottom: "28px" }}>
               {[
-                { label: "GitHub repository", href: "https://github.com/camt-pathathai/term-project-section-701-bingchilling.git", desc: "Full source — Express.js, EJS, MySQL, Bootstrap" },
+                { label: "GitHub repository", href: "https://github.com/camt-pathathai/term-project-section-701-bingchilling.git", desc: "Full source: Express.js, EJS, MySQL, Bootstrap" },
                 { label: "Desktop demo", href: "https://drive.google.com/file/d/1XV_gr-ufzJjWxWFOfnZYc2nEyzrMJJcl/view?usp=sharing", desc: "Full customer + admin flow on desktop" },
                 { label: "Mobile demo", href: "https://drive.google.com/file/d/1rU_g7DCUAav6CUpnvO8K_d4hgjix3biK/view?usp=sharing", desc: "Responsive mobile experience demo" },
                 { label: "Customer flow", href: "https://drive.google.com/file/d/1HjsfCZ60BJwM_QCdjd3otIOfISRAdPpt/view", desc: "Webstore pages user flow diagram" },

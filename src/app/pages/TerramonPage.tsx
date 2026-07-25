@@ -157,8 +157,7 @@ export function TerramonPage() {
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.25 }}
             style={{ fontSize: "18px", color: TEXT, opacity: 0.5, maxWidth: "560px", lineHeight: "1.7", marginBottom: "48px" }}>
-            A smart gardening assistant that bridges the gap between plant enthusiasm and plant care knowledge —
-            combining AI identification, automated reminders, and community support in one app.
+            A smart gardening assistant that bridges the gap between plant enthusiasm and plant care knowledge: combining AI identification, automated reminders, and community support in one app.
           </motion.p>
 
           {/* Meta */}
@@ -228,23 +227,23 @@ export function TerramonPage() {
               The plant dies. Every time.
             </h2>
             <p style={{ fontSize: "16px", color: TEXT, opacity: 0.45, lineHeight: "1.75", maxWidth: "640px", marginBottom: "40px" }}>
-              We mapped the experience of a plant owner <em>without</em> any app — across 8 stages from impulse buy to dead plant.
+              We mapped the experience of a plant owner <em>without</em> any app; across 8 stages from impulse buy to dead plant.
               The journey revealed where confidence turns to guilt, and where a smart assistant could intervene.
             </p>
           </FadeUp>
 
           <Img src={userJourneyMap}
-            alt="User journey map without app — 8 stages: Go to work → Interested in friends' plants → Buy a plant → Look for ways to care for it → Busy with work → Plant gets sick → Quick Fix Attempts → Plant died. Emotions: Drained → Curious → Excited but responsible → Hopeful → Distracted/guilty → Anxious → Desperate → Disappointed."
-            caption="User Journey Map (Without App) — 8 stages from discovery to loss"
+            alt="User journey map without app: 8 stages: Go to work → Interested in friends' plants → Buy a plant → Look for ways to care for it → Busy with work → Plant gets sick → Quick Fix Attempts → Plant died. Emotions: Drained → Curious → Excited but responsible → Hopeful → Distracted/guilty → Anxious → Desperate → Disappointed."
+            caption="User Journey Map (Without App): 8 stages from discovery to loss"
           />
 
           <FadeUp delay={0.1}>
             <div style={{ display: "flex", flexDirection: "column", gap: "8px", marginTop: "24px" }}>
               {[
-                { stage: "Buy a plant", emotion: "Excited, but feeling responsible 😊", insight: "Impulse buy from a shop — no research, no preparation." },
+                { stage: "Buy a plant", emotion: "Excited, but feeling responsible 😊", insight: "Impulse buy from a shop; no research, no preparation." },
                 { stage: "Busy with work", emotion: "Distracted, then guilty 😅", insight: "Work takes over. Watering is forgotten. Guilt creeps in." },
                 { stage: "Plant gets sick", emotion: "Anxious and guilty 😰", insight: "Yellow leaves appear. \"Is it too much water or too little?\"" },
-                { stage: "Quick Fix Attempts", emotion: "Desperate but hopeful 😢", insight: "Moves the plant, changes soil, waters more — all guesses." },
+                { stage: "Quick Fix Attempts", emotion: "Desperate but hopeful 😢", insight: "Moves the plant, changes soil, waters more; all guesses." },
                 { stage: "Plant died", emotion: "Disappointed and regretful 😞", insight: "\"Maybe I need to learn more before getting another plant.\"" },
               ].map((s, i) => (
                 <motion.div key={s.stage}
@@ -285,18 +284,18 @@ export function TerramonPage() {
             </h2>
             <p style={{ fontSize: "16px", color: TEXT, opacity: 0.45, lineHeight: "1.75", maxWidth: "640px", marginBottom: "40px" }}>
               The journey map revealed three root causes: lack of identification knowledge, no care routine, and no community to ask.
-              We defined 6 features to address each — backed by a full Software Requirements Specification.
+              We defined 6 features to address each; backed by a full Software Requirements Specification.
             </p>
           </FadeUp>
 
           <div style={{ display: "flex", flexDirection: "column", gap: "10px", marginBottom: "36px" }}>
             {[
-              { num: "F1", name: "Authentication", desc: "Single input field accepting both username and email — reducing login friction and cognitive load." },
+              { num: "F1", name: "Authentication", desc: "Single input field accepting both username and email; reducing login friction and cognitive load." },
               { num: "F2", name: "Plant Identification", desc: "AI-powered photo analysis via TensorFlow. Returns matches with confidence scores, distinctive features, and a direct path to adding the plant to My Garden." },
-              { num: "F3", name: "Care Reminders", desc: "Custom schedules per plant — watering, fertilizing, repotting, pruning. Notifications via Firebase Cloud Messaging." },
+              { num: "F3", name: "Care Reminders", desc: "Custom schedules per plant: watering, fertilizing, repotting, pruning. Notifications via Firebase Cloud Messaging." },
               { num: "F4", name: "My Garden", desc: "A digital plant journal. Users log photos, notes, species info, and track health over time. All updates reflected immediately." },
               { num: "F5", name: "Community", desc: "Q&A forum, plant care tips, troubleshooting posts. Moderated to ensure appropriate, accurate content." },
-              { num: "F6", name: "Vendors Shop", desc: "In-app marketplace for pots, soil, fertilisers, tools, and plants from verified sellers — personalised by plant collection." },
+              { num: "F6", name: "Vendors Shop", desc: "In-app marketplace for pots, soil, fertilisers, tools, and plants from verified sellers; personalised by plant collection." },
             ].map((f, i) => (
               <motion.div key={f.num}
                 initial={{ opacity: 0, x: -16 }}
@@ -344,9 +343,9 @@ export function TerramonPage() {
               marginTop: "16px", background: "rgba(255,255,255,0.03)", borderRadius: "14px",
               padding: "22px 28px", border: "1px solid rgba(255,255,255,0.06)",
             }}>
-              <p style={{ fontSize: "11px", color: "#4a6a3a", letterSpacing: "0.08em", marginBottom: "12px", fontWeight: 600 }}>MY CONTRIBUTION — USE CASE OWNERSHIP</p>
+              <p style={{ fontSize: "11px", color: "#4a6a3a", letterSpacing: "0.08em", marginBottom: "12px", fontWeight: 600 }}>MY CONTRIBUTION: USE CASE OWNERSHIP</p>
               <p style={{ fontSize: "14px", color: TEXT, opacity: 0.6, lineHeight: "1.7" }}>
-                I authored the full Use Case Description for <strong style={{ color: ACCENT }}>Feature #2 — Plant Identification</strong>:
+                I authored the full Use Case Description for <strong style={{ color: ACCENT }}>Feature #2: Plant Identification</strong>:
                 5 URS, 14+ SRS items, Normal/Alternative/Exception flows (A1–A9, E1–E4), input specifications,
                 pre/post conditions, and a traceability matrix. I also led the design sub-team through sprints and design-to-dev handoff.
               </p>
@@ -372,13 +371,13 @@ export function TerramonPage() {
               13-screen plant identification flow
             </h2>
             <p style={{ fontSize: "16px", color: TEXT, opacity: 0.45, lineHeight: "1.75", maxWidth: "640px", marginBottom: "40px" }}>
-              Low-fidelity wireframes mapped every state of the Plant Identification feature — including all error, loading, and edge-case screens — before a single pixel of hi-fi was designed.
+              Low-fidelity wireframes mapped every state of the Plant Identification feature; including all error, loading, and edge-case screens; before a single pixel of hi-fi was designed.
             </p>
           </FadeUp>
 
           <Img src={userFlow}
-            alt="User flow low-fidelity prototype — 13 screens: UI-001 Home, UI-002 Camera Option, UI-003 Photo Confirmation, UI-004 Cancel Alert, UI-005 Error, UI-006 Poor Quality Alert, UI-007 Connection Lost, UI-008 Loading/Matching, UI-009 Cannot Identify, UI-010 Plant Result, UI-011 Plant Detail, UI-012 Success Added, UI-013 My Garden"
-            caption="Low-fidelity User Flow — Plant Identification · UI-001 to UI-013"
+            alt="User flow low-fidelity prototype: 13 screens: UI-001 Home, UI-002 Camera Option, UI-003 Photo Confirmation, UI-004 Cancel Alert, UI-005 Error, UI-006 Poor Quality Alert, UI-007 Connection Lost, UI-008 Loading/Matching, UI-009 Cannot Identify, UI-010 Plant Result, UI-011 Plant Detail, UI-012 Success Added, UI-013 My Garden"
+            caption="Low-fidelity User Flow: Plant Identification · UI-001 to UI-013"
           />
 
           <FadeUp delay={0.1}>
@@ -420,9 +419,9 @@ export function TerramonPage() {
               <p style={{ fontSize: "11px", color: ACCENT, letterSpacing: "0.08em", marginBottom: "8px", fontWeight: 600 }}>USABILITY REQUIREMENTS MET BY DESIGN</p>
               <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
                 {[
-                  "NFR-UH-01: 90% of beginner users can add a plant to My Garden within 45 seconds — achieved by reducing the identify-to-add path to 3 taps",
-                  "NFR-UH-02: Core tasks achievable in ≤3 sequential interactions — Plant ID: Identify → Confirm → Add",
-                  "NFR-UH-04: Zero ambiguous icons — all UI-001 to UI-013 icons reviewed against icon clarity standard",
+                  "NFR-UH-01: 90% of beginner users can add a plant to My Garden within 45 seconds; achieved by reducing the identify-to-add path to 3 taps",
+                  "NFR-UH-02: Core tasks achievable in ≤3 sequential interactions; Plant ID: Identify → Confirm → Add",
+                  "NFR-UH-04: Zero ambiguous icons; all UI-001 to UI-013 icons reviewed against icon clarity standard",
                 ].map((r, i) => (
                   <div key={i} style={{ display: "grid", gridTemplateColumns: "16px 1fr", gap: "10px", alignItems: "start" }}>
                     <div style={{ width: "5px", height: "5px", borderRadius: "50%", background: ACCENT, marginTop: "7px", flexShrink: 0 }} />
@@ -452,16 +451,16 @@ export function TerramonPage() {
               Bridging design and engineering across a 10-person team
             </h2>
             <p style={{ fontSize: "16px", color: TEXT, opacity: 0.45, lineHeight: "1.75", maxWidth: "640px", marginBottom: "40px" }}>
-              Acting as the bridge between the UX sub-team and engineering, I contributed to front-end implementation while ensuring design intent survived handoff — managing a shared component library across the full team.
+              Acting as the bridge between the UX sub-team and engineering, I contributed to front-end implementation while ensuring design intent survived handoff; managing a shared component library across the full team.
             </p>
           </FadeUp>
 
           <div style={{ display: "flex", flexDirection: "column", gap: "10px", marginBottom: "32px" }}>
             {[
-              { area: "Design-to-dev handoff", detail: "Structured sprints with the UX sub-team of 4, building shared components and documenting design decisions before handing to engineers — reducing back-and-forth during implementation." },
+              { area: "Design-to-dev handoff", detail: "Structured sprints with the UX sub-team of 4, building shared components and documenting design decisions before handing to engineers; reducing back-and-forth during implementation." },
               { area: "Component library", detail: "Managed a shared Figma + code component library keeping design and implementation in sync across all 10 team members. Enforced Terramon Brand Style Guide (primary color #319F5E, Lexend typography)." },
-              { area: "Front-end contribution", detail: "Built UI screens in Vue.js, implementing scroll-aware header behavior, consistent icon standards, and the unified login input field — all requirements from the Change Request approved by the team." },
-              { area: "Requirements authoring", detail: "Authored UC-001 (Plant Identification with Camera) — the most complex use case in the SRS with 5 URS, 14+ SRS items, 9 alternative flows, and 4 exception flows covering all edge cases." },
+              { area: "Front-end contribution", detail: "Built UI screens in Vue.js, implementing scroll-aware header behavior, consistent icon standards, and the unified login input field; all requirements from the Change Request approved by the team." },
+              { area: "Requirements authoring", detail: "Authored UC-001 (Plant Identification with Camera): the most complex use case in the SRS with 5 URS, 14+ SRS items, 9 alternative flows, and 4 exception flows covering all edge cases." },
             ].map((b, i) => (
               <motion.div key={b.area}
                 initial={{ opacity: 0, x: -16 }}
@@ -515,7 +514,7 @@ export function TerramonPage() {
                 <p style={{ fontFamily: "var(--font-display)", fontSize: "24px", color: TEXT, fontWeight: 400 }}>View the prototype</p>
               </div>
               <motion.a
-                href="https://www.figma.com/proto/xq3f7ikHBApT45PQb8nxqE/SW-Req-Wireframe-G4?node-id=1853-6194&scaling=scale-down&content-scaling=fixed&page-id=595%3A12&starting-point-node-id=613%3A2987"
+                href="https://www.figma.com/proto/xq3f7ikHBApT45PQb8nxqE/SW-Req-Wireframe-G4?node-id=613-2987&p=f&t=mQtS9ZFqwbFlmQoY-1&scaling=scale-down&content-scaling=fixed&page-id=595%3A12&starting-point-node-id=613%3A2987"
                 target="_blank" rel="noopener noreferrer"
                 whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}
                 style={{ background: ACCENT, color: BG, borderRadius: "100px", padding: "13px 26px", fontSize: "14px", textDecoration: "none" }}

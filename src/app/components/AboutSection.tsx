@@ -25,7 +25,7 @@ function CountUp({ target, suffix = "", decimals = 0 }: { target: number; suffix
 }
 
 const STATS = [
-  { label: "Cumulative GPA", value: 3.80, decimals: 2, color: "#FF6B35" },
+  { label: "Cumulative GPA", value: 3.80, decimals: 2, color: "#3B82F6" },
   { label: "Expected graduation", raw: "Mar 2027", color: "#A78BFA" },
 ];
 

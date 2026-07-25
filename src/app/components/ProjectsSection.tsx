@@ -135,20 +135,24 @@ function ProjectCard({ project, isEven }: { project: typeof projects[0]; isEven:
                   View case study <ArrowUpRight size={13} />
                 </Link>
               </motion.div>
-              <motion.div whileHover={{ scale: 1.05, x: 2 }} whileTap={{ scale: 0.97 }}>
-                <a
-                  href="#"
-                  style={{
-                    background: "transparent", color: project.textColor,
-                    borderRadius: "100px", padding: "12px 24px", fontSize: "13px",
-                    textDecoration: "none", display: "inline-flex", alignItems: "center",
-                    gap: "6px", letterSpacing: "0.02em",
-                    border: `1.5px solid ${project.textColor}30`,
-                  }}
-                >
-                  View prototype <ArrowUpRight size={13} />
-                </a>
-              </motion.div>
+              {project.prototypeLink && (
+                <motion.div whileHover={{ scale: 1.05, x: 2 }} whileTap={{ scale: 0.97 }}>
+                  <a
+                    href={project.prototypeLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      background: "transparent", color: project.textColor,
+                      borderRadius: "100px", padding: "12px 24px", fontSize: "13px",
+                      textDecoration: "none", display: "inline-flex", alignItems: "center",
+                      gap: "6px", letterSpacing: "0.02em",
+                      border: `1.5px solid ${project.textColor}30`,
+                    }}
+                  >
+                    View prototype <ArrowUpRight size={13} />
+                  </a>
+                </motion.div>
+              )}
             </div>
           </div>
 

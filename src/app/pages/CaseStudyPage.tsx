@@ -241,7 +241,7 @@ export function CaseStudyPage() {
               </span>
               <div style={{ width: "1px", height: "16px", background: "rgba(0,0,0,0.12)" }} />
               <span style={{ fontSize: "10px", letterSpacing: "0.14em", fontWeight: 600, color: "#999" }}>
-                {phase.step.split("—")[1]?.trim().toUpperCase() ?? phase.step.toUpperCase()}
+                {phase.step.split(":")[1]?.trim().toUpperCase() ?? phase.step.toUpperCase()}
               </span>
             </div>
 

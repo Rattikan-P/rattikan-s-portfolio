@@ -142,7 +142,7 @@ export function HealthyTastePage() {
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.25 }}
             style={{ fontSize: "18px", color: TEXT_ON_BG, opacity: 0.7, maxWidth: "560px", lineHeight: "1.7", marginBottom: "48px" }}>
-            Most calorie-tracking apps fail users within two weeks — the logging feels more effortful than the benefit seems worth.
+            Most calorie-tracking apps fail users within two weeks; the logging feels more effortful than the benefit seems worth.
             Healthy Taste was designed to flip that ratio entirely.
           </motion.p>
 
@@ -213,7 +213,7 @@ export function HealthyTastePage() {
             </h2>
             <p style={{ fontSize: "16px", color: "#666", lineHeight: "1.75", maxWidth: "640px", marginBottom: "40px" }}>
               The research question was simple: why do people who want to track calories stop doing it within two weeks?
-              The answer wasn't willpower — it was the app.
+              The answer wasn't willpower; it was the app.
             </p>
           </FadeUp>
 
@@ -223,9 +223,9 @@ export function HealthyTastePage() {
               <p style={{ fontSize: "11px", color: "#AAA", letterSpacing: "0.08em", marginBottom: "16px", fontWeight: 600 }}>COMPETITIVE ANALYSIS</p>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "10px" }}>
                 {[
-                  { app: "MyFitnessPal", strength: "Huge food database", weakness: "Search is overwhelming — too many irrelevant results. UI cluttered with ads and upsells." },
+                  { app: "MyFitnessPal", strength: "Huge food database", weakness: "Search is overwhelming; too many irrelevant results. UI cluttered with ads and upsells." },
                   { app: "Cronometer", strength: "Detailed micronutrient data", weakness: "Steep learning curve. Designed for power users, not casual trackers." },
-                  { app: "Lose It!", strength: "Barcode scanning", weakness: "Portion estimation still requires manual gram input — no visual guide." },
+                  { app: "Lose It!", strength: "Barcode scanning", weakness: "Portion estimation still requires manual gram input; no visual guide." },
                 ].map((c, i) => (
                   <motion.div key={c.app}
                     initial={{ opacity: 0, y: 16 }}
@@ -257,9 +257,9 @@ export function HealthyTastePage() {
               <p style={{ fontSize: "11px", color: "#AAA", letterSpacing: "0.08em", marginBottom: "16px", fontWeight: 600 }}>3 KEY FRICTION POINTS IDENTIFIED</p>
               <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
                 {[
-                  { num: "1", point: "Searching for food items", detail: "Too many results, ambiguous names, and no smart filtering makes finding the right item feel like a chore — so users give up or log inaccurately." },
+                  { num: "1", point: "Searching for food items", detail: "Too many results, ambiguous names, and no smart filtering makes finding the right item feel like a chore; so users give up or log inaccurately." },
                   { num: "2", point: "Estimating portions", detail: "Manual gram entry requires a kitchen scale or guesswork. No visual reference means users either over-engineer or stop logging altogether." },
-                  { num: "3", point: "Remembering to log", detail: "Fixed-time alarms don't match meal habits. Reminders fire at the wrong moment — after the meal is already forgotten." },
+                  { num: "3", point: "Remembering to log", detail: "Fixed-time alarms don't match meal habits. Reminders fire at the wrong moment; after the meal is already forgotten." },
                 ].map((f, i) => (
                   <motion.div key={f.num}
                     initial={{ opacity: 0, x: -16 }}
@@ -295,14 +295,14 @@ export function HealthyTastePage() {
             }}>
               <p style={{ fontSize: "11px", color: BG, letterSpacing: "0.08em", marginBottom: "10px", fontWeight: 600 }}>KEY INSIGHT</p>
               <p style={{ fontSize: "15px", color: DARK, lineHeight: "1.65", opacity: 0.8 }}>
-                Users don't abandon calorie tracking because they lose motivation — they abandon it because the tool makes
+                Users don't abandon calorie tracking because they lose motivation; they abandon it because the tool makes
                 them feel stupid or slow. Removing one step from a repeated daily action has an outsized impact on habit formation.
               </p>
             </div>
           </FadeUp>
 
           <div style={{ marginTop: "28px" }}>
-            <ImagePlaceholder label="PERSONA CARDS — ADD FROM FIGMA" />
+            <ImagePlaceholder label="PERSONA CARDS: ADD FROM FIGMA" />
           </div>
         </div>
       </div>
@@ -332,10 +332,10 @@ export function HealthyTastePage() {
           <FadeUp delay={0.05}>
             <div style={{ display: "flex", flexDirection: "column", gap: "10px", marginBottom: "28px" }}>
               {[
-                { decision: "Smart food search", rationale: "Surfaces recent entries and popular matches first. Most users eat the same 15–20 meals repeatedly — the search should know this before they type anything." },
+                { decision: "Smart food search", rationale: "Surfaces recent entries and popular matches first. Most users eat the same 15–20 meals repeatedly; the search should know this before they type anything." },
                 { decision: "Visual portion estimator", rationale: "Photo-based size guides replace manual gram entry. Users tap a visual scale (palm / fist / thumb) rather than entering numbers they have to look up." },
-                { decision: "Context-aware reminders", rationale: "Reminders trigger based on the user's actual meal-time patterns, learned after 3 days of use — not fixed 12pm and 6pm alarms that fire at the wrong moment." },
-                { decision: "Barcode scanning", rationale: "One-tap scan for packaged foods. Matched to a curated database with Thai food coverage — the gap that MyFitnessPal leaves unfilled for local users." },
+                { decision: "Context-aware reminders", rationale: "Reminders trigger based on the user's actual meal-time patterns, learned after 3 days of use; not fixed 12pm and 6pm alarms that fire at the wrong moment." },
+                { decision: "Barcode scanning", rationale: "One-tap scan for packaged foods. Matched to a curated database with Thai food coverage; the gap that MyFitnessPal leaves unfilled for local users." },
               ].map((d, i) => (
                 <motion.div key={d.decision}
                   initial={{ opacity: 0, x: -16 }}
@@ -380,7 +380,7 @@ export function HealthyTastePage() {
               Scalable component library
             </h2>
             <p style={{ fontSize: "16px", color: "#666", lineHeight: "1.75", maxWidth: "640px", marginBottom: "40px" }}>
-              A comprehensive Figma design system built to scale — so future features like meal planning, social sharing,
+              A comprehensive Figma design system built to scale; so future features like meal planning, social sharing,
               and coach integration can be built without reinventing the visual language.
             </p>
           </FadeUp>
@@ -421,14 +421,14 @@ export function HealthyTastePage() {
               <p style={{ fontSize: "11px", color: BG, letterSpacing: "0.08em", marginBottom: "10px", fontWeight: 600 }}>WHY BUILD A SYSTEM, NOT JUST SCREENS</p>
               <p style={{ fontSize: "15px", color: DARK, lineHeight: "1.65", opacity: 0.8 }}>
                 A calorie tracker is used every single day. Inconsistent spacing, mismatched button sizes, or off-brand colours
-                aren't just aesthetic problems — at daily frequency, they feel like bugs. A design system enforces consistency
+                aren't just aesthetic problems; at daily frequency, they feel like bugs. A design system enforces consistency
                 before code touches the screen.
               </p>
             </div>
           </FadeUp>
 
           <FadeUp delay={0.12}>
-            <ImagePlaceholder label="DESIGN SYSTEM OVERVIEW — ADD FROM FIGMA" />
+            <ImagePlaceholder label="DESIGN SYSTEM OVERVIEW: ADD FROM FIGMA" />
           </FadeUp>
         </div>
       </div>
@@ -459,7 +459,7 @@ export function HealthyTastePage() {
                 <p style={{ fontFamily: "var(--font-display)", fontSize: "24px", color: TEXT_ON_BG, fontWeight: 400 }}>Open in Figma</p>
               </div>
               <motion.a
-                href="https://www.figma.com/design/hf7ANRmL8OIWOSZY06Y6md/953351-Term-Project-_-HEALTHY-TASTE"
+                href="https://www.figma.com/proto/hf7ANRmL8OIWOSZY06Y6md/953351-Term-Project-_-HEALTHY-TASTE?node-id=4546-20561&p=f&t=1lUlThABv12oi2Ku-9&scaling=scale-down&content-scaling=fixed&starting-point-node-id=4546%3A20561&show-proto-sidebar=1"
                 target="_blank" rel="noopener noreferrer"
                 whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}
                 style={{ background: "#FFFFFF", color: BG, borderRadius: "100px", padding: "13px 26px", fontSize: "14px", textDecoration: "none", fontWeight: 500 }}

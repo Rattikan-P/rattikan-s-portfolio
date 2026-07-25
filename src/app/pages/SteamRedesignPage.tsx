@@ -155,7 +155,7 @@ export function SteamRedesignPage() {
 
           <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }}
             style={{ fontSize: "11px", color: TEXT, opacity: 0.25, letterSpacing: "0.1em", marginBottom: "12px" }}>
-            06 / 2025 · App Redesign — UX Research & UI Design
+            06 / 2025 · App Redesign: UX Research & UI Design
           </motion.p>
 
           <motion.h1 initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }}
@@ -171,7 +171,7 @@ export function SteamRedesignPage() {
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.25 }}
             style={{ fontSize: "18px", color: TEXT, opacity: 0.5, maxWidth: "560px", lineHeight: "1.7", marginBottom: "48px" }}>
-            Steam's mobile app is used by millions — but suffers from significant usability issues on small screens.
+            Steam's mobile app is used by millions, but suffers from significant usability issues on small screens.
             A team of 3 conducted end-to-end UX research to find the root causes, then redesigned the core flows.
           </motion.p>
 
@@ -227,11 +227,11 @@ export function SteamRedesignPage() {
               What does it actually feel like to use Steam on mobile?
             </h2>
             <p style={{ fontSize: "16px", color: TEXT, opacity: 0.45, lineHeight: "1.75", maxWidth: "640px", marginBottom: "40px" }}>
-              We mapped the emotional experience of real Steam mobile users — not just what they do, but how they feel when using the app. Three dominant emotions surfaced immediately.
+              We mapped the emotional experience of real Steam mobile users; not just what they do, but how they feel when using the app. Three dominant emotions surfaced immediately.
             </p>
           </FadeUp>
 
-          <Img src={empathyMap} alt="Empathy map for Steam mobile users — Say, Think, Does, Feel quadrants. Feelings: Overwhelmed, Confused, Frustrated." caption="Empathy Map — University student · Steam mobile user" />
+          <Img src={empathyMap} alt="Empathy map for Steam mobile users: Say, Think, Does, Feel quadrants. Feelings: Overwhelmed, Confused, Frustrated." caption="Empathy Map: University student · Steam mobile user" />
 
           <FadeUp delay={0.1}>
             <div style={{
@@ -274,18 +274,18 @@ export function SteamRedesignPage() {
               5 problem clusters from 16 insights
             </h2>
             <p style={{ fontSize: "16px", color: TEXT, opacity: 0.45, lineHeight: "1.75", maxWidth: "640px", marginBottom: "40px" }}>
-              Raw insights were grouped into an affinity diagram, turning scattered complaints into 5 distinct, actionable problem themes — each representing a different dimension of where Steam mobile fails its users.
+              Raw insights were grouped into an affinity diagram, turning scattered complaints into 5 distinct, actionable problem themes; each representing a different dimension of where Steam mobile fails its users.
             </p>
           </FadeUp>
 
-          <Img src={affinityDiagram} alt="Affinity diagram with 5 groups: Navigation & Findability, Information Architecture & Organization, Visual Hierarchy & Clarity, Feature Integration, Mobile Usability" caption="Affinity Diagram — 16 insights → 5 problem clusters" />
+          <Img src={affinityDiagram} alt="Affinity diagram with 5 groups: Navigation & Findability, Information Architecture & Organization, Visual Hierarchy & Clarity, Feature Integration, Mobile Usability" caption="Affinity Diagram: 16 insights → 5 problem clusters" />
 
           <FadeUp delay={0.1}>
             <div style={{ display: "flex", flexDirection: "column", gap: "8px", marginTop: "24px" }}>
               {[
                 { name: "Navigation & Findability", color: "#FFB3C6", insight: "Scrolling endlessly to find recently purchased games. Using search because category navigation is too confusing." },
                 { name: "Information Architecture", color: "#B3E5FC", insight: "No category filters in the library. Discounted games across mixed categories with too many irrelevant tags." },
-                { name: "Visual Hierarchy & Clarity", color: "#C8E6C9", insight: "Everything looks the same — can't tell if a game is installed. Menu labels lack visual emphasis." },
+                { name: "Visual Hierarchy & Clarity", color: "#C8E6C9", insight: "Everything looks the same; can't tell if a game is installed. Menu labels lack visual emphasis." },
                 { name: "Feature Integration", color: "#FFE0B2", insight: "Chat requires downloading a separate app. It feels completely disconnected from the main Steam experience." },
                 { name: "Mobile Usability", color: "#E1BEE7", insight: "The UI feels like a website crammed into a phone. Search tags and images overflow the screen width." },
               ].map((g, i) => (
@@ -326,11 +326,11 @@ export function SteamRedesignPage() {
               Who we're redesigning for
             </h2>
             <p style={{ fontSize: "16px", color: TEXT, opacity: 0.45, lineHeight: "1.75", maxWidth: "640px", marginBottom: "40px" }}>
-              Research findings crystallised into a primary persona and a full user journey map — showing exactly which moments break the experience and where the biggest design opportunities lie.
+              Research findings crystallised into a primary persona and a full user journey map: showing exactly which moments break the experience and where the biggest design opportunities lie.
             </p>
           </FadeUp>
 
-          <Img src={persona} alt="Persona: Austin James, 21, University student, Chiang Mai. Quote: I want to find the best deals and manage my library quickly without getting lost in a sea of irrelevant game banners." caption="Persona — Austin James, 21 · University student · Chiang Mai" />
+          <Img src={persona} alt="Persona: Austin James, 21, University student, Chiang Mai. Quote: I want to find the best deals and manage my library quickly without getting lost in a sea of irrelevant game banners." caption="Persona: Austin James, 21 · University student · Chiang Mai" />
 
           <FadeUp delay={0.1}>
             <div style={{
@@ -340,11 +340,11 @@ export function SteamRedesignPage() {
               <p style={{ fontSize: "15px", color: TEXT, lineHeight: "1.65", fontStyle: "italic", opacity: 0.85 }}>
                 "I want to find the best deals and manage my library quickly without getting lost in a sea of irrelevant game banners."
               </p>
-              <p style={{ fontSize: "12px", color: "#3a4a5a", marginTop: "8px" }}>— Austin James</p>
+              <p style={{ fontSize: "12px", color: "#3a4a5a", marginTop: "8px" }}>- Austin James</p>
             </div>
           </FadeUp>
 
-          <Img src={journeyMap} alt="User journey map for Austin James — 9 stages from Open App to Exit App. Emotions: Overwhelmed → Frustrated → Tired → Anxious → Skeptical → Turned → Hopeful → Slightly Frustrated." caption="User Journey Map — Austin James · Open App → Store → Library → Decision → Exit" />
+          <Img src={journeyMap} alt="User journey map for Austin James: 9 stages from Open App to Exit App. Emotions: Overwhelmed → Frustrated → Tired → Anxious → Skeptical → Turned → Hopeful → Slightly Frustrated." caption="User Journey Map: Austin James · Open App → Store → Library → Decision → Exit" />
 
           <FadeUp delay={0.1}>
             <div style={{
@@ -392,11 +392,11 @@ export function SteamRedesignPage() {
               Prioritising what to fix first
             </h2>
             <p style={{ fontSize: "16px", color: TEXT, opacity: 0.45, lineHeight: "1.75", maxWidth: "640px", marginBottom: "40px" }}>
-              With 5 problem clusters, we needed to decide what to tackle first. Impact-Effort and MoSCoW gave us two different lenses — and the tension between them produced the clearest answer.
+              With 5 problem clusters, we needed to decide what to tackle first. Impact-Effort and MoSCoW gave us two different lenses, and the tension between them produced the clearest answer.
             </p>
           </FadeUp>
 
-          <Img src={prioritization} alt="Prioritization using Impact-Effort matrix and MoSCoW method — sticky note boards. Final priority table: 1. Unsure if game worth the price (Must Have + High Impact), 2. Discounted games across categories (Quick Win), 3. No price history (Low Impact)." caption="Prioritisation — Impact-Effort Matrix + MoSCoW Method" />
+          <Img src={prioritization} alt="Prioritization using Impact-Effort matrix and MoSCoW method: sticky note boards. Final priority table: 1. Unsure if game worth the price (Must Have + High Impact), 2. Discounted games across categories (Quick Win), 3. No price history (Low Impact)." caption="Prioritisation: Impact-Effort Matrix + MoSCoW Method" />
 
           <FadeUp delay={0.1}>
             <div style={{ marginTop: "24px" }}>
@@ -405,9 +405,9 @@ export function SteamRedesignPage() {
               </p>
               <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
                 {[
-                  { rank: "01", problem: "Unsure if game is worth the price / best price", reason: "Must Have + High Impact — core user requirement", highlight: true },
-                  { rank: "02", problem: "Discounted games scattered across categories", reason: "Quick Win — high return, lower implementation cost", highlight: false },
-                  { rank: "03", problem: "No price history available", reason: "Low Impact / Should Have — not immediately critical", highlight: false },
+                  { rank: "01", problem: "Unsure if game is worth the price / best price", reason: "Must Have + High Impact: core user requirement", highlight: true },
+                  { rank: "02", problem: "Discounted games scattered across categories", reason: "Quick Win: high return, lower implementation cost", highlight: false },
+                  { rank: "03", problem: "No price history available", reason: "Low Impact / Should Have: not immediately critical", highlight: false },
                 ].map((p) => (
                   <div key={p.rank} style={{
                     background: p.highlight ? `rgba(102,192,244,0.1)` : "rgba(255,255,255,0.03)",
@@ -438,7 +438,7 @@ export function SteamRedesignPage() {
             }}>
               <p style={{ fontSize: "12px", color: "#3a4a5a", letterSpacing: "0.06em", marginBottom: "8px", fontWeight: 600 }}>KEY INSIGHT FROM PRIORITISATION</p>
               <p style={{ fontSize: "14px", color: TEXT, opacity: 0.55, lineHeight: "1.65" }}>
-                The tension between Impact-Effort and MoSCoW revealed a gap: Impact-Effort focuses on resource cost-effectiveness, while MoSCoW focuses on business and user necessity. A problem can be a Quick Win by effort but not be what users need most — knowing both helps you make the right call.
+                The tension between Impact-Effort and MoSCoW revealed a gap: Impact-Effort focuses on resource cost-effectiveness, while MoSCoW focuses on business and user necessity. A problem can be a Quick Win by effort but not be what users need most; knowing both helps you make the right call.
               </p>
             </div>
           </FadeUp>
@@ -463,15 +463,15 @@ export function SteamRedesignPage() {
               Redesign decisions
             </h2>
             <p style={{ fontSize: "16px", color: TEXT, opacity: 0.45, lineHeight: "1.75", maxWidth: "640px", marginBottom: "40px" }}>
-              Research-backed redesigns for the three core areas: Home screen, Library, and Store — each directly targeting the highest-priority problems identified through affinity grouping and prioritisation.
+              Research-backed redesigns for the three core areas: Home screen, Library, and Store; each directly targeting the highest-priority problems identified through affinity grouping and prioritisation.
             </p>
           </FadeUp>
 
           <FadeUp delay={0.05}>
             <div style={{ display: "flex", flexDirection: "column", gap: "10px", marginBottom: "32px" }}>
               {[
-                { area: "Home screen", before: "Banner-heavy layout with irrelevant generic recommendations", after: "Card-based feed personalised by owned/wishlist genres — deals first, not banners" },
-                { area: "Library", before: "No filters, no installed/not-installed toggle, must tap each game to check status", after: "Category filters, installed toggle, persistent sort controls — all visible without tapping in" },
+                { area: "Home screen", before: "Banner-heavy layout with irrelevant generic recommendations", after: "Card-based feed personalised by owned/wishlist genres; deals first, not banners" },
+                { area: "Library", before: "No filters, no installed/not-installed toggle, must tap each game to check status", after: "Category filters, installed toggle, persistent sort controls; all visible without tapping in" },
                 { area: "Store", before: "Discounted games scattered with no price context or purchase history", after: "Grouped deal categories + price history chart + wishlist-aware deal highlights" },
                 { area: "Chat", before: "Requires downloading a separate app, fully disconnected from friends list", after: "Integrated into main navigation, accessible directly from the friends list tab" },
               ].map((d, i) => (
@@ -518,7 +518,7 @@ export function SteamRedesignPage() {
                 fontFamily: "var(--font-display)", fontSize: "22px", color: TEXT,
                 lineHeight: "1.55", fontStyle: "italic", fontWeight: 400, opacity: 0.8,
               }}>
-                This project reinforced that the worst UX problems are invisible to the people who built the product — they only show up when you watch real users struggle. The affinity diagram turned 16 scattered complaints into 5 actionable design targets.
+                This project reinforced that the worst UX problems are invisible to the people who built the product; they only show up when you watch real users struggle. The affinity diagram turned 16 scattered complaints into 5 actionable design targets.
               </p>
             </div>
           </FadeUp>

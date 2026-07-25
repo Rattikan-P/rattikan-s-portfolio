@@ -180,7 +180,7 @@ export function StarmoryPage() {
             style={{ fontSize: "18px", color: TEXT, opacity: 0.55, maxWidth: "560px", lineHeight: "1.7", marginBottom: "48px" }}
           >
             Most language apps treat learning as drills disconnected from real life.
-            Starmory is different — users photograph their world, and AI turns those
+            Starmory is different: users photograph their world, and AI turns those
             personal images into vocabulary lessons grounded in their own memories.
           </motion.p>
 
@@ -259,14 +259,14 @@ export function StarmoryPage() {
               Why do language apps fail people?
             </h2>
             <p style={{ fontSize: "16px", color: TEXT, opacity: 0.5, lineHeight: "1.75", maxWidth: "640px", marginBottom: "40px" }}>
-              We started by mapping the competitive landscape and understanding the emotional experience of language learners — not just their behaviour, but how they feel when they open (or avoid opening) a study app.
+              We started by mapping the competitive landscape and understanding the emotional experience of language learners; not just their behaviour, but how they feel when they open (or avoid opening) a study app.
             </p>
           </FadeUp>
 
-          <Img src={competitiveAnalysis} alt="Competitive analysis comparing Duolingo, Longjournal, Moodo, My Diary — feature matrix, screenshots, SWO analysis, and reflection" caption="Competitive Analysis — feature matrix, SWO, and design reflections" />
+          <Img src={competitiveAnalysis} alt="Competitive analysis comparing Duolingo, Longjournal, Moodo, My Diary: feature matrix, screenshots, SWO analysis, and reflection" caption="Competitive Analysis: feature matrix, SWO, and design reflections" />
 
           <div style={{ marginTop: "20px" }}>
-            <Img src={empathyMap} alt="Empathy map for a language learner — Think & Feel, See, Say & Do, Pain, Gain" caption="Empathy Map — the emotional reality of a tired learner" />
+            <Img src={empathyMap} alt="Empathy map for a language learner: Think & Feel, See, Say & Do, Pain, Gain" caption="Empathy Map: the emotional reality of a tired learner" />
           </div>
 
           <FadeUp delay={0.1}>
@@ -313,7 +313,7 @@ export function StarmoryPage() {
             </p>
           </FadeUp>
 
-          <Img src={kickoffCanvas} alt="Project Kickoff Canvas — problem statement, assumptions, design hypothesis, AI idea, and target user segment" caption="Project Kickoff Canvas — problem, hypothesis, and target user" />
+          <Img src={kickoffCanvas} alt="Project Kickoff Canvas: problem statement, assumptions, design hypothesis, AI idea, and target user segment" caption="Project Kickoff Canvas: problem, hypothesis, and target user" />
 
           <FadeUp delay={0.1}>
             <div style={{
@@ -325,7 +325,7 @@ export function StarmoryPage() {
                 DESIGN HYPOTHESIS
               </p>
               <p style={{ fontSize: "16px", color: TEXT, opacity: 0.85, lineHeight: "1.7", fontStyle: "italic" }}>
-                "We believe that language lessons built from users' personal photos will make learning feel easier and more consistent for tired people — because familiar images already have context and meaning, helping words stick naturally without forced memorization."
+                "We believe that language lessons built from users' personal photos will make learning feel easier and more consistent for tired people; because familiar images already have context and meaning, helping words stick naturally without forced memorization."
               </p>
             </div>
           </FadeUp>
@@ -367,11 +367,11 @@ export function StarmoryPage() {
               Designing the ideal user journey
             </h2>
             <p style={{ fontSize: "16px", color: TEXT, opacity: 0.5, lineHeight: "1.75", maxWidth: "640px", marginBottom: "40px" }}>
-              Persona Phukan, 21, returns home mentally exhausted after class and just wants to improve her English — without it feeling like work. The journey map plots exactly how Starmory fits into that moment.
+              Persona Phukan, 21, returns home mentally exhausted after class and just wants to improve her English, without it feeling like work. The journey map plots exactly how Starmory fits into that moment.
             </p>
           </FadeUp>
 
-          <Img src={journeyMap} alt="User journey map for Phukan, 21 — 7 stages from Low-Energy Moment to Daily Memory. Emotions: Too tired → Doesn't look stressful → Let me try → Easier than expected → No need to think → I did something today → Oh, I remember this!" caption="User Journey Map — Phukan, 21 · Low-Energy Moment → Daily Memory" />
+          <Img src={journeyMap} alt="User journey map for Phukan, 21: 7 stages from Low-Energy Moment to Daily Memory. Emotions: Too tired → Doesn't look stressful → Let me try → Easier than expected → No need to think → I did something today → Oh, I remember this!" caption="User Journey Map: Phukan, 21 · Low-Energy Moment → Daily Memory" />
 
           <FadeUp delay={0.1}>
             <div style={{ marginTop: "24px", display: "flex", gap: "8px", flexWrap: "wrap" }}>
@@ -406,9 +406,9 @@ export function StarmoryPage() {
               </p>
               <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
                 {[
-                  "Position learning as rest, not effort — meet users at their lowest energy moment",
+                  "Position learning as rest, not effort; meet users at their lowest energy moment",
                   "Visual-first branding: non-academic, non-demanding aesthetic to reduce fear of commitment",
-                  "Skip sign-up, instant access — zero friction to the first interaction",
+                  "Skip sign-up, instant access; zero friction to the first interaction",
                   "Zero-typing entry with AI-powered photo suggestions and optional text",
                   "Long-term memory through scrapbook-style visual timeline",
                 ].map((o, i) => (
@@ -447,8 +447,8 @@ export function StarmoryPage() {
 
           <div style={{ display: "flex", flexDirection: "column", gap: "12px", marginBottom: "36px" }}>
             {[
-              { step: "Database schema", detail: "Designed the Supabase schema to handle user vocabularies, FSRS review schedules, lesson history, and AI-generated content — structured to scale across two developers' feature sets simultaneously." },
-              { step: "FSRS algorithm", detail: "Implemented the Free Spaced Repetition Scheduler (Ye et al., 2023) on the back-end — connecting review outcomes to interval recalculation in real time, ensuring each word reappears at the optimal memory moment." },
+              { step: "Database schema", detail: "Designed the Supabase schema to handle user vocabularies, FSRS review schedules, lesson history, and AI-generated content; structured to scale across two developers' feature sets simultaneously." },
+              { step: "FSRS algorithm", detail: "Implemented the Free Spaced Repetition Scheduler (Ye et al., 2023) on the back-end; connecting review outcomes to interval recalculation in real time, ensuring each word reappears at the optimal memory moment." },
               { step: "Flutter front-end", detail: "Built the UI across the capture, lesson, and review flows. Managed state across the full app lifecycle while keeping the codebase maintainable through a 16-week build." },
             ].map((b, i) => (
               <motion.div
@@ -488,12 +488,12 @@ export function StarmoryPage() {
             </p>
             <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
               {[
-                "Episodic Memory — Tulving, 1972",
-                "FSRS Spaced-Repetition — Ye et al., 2023",
-                "Input Hypothesis 'i+1' — Krashen, 1985",
-                "Self-Reference Effect — Rogers et al., 1977",
-                "Speech Act Theory — Austin 1962; Searle 1969",
-                "Context-Dependent Memory — Godden & Baddeley, 1975",
+                "Episodic Memory – Tulving, 1972",
+                "FSRS Spaced-Repetition – Ye et al., 2023",
+                "Input Hypothesis 'i+1' – Krashen, 1985",
+                "Self-Reference Effect – Rogers et al., 1977",
+                "Speech Act Theory – Austin 1962; Searle 1969",
+                "Context-Dependent Memory – Godden & Baddeley, 1975",
               ].map((r, i) => (
                 <motion.span
                   key={r}
@@ -524,7 +524,7 @@ export function StarmoryPage() {
                 fontFamily: "var(--font-display)", fontSize: "22px", color: TEXT,
                 lineHeight: "1.55", fontStyle: "italic", fontWeight: 400, opacity: 0.85,
               }}>
-                Starmory taught me that the strongest design decisions come from understanding the science of how people actually learn — not from copying what popular apps do. Grounding every feature in an established theory gave us a clear reason to say yes or no to any idea during the build.
+                Starmory taught me that the strongest design decisions come from understanding the science of how people actually learn; not from copying what popular apps do. Grounding every feature in an established theory gave us a clear reason to say yes or no to any idea during the build.
               </p>
             </div>
           </FadeUp>
@@ -544,7 +544,9 @@ export function StarmoryPage() {
                 </p>
               </div>
               <motion.a
-                href="#"
+                href="https://www.figma.com/proto/iBvrbgDMKsCAo8KEdjN7aa/Starmory?node-id=1070-5519&t=xkQ1ZoM9rCOyrXpA-9&scaling=scale-down&content-scaling=fixed&page-id=299%3A199&starting-point-node-id=1070%3A5519&show-proto-sidebar=1"
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.04 }}
                 whileTap={{ scale: 0.97 }}
                 style={{

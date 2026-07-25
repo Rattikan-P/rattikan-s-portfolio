@@ -28,6 +28,7 @@ export interface Project {
   phases: CaseStudyPhase[];
   research?: string[];
   closing?: string;
+  prototypeLink?: string;
 }
 
 export const projects: Project[] = [
@@ -35,18 +36,18 @@ export const projects: Project[] = [
     slug: "whisker-haven",
     number: "01",
     title: "Whisker Haven",
-    subtitle: "End-to-end UX Research & Design",
+    subtitle: "Cat Hotel Booking & Management Platform",
     description:
       "A booking platform designed to make reserving cat hotel stays simple and stress-free for pet owners.",
     longDescription:
-      "I led the end-to-end UX process for Whisker Haven — from early discovery research through to a validated high-fidelity prototype. The goal was to remove the confusion and distrust that pet owners face when searching for a reliable cat hotel.",
+      "I led the end-to-end UX process for Whisker Haven: from early discovery research through to a validated high-fidelity prototype. The goal was to remove the confusion and distrust that pet owners face when searching for a reliable cat hotel.",
     role: "UX/UI Designer",
     duration: "12 weeks",
     team: "Solo project",
     tools: "Figma, Maze",
     platform: "Mobile App (Flutter)",
-    tags: ["UX Research", "UI Design", "Mobile App", "Flutter"],
-    year: "2024",
+    tags: ["UX Research", "UI Design", "Usability Testing", "End-to-end UX"],
+    year: "2026",
     bg: "#FDB813",
     textColor: "#1A1A1A",
     tagBg: "rgba(0,0,0,0.08)",
@@ -54,11 +55,12 @@ export const projects: Project[] = [
     image: "/projects/whisker-haven/hero.png",
     stats: [
       { label: "Task completion rate", value: "100%" },
-      { label: "SUS score — Grade A, 'Excellent'", value: "85" },
+      { label: "SUS score:Grade A, 'Excellent'", value: "85" },
     ],
+    prototypeLink: "https://www.figma.com/proto/PkZWq94nimC2alRFRcTrlL/UI-Term-Project?node-id=89-227&starting-point-node-id=89%3A227&t=2iidHy6ASEbMyMS1-1",
     phases: [
       {
-        step: "01 — Discover",
+        step: "01:Discover",
         title: "The problem",
         content: [
           "Finding a cat hotel stay is often confusing, with unclear pricing, limited visibility into caregiver quality, and no easy way to check real-time availability.",
@@ -68,7 +70,7 @@ export const projects: Project[] = [
         imageNote: "Insert: research synthesis / affinity diagram",
       },
       {
-        step: "02 — Define",
+        step: "02:Define",
         title: "Finding direction",
         content: [
           "Turned research insights into two primary personas and a set of How-Might-We questions centred on trust and friction.",
@@ -78,7 +80,7 @@ export const projects: Project[] = [
         imageNote: "Insert: personas + user journey map",
       },
       {
-        step: "03 — Design",
+        step: "03:Design",
         title: "Shaping the flow",
         content: [
           "Translated priorities into user flows and wireframes, iterating toward a high-fidelity Figma prototype through three rounds of internal review.",
@@ -88,17 +90,17 @@ export const projects: Project[] = [
         imageNote: "Insert: wireframes / hi-fi mockups",
       },
       {
-        step: "04 — Validate",
+        step: "04:Validate",
         title: "Testing it works",
         content: [
           "Ran usability testing on core tasks: searching availability, reading a caregiver profile, and completing a booking.",
           "Measured success using the System Usability Scale (SUS) alongside task completion and error rates.",
-          "Result: 100% task completion rate across all participants · SUS score 85 — Grade A, 'Excellent' usability.",
+          "Result: 100% task completion rate across all participants · SUS score 85:Grade A, 'Excellent' usability.",
         ],
         imageNote: "Insert: usability testing session / SUS result chart",
       },
     ],
-    closing: "Whisker Haven proved that trust is the core conversion driver in care-service platforms — not price. A clear caregiver verification system and transparent upfront pricing resolved the key friction points identified in research.",
+    closing: "Whisker Haven proved that trust is the core conversion driver in care-service platforms: not price. A clear caregiver verification system and transparent upfront pricing resolved the key friction points identified in research.",
   },
   {
     slug: "starmory",
@@ -106,16 +108,16 @@ export const projects: Project[] = [
     title: "Starmory",
     subtitle: "Memory-Based Language Learning Application",
     description:
-      "A language-learning app that uses AI and the FSRS spaced-repetition algorithm to help users build vocabulary more effectively — grounded in 6 learning theories, not trends.",
+      "A language-learning app that uses AI and the FSRS spaced-repetition algorithm to help users build vocabulary more effectively: grounded in 6 learning theories, not trends.",
     longDescription:
-      "Most language apps treat learning as drills disconnected from real life. Starmory is different: users photograph their world, and AI turns those personal images into vocabulary lessons. I contributed across the full stack — UX research, UI design, database architecture, and front-end development.",
+      "Most language apps treat learning as drills disconnected from real life. Starmory is different: users photograph their world, and AI turns those personal images into vocabulary lessons. I contributed across the full stack:UX research, UI design, database architecture, and front-end development.",
     role: "UX/UI Designer & Full-stack Developer",
     duration: "16 weeks",
     team: "2 developers (Rattikan + 1 teammate)",
     tools: "Figma, Flutter, Supabase, Firebase",
     platform: "Mobile App (Flutter)",
     tags: ["AI", "UX/UI Design", "Flutter", "Full-stack", "Spaced Repetition"],
-    year: "2024",
+    year: "2026-present",
     bg: "#8B5CF6",
     textColor: "#FFFFFF",
     tagBg: "rgba(255,255,255,0.2)",
@@ -125,42 +127,43 @@ export const projects: Project[] = [
       { label: "Learning theories grounding the design", value: "6" },
       { label: "Core features shipped", value: "6" },
     ],
+    prototypeLink: "https://www.figma.com/proto/iBvrbgDMKsCAo8KEdjN7aa/Starmory?node-id=1070-5519&t=xkQ1ZoM9rCOyrXpA-9&scaling=scale-down&content-scaling=fixed&page-id=299%3A199&starting-point-node-id=1070%3A5519&show-proto-sidebar=1",
     phases: [
       {
-        step: "01 — Discover",
+        step: "01:Discover",
         title: "Why do language apps fail people?",
         content: [
-          "Analysed 4 competing apps — Duolingo, Anki, Quizlet, Memrise — mapping where each loses users and why retention drops after the first two weeks.",
+          "Analysed 4 competing apps: Duolingo, Anki, Quizlet, Memrise: mapping where each loses users and why retention drops after the first two weeks.",
           "Three critical gaps emerged: lessons have no connection to the user's real-life context; the depth-vs-speed trade-off is handled poorly; and grammar focus crowds out real communication intent.",
-          "Conducted a literature review grounding the product in established learning science — so every design decision has a theoretical reason, not just a trend behind it.",
+          "Conducted a literature review grounding the product in established learning science: so every design decision has a theoretical reason, not just a trend behind it.",
         ],
         imageNote: "Insert: competitive analysis matrix",
       },
       {
-        step: "02 — Define",
+        step: "02:Define",
         title: "Mapping theory to features",
         content: [
           "Synthesised research into 6 core feature areas, each tied directly to a learning theory: Photo Vocabulary (Episodic Memory), AI Lesson Generation (Input Hypothesis i+1), Re-Sight Review (FSRS spaced repetition), Grammar Scoring (Speech Act Theory), Archive & History (Context-Dependent Memory), Progress Tracking (Self-Reference Effect).",
-          "Every feature traces back to a specific mechanism of how humans retain language — no feature existed just because it felt right.",
+          "Every feature traces back to a specific mechanism of how humans retain language: no feature existed just because it felt right.",
           "Wrote a requirements document aligning features with development constraints, splitting the build between myself and my teammate by feature ownership.",
         ],
         imageNote: "Insert: feature–theory mapping diagram",
       },
       {
-        step: "03 — Design",
+        step: "03:Design",
         title: "Turning theory into interaction",
         content: [
           "The core flow: user photographs anything → AI identifies objects and generates contextual sentences → user reviews vocabulary through spaced-repetition cards powered by FSRS.",
-          "FSRS (Ye et al., 2023) calculates the optimal moment to re-show each word — not too soon (wasted effort), not too late (already forgotten). It is the most accurate open-source algorithm for memory scheduling.",
+          "FSRS (Ye et al., 2023) calculates the optimal moment to re-show each word: not too soon (wasted effort), not too late (already forgotten). It is the most accurate open-source algorithm for memory scheduling.",
           "UI design prioritised minimal friction at capture: one tap to photograph, instant AI response, zero manual tagging. The review interface feels like flipping through personal memories, not drilling flashcards.",
         ],
-        imageNote: "Insert: key screens — Capture, Lesson, Review",
+        imageNote: "Insert: key screens: Capture, Lesson, Review",
       },
       {
-        step: "04 — Build",
+        step: "04:Build",
         title: "Full-stack ownership",
         content: [
-          "I took primary ownership of the database architecture — designing the schema in Supabase to handle user vocabularies, review schedules, lesson history, and AI-generated content.",
+          "I took primary ownership of the database architecture: designing the schema in Supabase to handle user vocabularies, review schedules, lesson history, and AI-generated content.",
           "Implemented the FSRS algorithm on the back-end, connecting review outcomes to interval recalculation in real time.",
           "Built the front-end in Flutter, managing state across the capture, lesson, and review flows while keeping the codebase maintainable across a 16-week timeline.",
         ],
@@ -168,14 +171,14 @@ export const projects: Project[] = [
       },
     ],
     research: [
-      "Episodic Memory — Tulving, 1972",
-      "FSRS Spaced-Repetition — Ye et al., 2023",
-      "Input Hypothesis 'i+1' — Krashen, 1985",
-      "Self-Reference Effect — Rogers et al., 1977",
-      "Speech Act Theory — Austin 1962; Searle 1969",
-      "Context-Dependent Memory — Godden & Baddeley, 1975",
+      "Episodic Memory: Tulving, 1972",
+      "FSRS Spaced-Repetition: Ye et al., 2023",
+      "Input Hypothesis 'i+1': Krashen, 1985",
+      "Self-Reference Effect: Rogers et al., 1977",
+      "Speech Act Theory: Austin 1962; Searle 1969",
+      "Context-Dependent Memory: Godden & Baddeley, 1975",
     ],
-    closing: "Starmory taught me that the strongest design decisions come from understanding the science of how people actually learn — not from copying what popular apps do. Grounding every feature in an established theory gave us a clear reason to say yes or no to any idea during the build.",
+    closing: "Starmory taught me that the strongest design decisions come from understanding the science of how people actually learn: not from copying what popular apps do. Grounding every feature in an established theory gave us a clear reason to say yes or no to any idea during the build.",
   },
   {
     slug: "healthy-taste",
@@ -185,42 +188,43 @@ export const projects: Project[] = [
     description:
       "A calorie-tracking app designed to remove the friction of daily logging. Research-driven personas shaped a simplified form, built into a scalable Figma design system.",
     longDescription:
-      "Most calorie-tracking apps fail users within two weeks because the act of logging feels more effortful than the benefit seems worth. Healthy Taste was designed from the ground up to flip that ratio — making logging so fast and frictionless that it becomes a habit rather than a chore.",
+      "Most calorie-tracking apps fail users within two weeks because the act of logging feels more effortful than the benefit seems worth. Healthy Taste was designed from the ground up to flip that ratio: making logging so fast and frictionless that it becomes a habit rather than a chore.",
     role: "UX/UI Designer",
     duration: "10 weeks",
     team: "Solo project",
     tools: "Figma, FigJam",
     platform: "Mobile App",
     tags: ["Mobile App", "UX/UI Design", "Design System", "Figma"],
-    year: "2024",
+    year: "2025",
     bg: "#E8522A",
     textColor: "#FFFFFF",
     tagBg: "rgba(255,255,255,0.15)",
     accent: "#FFD4A8",
     image: "/projects/healthy-taste/hero.png",
+    prototypeLink: "https://www.figma.com/proto/hf7ANRmL8OIWOSZY06Y6md/953351-Term-Project-_-HEALTHY-TASTE?node-id=4546-20561&p=f&t=1lUlThABv12oi2Ku-9&scaling=scale-down&content-scaling=fixed&starting-point-node-id=4546%3A20561&show-proto-sidebar=1",
     phases: [
       {
-        step: "01 — Research",
+        step: "01:Research",
         title: "Understanding the friction",
         content: [
-          "Identified that users abandon calorie-tracking apps within 2 weeks — the primary cause is tedious manual logging and poor portion estimation tools.",
+          "Identified that users abandon calorie-tracking apps within 2 weeks: the primary cause is tedious manual logging and poor portion estimation tools.",
           "Conducted requirement analysis including competitor review of MyFitnessPal, Cronometer, and Lose It!, plus user persona development from 8 interviews.",
           "Key friction points: searching for food items (too many results), estimating portions (no visual aid), and remembering to log (no smart reminders).",
         ],
         imageNote: "Insert: competitive analysis / persona card",
       },
       {
-        step: "02 — Design",
+        step: "02:Design",
         title: "Simplified logging flow",
         content: [
           "Designed a quick-log interface that reduces the logging time to under 30 seconds per meal using smart suggestions based on past entries and barcode scanning.",
-          "Visual portion estimator replaces manual gram entry — users select from photo-based size guides instead.",
+          "Visual portion estimator replaces manual gram entry: users select from photo-based size guides instead.",
           "Context-aware reminders trigger based on typical meal times rather than fixed alarms.",
         ],
         imageNote: "Insert: wireframes → hi-fi mockup screens",
       },
       {
-        step: "03 — Design System",
+        step: "03:Design System",
         title: "Scalable component library",
         content: [
           "Built a comprehensive Figma design system covering typography scale, colour tokens, spacing grid, and 30+ reusable components.",
@@ -246,16 +250,17 @@ export const projects: Project[] = [
     team: "10-person cross-functional team (sub-team of 4 for UX/UI)",
     tools: "Figma, React Native, Node.js",
     platform: "Mobile App",
-    tags: ["AI", "UX/UI Design", "Full-stack", "Team Project"],
-    year: "2023",
+    tags: ["AI", "UX/UI Design", "Requirements", "Design-to-dev Handoff"],
+    year: "2025",
     bg: "#aacb01",
     textColor: "#1A1A1A",
     tagBg: "rgba(0,0,0,0.1)",
     accent: "#86EFAC",
     image: "/projects/terramon/hero.png",
+    prototypeLink: "https://www.figma.com/proto/xq3f7ikHBApT45PQb8nxqE/SW-Req-Wireframe-G4?node-id=613-2987&p=f&t=mQtS9ZFqwbFlmQoY-1&scaling=scale-down&content-scaling=fixed&page-id=595%3A12&starting-point-node-id=613%3A2987",
     phases: [
       {
-        step: "01 — Research",
+        step: "01:Research",
         title: "Who are plant owners?",
         content: [
           "Surveyed 40 plant owners to understand care barriers: forgetting watering schedules, difficulty identifying plant diseases, and lack of personalised care guidance.",
@@ -265,17 +270,17 @@ export const projects: Project[] = [
         imageNote: "Insert: user research findings / persona",
       },
       {
-        step: "02 — Design",
+        step: "02:Design",
         title: "AI-assisted experience",
         content: [
-          "Designed the AI plant identification flow — users photograph a plant and receive species ID, care instructions, and common problem diagnosis within seconds.",
+          "Designed the AI plant identification flow: users photograph a plant and receive species ID, care instructions, and common problem diagnosis within seconds.",
           "Care reminder system adapts to each plant's specific needs rather than generic weekly reminders.",
           "Led the design sub-team through sprints, component building, and a structured design-to-dev handoff process.",
         ],
-        imageNote: "Insert: key screens — identify, care schedule, journal",
+        imageNote: "Insert: key screens: identify, care schedule, journal",
       },
       {
-        step: "03 — Development",
+        step: "03:Development",
         title: "Bridging design and engineering",
         content: [
           "Contributed to front-end implementation alongside design responsibilities, acting as the bridge between the design and engineering sub-teams.",
@@ -302,35 +307,36 @@ export const projects: Project[] = [
     tools: "Figma, React, Node.js, PostgreSQL",
     platform: "Web",
     tags: ["E-Commerce", "UX/UI Design", "Full-stack", "Web"],
-    year: "2023",
+    year: "2025",
     bg: "#F2C4CE",
     textColor: "#1A1A1A",
     tagBg: "rgba(0,0,0,0.07)",
     accent: "#C0405A",
     image: "/projects/bing-chilling/hero.png",
+    prototypeLink: "https://www.figma.com/proto/IwY4fgYyhyrWUqvg3E2M1M/Project?node-id=38-3605&p=f&t=62P5KEsJIY7rXZwr-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=38%3A3605",
     phases: [
       {
-        step: "01 — Research",
+        step: "01:Research",
         title: "Understanding art toy collectors",
         content: [
-          "Analysed the art toy collector community — their browsing habits (discovery-led, not search-led), purchase triggers (scarcity, aesthetic, brand story), and trust signals (authentication, packaging quality).",
+          "Analysed the art toy collector community: their browsing habits (discovery-led, not search-led), purchase triggers (scarcity, aesthetic, brand story), and trust signals (authentication, packaging quality).",
           "Key insight: art toy buyers are shopping for the story and status of an object, not just its function. The product page must communicate brand world, not just specs.",
           "Also mapped back-office admin needs: inventory alerts, order fulfilment, and sales reporting.",
         ],
         imageNote: "Insert: user research / dual-persona cards",
       },
       {
-        step: "02 — Design",
+        step: "02:Design",
         title: "Two journeys, one system",
         content: [
-          "Designed the public storefront with a brand-first layout — editorial product pages, drop countdown mechanics, and a 'blind box' reveal interaction.",
+          "Designed the public storefront with a brand-first layout: editorial product pages, drop countdown mechanics, and a 'blind box' reveal interaction.",
           "Designed the admin dashboard for speed: bulk inventory management, order status board, and a one-screen fulfilment workflow.",
           "Maintained a single Figma design system used across both surfaces, keeping visual language consistent while serving very different user goals.",
         ],
         imageNote: "Insert: storefront + admin dashboard mockups",
       },
       {
-        step: "03 — Development",
+        step: "03:Development",
         title: "Database to front-end",
         content: [
           "Built the full application stack: PostgreSQL schema, RESTful API, and React front-end.",
@@ -346,26 +352,27 @@ export const projects: Project[] = [
     slug: "steam-redesign",
     number: "06",
     title: "Steam Mobile",
-    subtitle: "App Redesign — UX Research & UI Design",
+    subtitle: "App Redesign:UX Research & UI Design",
     description:
       "A redesign of the Steam mobile app, addressing a cluttered home screen, poor navigation, and a UI that feels like a website crammed into a phone.",
     longDescription:
-      "Steam's mobile app is used by millions but suffers from significant usability issues on small screens. Working in a team of 3, we conducted end-to-end UX research — empathy mapping, affinity diagramming, and persona creation — to identify the root causes, then redesigned the core flows.",
+      "Steam's mobile app is used by millions but suffers from significant usability issues on small screens. Working in a team of 3, we conducted end-to-end UX research: empathy mapping, affinity diagramming, and persona creation: to identify the root causes, then redesigned the core flows.",
     role: "UX Researcher & UI Designer",
     duration: "8 weeks",
     team: "3 designers (Rattikan, Nuanwan, Muanpee)",
     tools: "Figma, FigJam",
     platform: "Mobile App (iOS / Android)",
     tags: ["App Redesign", "UX Research", "Heuristic Evaluation", "Mobile"],
-    year: "2025",
+    year: "2026",
     bg: "#60A5FA",
     textColor: "#FFFFFF",
     tagBg: "rgba(255,255,255,0.2)",
     accent: "#66C0F4",
     image: "/projects/steam-redesign/hero.png",
+    prototypeLink: "https://www.figma.com/proto/riR68PZoZWPbomdRdy7vvT/UI-Prototype?node-id=12-340&t=NQe48zLZ3tdxWfBd-0&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=12%3A340",
     phases: [
       {
-        step: "01 — Discover",
+        step: "01:Discover",
         title: "Empathy mapping & raw insights",
         content: [
           "Conducted empathy mapping with real Steam mobile users, capturing what they Say, Think, Do, and Feel while using the app.",
@@ -375,41 +382,41 @@ export const projects: Project[] = [
         imageNote: "Insert: empathy map diagram",
       },
       {
-        step: "02 — Define",
-        title: "Affinity grouping — 5 problem clusters",
+        step: "02:Define",
+        title: "Affinity grouping:5 problem clusters",
         content: [
           "Grouped 16 raw insight cards into 5 distinct problem themes using affinity diagramming.",
-          "Group 1 — Navigation & Findability: Users scroll endlessly to find recently purchased games; resort to the search bar because category navigation is confusing.",
-          "Group 2 — Information Architecture & Organization: No category filters in the game library; discounted games mixed across categories with too many irrelevant tags.",
-          "Group 3 — Visual Hierarchy & Clarity: Everything looks the same — no visual priority; users can't tell if a game is installed without tapping into it.",
-          "Group 4 — Feature Integration: Chat requires downloading a separate app; the feature feels completely disconnected from the main experience.",
-          "Group 5 — Mobile Usability: The UI feels like a website crammed into a phone screen; search tags and images overflow the screen width.",
+          "Group 1:Navigation & Findability: Users scroll endlessly to find recently purchased games; resort to the search bar because category navigation is confusing.",
+          "Group 2:Information Architecture & Organization: No category filters in the game library; discounted games mixed across categories with too many irrelevant tags.",
+          "Group 3: Visual Hierarchy & Clarity: Everything looks the same: no visual priority; users can't tell if a game is installed without tapping into it.",
+          "Group 4:Feature Integration: Chat requires downloading a separate app; the feature feels completely disconnected from the main experience.",
+          "Group 5:Mobile Usability: The UI feels like a website crammed into a phone screen; search tags and images overflow the screen width.",
         ],
         imageNote: "Insert: affinity diagram (raw → grouped)",
       },
       {
-        step: "03 — Persona",
-        title: "Austin James — our primary user",
+        step: "03:Persona",
+        title: "Austin James: our primary user",
         content: [
           "Age 21, university student in Chiang Mai. Uses Steam on PC for gaming but relies on the mobile app for browsing deals, managing his library, and checking Steam Guard codes.",
           "Quote: \"I want to find the best deals and manage my library quickly without getting lost in a sea of irrelevant game banners.\"",
           "Goals: Easily identify game types when browsing discounts · Use the app without a learning curve · Make smart spending decisions as a student.",
           "Motivations: Prefers clear categories and filters · Wants a short curated deal list, not an endless scroll · Wants everything in one app without switching.",
         ],
-        imageNote: "Insert: persona card — Austin James",
+        imageNote: "Insert: persona card:Austin James",
       },
       {
-        step: "04 — Design",
+        step: "04:Design",
         title: "Redesign decisions",
         content: [
-          "Redesigned the home screen to prioritise personalised deals over generic recommendations — replacing the banner-heavy layout with a card-based feed filtered by owned/wishlist genres.",
-          "Restructured library navigation: added category filters, installed/not-installed toggle, and persistent sort controls — eliminating the need to tap into each game to check its status.",
+          "Redesigned the home screen to prioritise personalised deals over generic recommendations: replacing the banner-heavy layout with a card-based feed filtered by owned/wishlist genres.",
+          "Restructured library navigation: added category filters, installed/not-installed toggle, and persistent sort controls: eliminating the need to tap into each game to check its status.",
           "Consolidated chat into the main app navigation instead of a separate app, integrated directly with the friends list.",
         ],
-        imageNote: "Insert: before / after screens — Home, Library, Store",
+        imageNote: "Insert: before / after screens:Home, Library, Store",
       },
     ],
-    closing: "This project reinforced that the worst UX problems are usually invisible to the people who made the product — they only show up when you watch real users struggle. The affinity diagram turned 16 scattered complaints into 5 actionable design targets.",
+    closing: "This project reinforced that the worst UX problems are usually invisible to the people who made the product: they only show up when you watch real users struggle. The affinity diagram turned 16 scattered complaints into 5 actionable design targets.",
   },
 ];
 
