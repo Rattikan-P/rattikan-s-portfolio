@@ -4,6 +4,7 @@ import { getAdjacentProjects, projects } from "../data/projects";
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
+import { PrototypeCarousel } from "@/app/components/PrototypeCarousel";
 import userFlowImg from "@/imports/User_flow_of_webstore_pages__1_.png";
 import backOfficeImg from "@/imports/bingChilliing-backend.drawio.png";
 
@@ -145,9 +146,6 @@ export function BingChillingPage() {
             }}>
             {[
               { label: "My role", value: "UX/UI Designer & Full-stack Dev" },
-              { label: "Duration", value: "12 weeks" },
-              { label: "Team", value: "4 developers" },
-              { label: "Tools", value: "Figma · EJS · Express.js" },
               { label: "Platform", value: "Web" },
             ].map((m) => (
               <div key={m.label} style={{ background: "rgba(0,0,0,0.04)", padding: "14px 18px" }}>
@@ -538,6 +536,16 @@ export function BingChillingPage() {
                 ))}
               </div>
             </div>
+          </FadeUp>
+
+          <FadeUp delay={0.15}>
+            <PrototypeCarousel
+              images={[
+                "/projects/bing-chilling/prototypes/prototype-desktop.png",
+                "/projects/bing-chilling/prototypes/prototype-mobile.png",
+              ]}
+              alt="BingChilling Prototype"
+            />
           </FadeUp>
         </div>
       </div>

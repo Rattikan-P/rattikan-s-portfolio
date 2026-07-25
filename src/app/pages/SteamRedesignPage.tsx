@@ -4,6 +4,7 @@ import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 import { getAdjacentProjects, projects } from "../data/projects";
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
+import { PrototypeCarousel } from "@/app/components/PrototypeCarousel";
 
 import affinityDiagram from "@/imports/Project_UI__1_.png";
 import empathyMap from "@/imports/Project_UI__2_.png";
@@ -184,9 +185,6 @@ export function SteamRedesignPage() {
             }}>
             {[
               { label: "My role", value: "UX Researcher & UI Designer" },
-              { label: "Duration", value: "8 weeks" },
-              { label: "Team", value: "Rathikan, Nuanwan, Muanpee" },
-              { label: "Tools", value: "Figma · FigJam" },
               { label: "Platform", value: "Mobile (iOS / Android)" },
             ].map((m) => (
               <div key={m.label} style={{ background: "rgba(102,192,244,0.04)", padding: "14px 18px" }}>
@@ -503,15 +501,10 @@ export function SteamRedesignPage() {
 
           {/* Hi-fi placeholder */}
           <FadeUp delay={0.1}>
-            <div style={{
-              background: "rgba(102,192,244,0.04)", borderRadius: "16px", padding: "64px 32px",
-              textAlign: "center", border: "1.5px dashed rgba(102,192,244,0.12)",
-            }}>
-              <div style={{ fontSize: "32px", marginBottom: "10px", opacity: 0.2 }}>🖼</div>
-              <p style={{ fontSize: "12px", color: "#3a4a5a", letterSpacing: "0.05em" }}>
-                HI-FI MOCKUP SCREENS — ADD WHEN READY
-              </p>
-            </div>
+            <PrototypeCarousel
+              images={["/projects/steam-redesign/prototypes/prototype.png"]}
+              alt="Steam Redesign Prototype"
+            />
           </FadeUp>
         </div>
       </div>

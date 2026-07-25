@@ -4,6 +4,7 @@ import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 import { getAdjacentProjects, projects } from "../data/projects";
 import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
+import { PrototypeCarousel } from "@/app/components/PrototypeCarousel";
 
 import empathyMap from "@/imports/Empathy_Map.png";
 import surveyResults from "@/imports/Google_Form_Response.png";
@@ -257,9 +258,6 @@ export function WhiskerHavenPage() {
           >
             {[
               { label: "My role", value: "UX/UI Designer" },
-              { label: "Duration", value: "12 weeks" },
-              { label: "Team", value: "Solo project" },
-              { label: "Tools", value: "Figma · Maze · Miro" },
               { label: "Platform", value: "Mobile App" },
             ].map((m) => (
               <div key={m.label} style={{ background: "rgba(0,0,0,0.05)", padding: "14px 18px" }}>
@@ -498,15 +496,10 @@ export function WhiskerHavenPage() {
         </div>
 
         <FadeUp>
-          <div style={{
-            background: "rgba(0,0,0,0.08)", borderRadius: "16px", padding: "64px 32px",
-            textAlign: "center", border: "1.5px dashed rgba(0,0,0,0.15)",
-          }}>
-            <div style={{ fontSize: "32px", marginBottom: "8px", opacity: 0.3 }}>🖼</div>
-            <p style={{ fontSize: "12px", color: DARK, opacity: 0.4, letterSpacing: "0.05em" }}>
-              HI-FI MOCKUP SCREENS — COMING SOON
-            </p>
-          </div>
+          <PrototypeCarousel
+            images={["/projects/whisker-haven/prototypes/prototype.png"]}
+            alt="WhiskerHaven Prototype"
+          />
         </FadeUp>
 
         <FadeUp delay={0.15}>

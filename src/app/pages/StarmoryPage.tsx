@@ -4,6 +4,7 @@ import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 import { getAdjacentProjects, projects } from "../data/projects";
 import { motion } from "motion/react";
 import { useState, useEffect } from "react";
+import { PrototypeCarousel } from "@/app/components/PrototypeCarousel";
 
 import competitiveAnalysis from "@/imports/Competitive_Analysis.png";
 import empathyMap from "@/imports/Empathy_map.png";
@@ -195,9 +196,6 @@ export function StarmoryPage() {
           >
             {[
               { label: "My role", value: "UX/UI Designer & Full-stack Dev" },
-              { label: "Duration", value: "16 weeks" },
-              { label: "Team", value: "2 developers" },
-              { label: "Tools", value: "Figma · Flutter · Supabase" },
               { label: "Platform", value: "Mobile App (Flutter)" },
             ].map((m) => (
               <div key={m.label} style={{ background: "rgba(255,255,255,0.04)", padding: "14px 18px" }}>
@@ -473,15 +471,10 @@ export function StarmoryPage() {
 
           {/* Hi-fi placeholder */}
           <FadeUp delay={0.1}>
-            <div style={{
-              background: "rgba(255,255,255,0.03)", borderRadius: "16px", padding: "52px 32px",
-              textAlign: "center", border: "1.5px dashed rgba(255,255,255,0.08)",
-            }}>
-              <div style={{ fontSize: "32px", marginBottom: "10px", opacity: 0.2 }}>🖼</div>
-              <p style={{ fontSize: "12px", color: "#444", letterSpacing: "0.05em" }}>
-                HI-FI MOCKUP SCREENS — COMING SOON
-              </p>
-            </div>
+            <PrototypeCarousel
+              images={["/projects/starmory/prototypes/prototype.png"]}
+              alt="Starmory Prototype"
+            />
           </FadeUp>
         </div>
       </div>

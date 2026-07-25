@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { getAdjacentProjects, projects } from "../data/projects";
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
+import { PrototypeCarousel } from "@/app/components/PrototypeCarousel";
 
 const BG = "#E8522A";
 const DARK = "#1A0A00";
@@ -155,9 +156,6 @@ export function HealthyTastePage() {
             }}>
             {[
               { label: "My role", value: "UX/UI Designer" },
-              { label: "Duration", value: "10 weeks" },
-              { label: "Team", value: "Solo project" },
-              { label: "Tools", value: "Figma · FigJam" },
               { label: "Platform", value: "Mobile App" },
             ].map((m) => (
               <div key={m.label} style={{ background: "rgba(255,255,255,0.08)", padding: "14px 18px" }}>
@@ -357,7 +355,10 @@ export function HealthyTastePage() {
           </FadeUp>
 
           <FadeUp delay={0.1}>
-            <ImagePlaceholder label="HI-FI SCREENS — ADD FROM FIGMA" />
+            <PrototypeCarousel
+              images={["/projects/healthy-taste/prototypes/prototype.png"]}
+              alt="HealthyTaste Prototype"
+            />
           </FadeUp>
         </div>
       </div>

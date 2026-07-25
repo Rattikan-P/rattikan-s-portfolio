@@ -22,7 +22,7 @@ function ProjectCard({ project, isEven }: { project: typeof projects[0]; isEven:
         fontFamily: "var(--font-display)", fontSize: "clamp(180px, 22vw, 300px)",
         lineHeight: 1,
         color: project.textColor === "#FFFFFF" ? "rgba(255,255,255,0.05)" : "rgba(0,0,0,0.05)",
-        fontWeight: 700, pointerEvents: "none", userSelect: "none", letterSpacing: "-0.05em",
+        fontWeight: 700, pointerEvents: "none", userSelect: "none", letterSpacing: "0.02em",
       }}>
         {project.number}
       </div>

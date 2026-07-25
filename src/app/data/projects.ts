@@ -104,14 +104,14 @@ export const projects: Project[] = [
     slug: "starmory",
     number: "02",
     title: "Starmory",
-    subtitle: "AI Language-Learning App",
+    subtitle: "Memory-Based Language Learning Application",
     description:
       "A language-learning app that uses AI and the FSRS spaced-repetition algorithm to help users build vocabulary more effectively — grounded in 6 learning theories, not trends.",
     longDescription:
       "Most language apps treat learning as drills disconnected from real life. Starmory is different: users photograph their world, and AI turns those personal images into vocabulary lessons. I contributed across the full stack — UX research, UI design, database architecture, and front-end development.",
     role: "UX/UI Designer & Full-stack Developer",
     duration: "16 weeks",
-    team: "2 developers (Rathikan + 1 teammate)",
+    team: "2 developers (Rattikan + 1 teammate)",
     tools: "Figma, Flutter, Supabase, Firebase",
     platform: "Mobile App (Flutter)",
     tags: ["AI", "UX/UI Design", "Flutter", "Full-stack", "Spaced Repetition"],
@@ -288,7 +288,7 @@ export const projects: Project[] = [
     closing: "Working in a 10-person team taught me that the design-to-dev handoff is itself a design problem. Clear documentation, shared components, and regular cross-team reviews made the difference between a product that ships and one that drifts.",
   },
   {
-    slug: "bingchilling",
+    slug: "bing-chilling",
     number: "05",
     title: "BingChilling",
     subtitle: "Art Toy E-Commerce Platform",
@@ -307,7 +307,7 @@ export const projects: Project[] = [
     textColor: "#1A1A1A",
     tagBg: "rgba(0,0,0,0.07)",
     accent: "#C0405A",
-    image: "/projects/bingchilling/hero.png",
+    image: "/projects/bing-chilling/hero.png",
     phases: [
       {
         step: "01 — Research",
@@ -353,7 +353,7 @@ export const projects: Project[] = [
       "Steam's mobile app is used by millions but suffers from significant usability issues on small screens. Working in a team of 3, we conducted end-to-end UX research — empathy mapping, affinity diagramming, and persona creation — to identify the root causes, then redesigned the core flows.",
     role: "UX Researcher & UI Designer",
     duration: "8 weeks",
-    team: "3 designers (Rathikan, Nuanwan, Muanpee)",
+    team: "3 designers (Rattikan, Nuanwan, Muanpee)",
     tools: "Figma, FigJam",
     platform: "Mobile App (iOS / Android)",
     tags: ["App Redesign", "UX Research", "Heuristic Evaluation", "Mobile"],

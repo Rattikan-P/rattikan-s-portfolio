@@ -119,7 +119,7 @@ export function ContactSection() {
             Ratti.
           </p>
           <p style={{ fontSize: "12px", color: "#3A3A3A", letterSpacing: "0.03em" }}>
-            © 2025 · Rathikan Muangmoon · UX/UI Design · User Research & Prototyping
+            © 2026 · Rattikan Muangmoon
           </p>
         </div>
       </div>

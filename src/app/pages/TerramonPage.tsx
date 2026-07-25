@@ -4,6 +4,7 @@ import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 import { getAdjacentProjects, projects } from "../data/projects";
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
+import { PrototypeCarousel } from "@/app/components/PrototypeCarousel";
 
 import userJourneyMap from "@/imports/User_Journey_Map__Without_App_.png";
 import userFlow from "@/imports/User_Flow_Low-fidelity_Prototype.png";
@@ -170,9 +171,6 @@ export function TerramonPage() {
             }}>
             {[
               { label: "My role", value: "UX/UI Designer & Front-end Dev" },
-              { label: "Duration", value: "14 weeks" },
-              { label: "Team", value: "10-person team (UX sub-team of 4)" },
-              { label: "Tools", value: "Figma · Vue.js · Spring Boot" },
               { label: "Platform", value: "Mobile App" },
             ].map((m) => (
               <div key={m.label} style={{ background: "rgba(134,239,172,0.04)", padding: "14px 18px" }}>
@@ -481,15 +479,12 @@ export function TerramonPage() {
             ))}
           </div>
 
-          {/* Hi-fi placeholder */}
+          {/* Hi-fi prototype */}
           <FadeUp delay={0.1}>
-            <div style={{
-              background: "rgba(134,239,172,0.04)", borderRadius: "16px", padding: "52px 32px",
-              textAlign: "center", border: "1.5px dashed rgba(134,239,172,0.1)",
-            }}>
-              <div style={{ fontSize: "32px", marginBottom: "10px", opacity: 0.2 }}>🖼</div>
-              <p style={{ fontSize: "12px", color: "#4a6a3a", letterSpacing: "0.05em" }}>HI-FI MOCKUP SCREENS — COMING SOON</p>
-            </div>
+            <PrototypeCarousel
+              images={["/projects/terramon/prototypes/prototype.png"]}
+              alt="Terramon Prototype"
+            />
           </FadeUp>
         </div>
       </div>

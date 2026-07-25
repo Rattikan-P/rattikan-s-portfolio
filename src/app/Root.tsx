@@ -1,6 +1,7 @@
 import { Outlet, useLocation } from "react-router";
 import { useEffect } from "react";
 import { Navbar } from "./components/Navbar";
+import { ScrollButtons } from "./components/ScrollButtons";
 
 export function Root() {
   const { pathname } = useLocation();
@@ -13,6 +14,7 @@ export function Root() {
     <div style={{ fontFamily: "var(--font-sans)", overflowX: "hidden" }}>
       <Navbar />
       <Outlet />
+      <ScrollButtons />
     </div>
   );
 }

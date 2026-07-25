@@ -160,9 +160,6 @@ export function CaseStudyPage() {
           >
             {[
               { label: "My role", value: project.role },
-              { label: "Duration", value: project.duration },
-              { label: "Team", value: project.team },
-              { label: "Tools", value: project.tools },
               { label: "Platform", value: project.platform },
             ].map((m) => (
               <div key={m.label} style={{
