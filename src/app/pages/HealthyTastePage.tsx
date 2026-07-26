@@ -4,6 +4,7 @@ import { getAdjacentProjects, projects } from "../data/projects";
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { PrototypeCarousel } from "@/app/components/PrototypeCarousel";
+import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 
 const BG = "#E8522A";
 const DARK = "#1A0A00";
@@ -11,12 +12,14 @@ const ACCENT = "#FFD4A8";
 const TEXT_ON_BG = "#FFFFFF";
 
 const PHASES = [
-  { num: "01", label: "RESEARCH" },
-  { num: "02", label: "DESIGN" },
-  { num: "03", label: "DESIGN SYSTEM" },
+  { num: "01", label: "DISCOVER" },
+  { num: "02", label: "SYNTHESISE" },
+  { num: "03", label: "DEFINE" },
+  { num: "04", label: "IDEATE" },
+  { num: "05", label: "DESIGN" },
 ];
 
-const PHASE_BG = ["#FFF8F5", "#FFF0E8", "#FFE6D8"];
+const PHASE_BG = ["#FFF8F5", "#FFF0E8", "#FFF8F5", "#FFF0E8", "#FFF8F5"];
 
 function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
   return (
@@ -28,6 +31,28 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
     >
       {children}
     </motion.div>
+  );
+}
+
+function Img({ src, alt, caption }: { src: string; alt: string; caption?: string }) {
+  return (
+    <FadeUp>
+      <figure style={{ margin: 0 }}>
+        <motion.div
+          whileHover={{ scale: 1.01, boxShadow: "0 12px 40px rgba(0,0,0,0.08)" }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
+          style={{ borderRadius: "12px", overflow: "hidden", cursor: "zoom-in" }}
+        >
+          <ImageWithFallback
+            src={src} alt={alt}
+            style={{ width: "100%", display: "block", border: "1px solid rgba(0,0,0,0.06)" }}
+          />
+        </motion.div>
+        {caption && (
+          <figcaption style={{ fontSize: "11px", color: "#AAA", letterSpacing: "0.04em", marginTop: "10px", textAlign: "center" }}>{caption}</figcaption>
+        )}
+      </figure>
+    </FadeUp>
   );
 }
 
@@ -59,19 +84,6 @@ function SideProgress({ activePhase }: { activePhase: number }) {
           style={{ height: "6px", borderRadius: "100px" }}
         />
       ))}
-    </div>
-  );
-}
-
-function ImagePlaceholder({ label }: { label: string }) {
-  return (
-    <div style={{
-      background: "rgba(232,82,42,0.04)", borderRadius: "16px",
-      padding: "52px 32px", textAlign: "center",
-      border: "1.5px dashed rgba(232,82,42,0.15)",
-    }}>
-      <div style={{ fontSize: "28px", marginBottom: "10px", opacity: 0.15 }}>🖼</div>
-      <p style={{ fontSize: "12px", color: "#CCC", letterSpacing: "0.05em" }}>{label}</p>
     </div>
   );
 }
@@ -125,15 +137,19 @@ export function HealthyTastePage() {
             </Link>
           </motion.div>
 
-          <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }}
-            style={{ fontSize: "11px", color: TEXT_ON_BG, opacity: 0.4, letterSpacing: "0.1em", marginBottom: "12px" }}>
-            03 / 2024 · Mobile App · UX/UI Design
-          </motion.p>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "48px", alignItems: "center" }}>
+        <div style={{ flex: "1.25 1 340px" }}>
+
+          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }}
+            style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "12px", flexWrap: "wrap" }}>
+            <span style={{ fontSize: "11px", color: TEXT_ON_BG, opacity: 0.4, letterSpacing: "0.1em" }}>03 · 2025</span>
+            <span style={{ fontSize: "11px", color: TEXT_ON_BG, background: "rgba(255,255,255,0.15)", borderRadius: "4px", padding: "2px 8px", opacity: 0.9 }}>End-to-end UX/UI Design</span>
+          </motion.div>
 
           <motion.h1 initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
             style={{
-              fontFamily: "var(--font-display)", fontSize: "clamp(52px, 8vw, 100px)",
+              fontFamily: "var(--font-display)", fontSize: "clamp(48px, 6.5vw, 84px)",
               lineHeight: 1, color: TEXT_ON_BG, letterSpacing: "-0.03em", marginBottom: "20px", fontWeight: 400,
             }}>
             Healthy Taste
@@ -151,16 +167,16 @@ export function HealthyTastePage() {
             transition={{ duration: 0.6, delay: 0.35 }}
             style={{
               display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(130px, 1fr))",
-              gap: "1px", background: "rgba(255,255,255,0.15)", borderRadius: "14px",
+              gap: "1px", background: "rgba(232,82,42,0.15)", borderRadius: "14px",
               overflow: "hidden", maxWidth: "700px",
             }}>
             {[
               { label: "My role", value: "UX/UI Designer" },
               { label: "Platform", value: "Mobile App" },
             ].map((m) => (
-              <div key={m.label} style={{ background: "rgba(255,255,255,0.08)", padding: "14px 18px" }}>
-                <p style={{ fontSize: "10px", color: TEXT_ON_BG, opacity: 0.4, letterSpacing: "0.08em", marginBottom: "3px" }}>{m.label.toUpperCase()}</p>
-                <p style={{ fontSize: "13px", color: TEXT_ON_BG, lineHeight: "1.4" }}>{m.value}</p>
+              <div key={m.label} style={{ background: "#FDE6DC", padding: "14px 18px" }}>
+                <p style={{ fontSize: "10px", color: DARK, opacity: 0.5, letterSpacing: "0.08em", marginBottom: "3px" }}>{m.label.toUpperCase()}</p>
+                <p style={{ fontSize: "13px", color: DARK, lineHeight: "1.4" }}>{m.value}</p>
               </div>
             ))}
           </motion.div>
@@ -168,7 +184,7 @@ export function HealthyTastePage() {
           {/* Stats */}
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.45 }}
-            style={{ display: "flex", gap: "48px", marginTop: "40px", flexWrap: "wrap" }}>
+            style={{ display: "flex", gap: "24px", marginTop: "40px", flexWrap: "wrap" }}>
             {[
               { value: "3", label: "Competitor apps analysed" },
               { value: "30+", label: "Figma components built" },
@@ -180,29 +196,52 @@ export function HealthyTastePage() {
               </div>
             ))}
           </motion.div>
+
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.85, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          style={{ flex: "0.9 1 300px" }}
+        >
+          <motion.div
+            whileHover={{ scale: 1.02, y: -4 }}
+            transition={{ duration: 0.3 }}
+            style={{ filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.3))" }}
+          >
+            <img
+              src="/projects/healthy-taste/hero.png"
+              alt="Healthy Taste app — calorie tracking with simplified logging"
+              style={{ width: "100%", display: "block" }}
+            />
+          </motion.div>
+        </motion.div>
+
+        </div>
         </div>
       </div>
 
       {/* Tags */}
-      <div style={{ background: "#F3F1EE", padding: "18px 40px", borderBottom: "1px solid rgba(0,0,0,0.07)" }}>
+      <div style={{ background: "#FDE6DC", padding: "18px 40px" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto", display: "flex", gap: "8px", flexWrap: "wrap" }}>
           {["Mobile App", "UX/UI Design", "Design System", "Figma", "Solo Project"].map((t) => (
             <span key={t} style={{
-              background: "#FFFFFF", color: "#666", borderRadius: "100px",
-              padding: "6px 16px", fontSize: "12px", border: "1px solid rgba(0,0,0,0.08)",
+              background: "rgba(232,82,42,0.12)", color: "#9A3412", borderRadius: "100px",
+              padding: "6px 16px", fontSize: "12px", border: "1px solid rgba(232,82,42,0.25)",
             }}>{t}</span>
           ))}
         </div>
       </div>
 
-      {/* ═══ 01 RESEARCH ═══ */}
+      {/* ═══ 01 DISCOVER ═══ */}
       <div data-ht-phase="0" style={{ background: PHASE_BG[0], position: "relative", overflow: "hidden" }}>
         <div style={{
           position: "absolute", top: "-10px", right: "-10px",
           fontFamily: "var(--font-display)", fontSize: "clamp(120px, 18vw, 220px)",
           color: "rgba(232,82,42,0.04)", fontWeight: 700, lineHeight: 1, pointerEvents: "none", userSelect: "none",
         }}>01</div>
-        <PhaseStrip num="01" label="RESEARCH" />
+        <PhaseStrip num="01" label="DISCOVER" />
         <div style={{ maxWidth: "900px", margin: "0 auto", padding: "56px 40px 72px", position: "relative", zIndex: 1 }}>
           <FadeUp>
             <h2 style={{
@@ -211,49 +250,17 @@ export function HealthyTastePage() {
             }}>
               Understanding the friction
             </h2>
-            <p style={{ fontSize: "16px", color: "#666", lineHeight: "1.75", maxWidth: "640px", marginBottom: "40px" }}>
+            <p style={{ fontSize: "16px", color: "#666", lineHeight: "1.75", maxWidth: "640px", marginBottom: "36px" }}>
               The research question was simple: why do people who want to track calories stop doing it within two weeks?
               The answer wasn't willpower; it was the app.
             </p>
           </FadeUp>
 
-          {/* Competitor analysis */}
-          <FadeUp delay={0.05}>
-            <div style={{ marginBottom: "28px" }}>
-              <p style={{ fontSize: "11px", color: "#AAA", letterSpacing: "0.08em", marginBottom: "16px", fontWeight: 600 }}>COMPETITIVE ANALYSIS</p>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: "10px" }}>
-                {[
-                  { app: "MyFitnessPal", strength: "Huge food database", weakness: "Search is overwhelming; too many irrelevant results. UI cluttered with ads and upsells." },
-                  { app: "Cronometer", strength: "Detailed micronutrient data", weakness: "Steep learning curve. Designed for power users, not casual trackers." },
-                  { app: "Lose It!", strength: "Barcode scanning", weakness: "Portion estimation still requires manual gram input; no visual guide." },
-                ].map((c, i) => (
-                  <motion.div key={c.app}
-                    initial={{ opacity: 0, y: 16 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4, delay: i * 0.08 }}
-                    style={{
-                      background: "#FFFFFF", borderRadius: "12px", padding: "20px",
-                      border: "1px solid rgba(232,82,42,0.08)",
-                    }}>
-                    <p style={{ fontSize: "14px", color: DARK, fontWeight: 600, marginBottom: "10px" }}>{c.app}</p>
-                    <div style={{ marginBottom: "8px" }}>
-                      <p style={{ fontSize: "10px", color: "#4CAF50", letterSpacing: "0.06em", marginBottom: "3px" }}>✓ STRENGTH</p>
-                      <p style={{ fontSize: "12px", color: "#555", lineHeight: "1.5" }}>{c.strength}</p>
-                    </div>
-                    <div>
-                      <p style={{ fontSize: "10px", color: BG, letterSpacing: "0.06em", marginBottom: "3px" }}>✗ GAP</p>
-                      <p style={{ fontSize: "12px", color: "#555", lineHeight: "1.5" }}>{c.weakness}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-          </FadeUp>
+          <Img src="/projects/healthy-taste/competitive-analysis.png" alt="Competitive analysis comparing MyFitnessPal, Cronometer, and Lose It! on strengths and gaps" caption="Competitive Analysis: 3 apps compared on strengths and gaps" />
 
           {/* Key friction points */}
-          <FadeUp delay={0.1}>
-            <div style={{ marginBottom: "28px" }}>
+          <FadeUp delay={0.05}>
+            <div style={{ marginTop: "36px" }}>
               <p style={{ fontSize: "11px", color: "#AAA", letterSpacing: "0.08em", marginBottom: "16px", fontWeight: 600 }}>3 KEY FRICTION POINTS IDENTIFIED</p>
               <div style={{ display: "flex", flexDirection: "column", gap: "10px" }}>
                 {[
@@ -288,10 +295,10 @@ export function HealthyTastePage() {
             </div>
           </FadeUp>
 
-          <FadeUp delay={0.12}>
+          <FadeUp delay={0.1}>
             <div style={{
               background: BG + "0D", borderRadius: "14px", padding: "24px 28px",
-              borderLeft: `4px solid ${BG}`,
+              borderLeft: `4px solid ${BG}`, marginTop: "28px",
             }}>
               <p style={{ fontSize: "11px", color: BG, letterSpacing: "0.08em", marginBottom: "10px", fontWeight: 600 }}>KEY INSIGHT</p>
               <p style={{ fontSize: "15px", color: DARK, lineHeight: "1.65", opacity: 0.8 }}>
@@ -300,21 +307,139 @@ export function HealthyTastePage() {
               </p>
             </div>
           </FadeUp>
-
-          <div style={{ marginTop: "28px" }}>
-            <ImagePlaceholder label="PERSONA CARDS: ADD FROM FIGMA" />
-          </div>
         </div>
       </div>
 
-      {/* ═══ 02 DESIGN ═══ */}
+      {/* ═══ 02 SYNTHESISE ═══ */}
       <div data-ht-phase="1" style={{ background: PHASE_BG[1], position: "relative", overflow: "hidden" }}>
         <div style={{
           position: "absolute", top: "-10px", right: "-10px",
           fontFamily: "var(--font-display)", fontSize: "clamp(120px, 18vw, 220px)",
           color: "rgba(232,82,42,0.04)", fontWeight: 700, lineHeight: 1, pointerEvents: "none", userSelect: "none",
         }}>02</div>
-        <PhaseStrip num="02" label="DESIGN" />
+        <PhaseStrip num="02" label="SYNTHESISE" />
+        <div style={{ maxWidth: "900px", margin: "0 auto", padding: "56px 40px 72px", position: "relative", zIndex: 1 }}>
+          <FadeUp>
+            <h2 style={{
+              fontFamily: "var(--font-display)", fontSize: "clamp(26px, 3vw, 40px)",
+              color: DARK, letterSpacing: "-0.02em", fontWeight: 400, lineHeight: 1.1, marginBottom: "14px",
+            }}>
+              From scattered complaints to clusters
+            </h2>
+            <p style={{ fontSize: "16px", color: "#666", lineHeight: "1.75", maxWidth: "640px", marginBottom: "36px" }}>
+              Research notes were grouped into an affinity diagram, turning scattered user complaints into a clear picture of
+              where calorie-tracking apps consistently fail.
+            </p>
+          </FadeUp>
+
+          <Img src="/projects/healthy-taste/affinity-diagram.png" alt="Affinity diagram grouping user research insights into themed clusters" caption="Affinity Diagram: research insights grouped into problem themes" />
+        </div>
+      </div>
+
+      {/* ═══ 03 DEFINE ═══ */}
+      <div data-ht-phase="2" style={{ background: PHASE_BG[2], position: "relative", overflow: "hidden" }}>
+        <div style={{
+          position: "absolute", top: "-10px", right: "-10px",
+          fontFamily: "var(--font-display)", fontSize: "clamp(120px, 18vw, 220px)",
+          color: "rgba(232,82,42,0.04)", fontWeight: 700, lineHeight: 1, pointerEvents: "none", userSelect: "none",
+        }}>03</div>
+        <PhaseStrip num="03" label="DEFINE" />
+        <div style={{ maxWidth: "900px", margin: "0 auto", padding: "56px 40px 72px", position: "relative", zIndex: 1 }}>
+          <FadeUp>
+            <h2 style={{
+              fontFamily: "var(--font-display)", fontSize: "clamp(26px, 3vw, 40px)",
+              color: DARK, letterSpacing: "-0.02em", fontWeight: 400, lineHeight: 1.1, marginBottom: "14px",
+            }}>
+              Who we're designing for
+            </h2>
+            <p style={{ fontSize: "16px", color: "#666", lineHeight: "1.75", maxWidth: "640px", marginBottom: "36px" }}>
+              Research findings shaped a primary persona and an as-is journey map, showing exactly where the daily
+              tracking experience breaks down.
+            </p>
+          </FadeUp>
+
+          {/* Persona */}
+          <FadeUp delay={0.05}>
+            <div style={{
+              background: "#FFFFFF", borderRadius: "14px", padding: "28px",
+              border: "1px solid rgba(232,82,42,0.12)",
+              display: "grid", gridTemplateColumns: "auto 1fr", gap: "24px", alignItems: "start",
+              marginBottom: "32px",
+            }}>
+              <div style={{
+                width: "64px", height: "64px", borderRadius: "50%",
+                background: BG, color: "#FFFFFF",
+                display: "flex", alignItems: "center", justifyContent: "center",
+                fontFamily: "var(--font-display)", fontSize: "26px", fontWeight: 400, flexShrink: 0,
+              }}>C</div>
+              <div>
+                <p style={{ fontSize: "11px", color: BG, letterSpacing: "0.08em", marginBottom: "6px", fontWeight: 600 }}>PRIMARY PERSONA</p>
+                <h3 style={{ fontFamily: "var(--font-display)", fontSize: "24px", color: DARK, letterSpacing: "-0.02em", fontWeight: 400, margin: "0 0 2px" }}>Christine, 24</h3>
+                <p style={{ fontSize: "13px", color: "#999", marginBottom: "16px" }}>Elementary school teacher</p>
+
+                <p style={{ fontSize: "14px", color: "#555", lineHeight: "1.65", marginBottom: "18px" }}>
+                  Christine's school asked her to appear in a promotional campaign, so she set out to lose weight; but she refuses
+                  to give up the tasty meal she looks forward to every night.
+                </p>
+
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "18px", marginBottom: "18px" }}>
+                  <div>
+                    <p style={{ fontSize: "10px", color: "#4CAF50", letterSpacing: "0.07em", marginBottom: "6px", fontWeight: 600 }}>GOALS</p>
+                    <p style={{ fontSize: "13px", color: DARK, lineHeight: "1.6" }}>Lose weight steadily while still enjoying every meal, not white-knuckling through bland diet food.</p>
+                  </div>
+                  <div>
+                    <p style={{ fontSize: "10px", color: BG, letterSpacing: "0.07em", marginBottom: "6px", fontWeight: 600 }}>FRUSTRATIONS</p>
+                    <p style={{ fontSize: "13px", color: DARK, lineHeight: "1.6" }}>Calorie apps make logging feel like a chore; she quits within two weeks because it drains the joy out of eating.</p>
+                  </div>
+                </div>
+
+                <div style={{ background: BG + "0D", borderRadius: "10px", padding: "14px 18px", borderLeft: `4px solid ${BG}` }}>
+                  <p style={{ fontSize: "14px", color: DARK, lineHeight: "1.6", fontStyle: "italic", margin: 0 }}>
+                    "I want to lose weight, but I also want a tasty meal that still fits my calories."
+                  </p>
+                </div>
+              </div>
+            </div>
+          </FadeUp>
+
+          <Img src="/projects/healthy-taste/journey-map.png" alt="As-is user journey map showing where the calorie-tracking experience breaks down" caption="User Journey Map (As-Is): emotional low points across a tracking day" />
+        </div>
+      </div>
+
+      {/* ═══ 04 IDEATE ═══ */}
+      <div data-ht-phase="3" style={{ background: PHASE_BG[3], position: "relative", overflow: "hidden" }}>
+        <div style={{
+          position: "absolute", top: "-10px", right: "-10px",
+          fontFamily: "var(--font-display)", fontSize: "clamp(120px, 18vw, 220px)",
+          color: "rgba(232,82,42,0.04)", fontWeight: 700, lineHeight: 1, pointerEvents: "none", userSelect: "none",
+        }}>04</div>
+        <PhaseStrip num="04" label="IDEATE" />
+        <div style={{ maxWidth: "900px", margin: "0 auto", padding: "56px 40px 72px", position: "relative", zIndex: 1 }}>
+          <FadeUp>
+            <h2 style={{
+              fontFamily: "var(--font-display)", fontSize: "clamp(26px, 3vw, 40px)",
+              color: DARK, letterSpacing: "-0.02em", fontWeight: 400, lineHeight: 1.1, marginBottom: "14px",
+            }}>
+              Prioritising what to fix first
+            </h2>
+            <p style={{ fontSize: "16px", color: "#666", lineHeight: "1.75", maxWidth: "640px", marginBottom: "36px" }}>
+              Each problem cluster was reframed as a How Might We question, then scored on Impact vs Effort to decide
+              which fixes would deliver the most value for the least work.
+            </p>
+          </FadeUp>
+
+          <Img src="/projects/healthy-taste/prioritize-hmw.png" alt="How Might We questions prioritised using Impact-Effort scoring" caption="HMW Prioritisation: Impact-Effort scoring of design opportunities" />
+        </div>
+      </div>
+
+      {/* ═══ 05 DESIGN ═══ */}
+      <div data-ht-phase="4" style={{ background: PHASE_BG[4], position: "relative", overflow: "hidden" }}>
+        <div style={{
+          position: "absolute", top: "-10px", right: "-10px",
+          fontFamily: "var(--font-display)", fontSize: "clamp(120px, 18vw, 220px)",
+          color: "rgba(232,82,42,0.04)", fontWeight: 700, lineHeight: 1, pointerEvents: "none", userSelect: "none",
+        }}>05</div>
+        <PhaseStrip num="05" label="DESIGN" />
         <div style={{ maxWidth: "900px", margin: "0 auto", padding: "56px 40px 72px", position: "relative", zIndex: 1 }}>
           <FadeUp>
             <h2 style={{
@@ -323,14 +448,14 @@ export function HealthyTastePage() {
             }}>
               Simplified logging flow
             </h2>
-            <p style={{ fontSize: "16px", color: "#666", lineHeight: "1.75", maxWidth: "640px", marginBottom: "40px" }}>
+            <p style={{ fontSize: "16px", color: "#666", lineHeight: "1.75", maxWidth: "640px", marginBottom: "36px" }}>
               Every screen was designed with one constraint: logging a meal must take under 30 seconds.
               That constraint forced every unnecessary step out of the flow.
             </p>
           </FadeUp>
 
           <FadeUp delay={0.05}>
-            <div style={{ display: "flex", flexDirection: "column", gap: "10px", marginBottom: "28px" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "10px", marginBottom: "36px" }}>
               {[
                 { decision: "Smart food search", rationale: "Surfaces recent entries and popular matches first. Most users eat the same 15–20 meals repeatedly; the search should know this before they type anything." },
                 { decision: "Visual portion estimator", rationale: "Photo-based size guides replace manual gram entry. Users tap a visual scale (palm / fist / thumb) rather than entering numbers they have to look up." },
@@ -354,39 +479,30 @@ export function HealthyTastePage() {
             </div>
           </FadeUp>
 
-          <FadeUp delay={0.1}>
-            <PrototypeCarousel
-              images={["/projects/healthy-taste/prototypes/prototype.png"]}
-              alt="HealthyTaste Prototype"
-            />
-          </FadeUp>
-        </div>
-      </div>
+          <Img src="/projects/healthy-taste/user-flow.png" alt="User flow diagrams for calorie calculation, food history, and AI food suggestion" caption="User Flow: calorie calculation, food history, and AI suggestion flows" />
 
-      {/* ═══ 03 DESIGN SYSTEM ═══ */}
-      <div data-ht-phase="2" style={{ background: PHASE_BG[2], position: "relative", overflow: "hidden" }}>
-        <div style={{
-          position: "absolute", top: "-10px", right: "-10px",
-          fontFamily: "var(--font-display)", fontSize: "clamp(120px, 18vw, 220px)",
-          color: "rgba(232,82,42,0.05)", fontWeight: 700, lineHeight: 1, pointerEvents: "none", userSelect: "none",
-        }}>03</div>
-        <PhaseStrip num="03" label="DESIGN SYSTEM" />
-        <div style={{ maxWidth: "900px", margin: "0 auto", padding: "56px 40px 72px", position: "relative", zIndex: 1 }}>
-          <FadeUp>
-            <h2 style={{
-              fontFamily: "var(--font-display)", fontSize: "clamp(26px, 3vw, 40px)",
-              color: DARK, letterSpacing: "-0.02em", fontWeight: 400, lineHeight: 1.1, marginBottom: "14px",
-            }}>
-              Scalable component library
-            </h2>
-            <p style={{ fontSize: "16px", color: "#666", lineHeight: "1.75", maxWidth: "640px", marginBottom: "40px" }}>
-              A comprehensive Figma design system built to scale; so future features like meal planning, social sharing,
-              and coach integration can be built without reinventing the visual language.
-            </p>
+
+          {/* Design System sub-section */}
+          <FadeUp delay={0.05}>
+            <div style={{ marginTop: "48px" }}>
+              <p style={{ fontSize: "11px", color: BG, letterSpacing: "0.12em", marginBottom: "8px", fontWeight: 600 }}>DESIGN SYSTEM</p>
+              <h3 style={{
+                fontFamily: "var(--font-display)", fontSize: "clamp(22px, 2.6vw, 32px)",
+                color: DARK, letterSpacing: "-0.02em", fontWeight: 400, lineHeight: 1.1, marginBottom: "12px",
+              }}>
+                Scalable component library
+              </h3>
+              <p style={{ fontSize: "15px", color: "#666", lineHeight: "1.7", maxWidth: "640px", marginBottom: "32px" }}>
+                A comprehensive Figma design system built to scale; so future features like meal planning, social sharing,
+                and coach integration can be built without reinventing the visual language.
+              </p>
+            </div>
           </FadeUp>
+
+          <Img src="/projects/healthy-taste/assets.png" alt="Healthy Taste Figma component library: buttons, inputs, cards, and tokens" caption="Figma component library: foundations and reusable components" />
 
           <FadeUp delay={0.05}>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px", marginBottom: "28px" }}>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px", marginTop: "36px", marginBottom: "28px" }}>
               {[
                 { category: "Foundations", items: ["Colour tokens (primary, semantic, neutral)", "Typography scale (Display → Caption)", "Spacing grid (4px base unit)", "Iconography set"] },
                 { category: "Core components", items: ["Buttons (5 variants × 3 states)", "Input fields + validation states", "Cards (food item, meal summary, stat)", "Navigation bar + tab system"] },
@@ -428,7 +544,55 @@ export function HealthyTastePage() {
           </FadeUp>
 
           <FadeUp delay={0.12}>
-            <ImagePlaceholder label="DESIGN SYSTEM OVERVIEW: ADD FROM FIGMA" />
+            <div style={{
+              background: "#FFFFFF", borderRadius: "14px", padding: "28px",
+              border: "1px solid rgba(232,82,42,0.12)",
+            }}>
+              {/* Colour palette */}
+              <p style={{ fontSize: "11px", color: BG, letterSpacing: "0.08em", marginBottom: "16px", fontWeight: 600 }}>COLOUR PALETTE</p>
+              <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: "20px", marginBottom: "28px" }}>
+                {[
+                  { group: "Primary", colors: [["Warm Orange", "#FF9A3C"], ["Primary Orange", "#FF8C42"]] },
+                  { group: "Secondary", colors: [["Sunny", "#FFD166"], ["Leaf", "#8BC34A"], ["Mint", "#C5E1A5"], ["Sky", "#81D4FA"]] },
+                  { group: "Accent", colors: [["Alert", "#FF5722"], ["Danger", "#D32F2F"]] },
+                  { group: "Neutral", colors: [["Ink", "#000000"], ["Earth", "#5D4037"]] },
+                ].map((cat) => (
+                  <div key={cat.group}>
+                    <p style={{ fontSize: "10px", color: "#999", letterSpacing: "0.06em", marginBottom: "10px", fontWeight: 600 }}>{cat.group.toUpperCase()}</p>
+                    <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+                      {cat.colors.map(([name, hex]) => (
+                        <div key={hex} style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                          <div style={{ width: "30px", height: "30px", borderRadius: "8px", background: hex, border: "1px solid rgba(0,0,0,0.1)", flexShrink: 0 }} />
+                          <div>
+                            <p style={{ fontSize: "11px", color: DARK, margin: 0, lineHeight: 1.2 }}>{name}</p>
+                            <p style={{ fontSize: "10px", color: "#AAA", margin: 0, fontFamily: "var(--font-mono, monospace)" }}>{hex}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Typography */}
+              <p style={{ fontSize: "11px", color: BG, letterSpacing: "0.08em", marginBottom: "16px", fontWeight: 600 }}>TYPOGRAPHY</p>
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                {[
+                  { label: "Topic", font: "Nunito · SemiBold", size: "52px", sample: "Healthy Taste", weight: 600, fontSize: "32px" },
+                  { label: "Title", font: "Lexend · Medium", size: "24px", sample: "What's for dinner tonight?", weight: 500, fontSize: "21px" },
+                  { label: "Body", font: "Lexend · Regular", size: "16px", sample: "Log your meals in under 30 seconds.", weight: 400, fontSize: "15px" },
+                ].map((t) => (
+                  <div key={t.label} style={{ display: "grid", gridTemplateColumns: "100px 1fr", gap: "16px", alignItems: "baseline", padding: "12px 0", borderBottom: "1px solid rgba(0,0,0,0.05)" }}>
+                    <div>
+                      <p style={{ fontSize: "11px", color: BG, letterSpacing: "0.06em", fontWeight: 600, margin: 0 }}>{t.label.toUpperCase()}</p>
+                      <p style={{ fontSize: "10px", color: "#AAA", margin: "2px 0 0" }}>{t.font}</p>
+                      <p style={{ fontSize: "10px", color: "#AAA", margin: "1px 0 0" }}>{t.size}</p>
+                    </div>
+                    <p style={{ fontFamily: "var(--font-display)", fontWeight: t.weight, fontSize: t.fontSize, color: DARK, margin: 0, lineHeight: 1.2 }}>{t.sample}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </FadeUp>
         </div>
       </div>
@@ -436,8 +600,30 @@ export function HealthyTastePage() {
       {/* Closing */}
       <div style={{ background: "#FAFAF8", padding: "72px 40px" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
+          {/* Hi-fi prototype showcase */}
           <FadeUp>
-            <div style={{ borderLeft: `4px solid ${BG}`, paddingLeft: "28px", marginBottom: "56px" }}>
+            <p style={{ fontSize: "11px", color: BG, letterSpacing: "0.12em", marginBottom: "14px", fontWeight: 600, display: "inline-flex", alignItems: "center", gap: "8px" }}>
+              LO-FI
+              <svg width="16" height="16" viewBox="0 0 24 24" fill={BG}>
+                <path d="M2 10 L14 10 L14 5 L22 12 L14 19 L14 14 L2 14 Z" />
+              </svg>
+              HI-FI PROTOTYPE
+            </p>
+          </FadeUp>
+          <FadeUp delay={0.1}>
+            <PrototypeCarousel
+              images={[
+                "/projects/healthy-taste/prototypes/lo-fi.png",
+                "/projects/healthy-taste/prototypes/mid-fi.png",
+                "/projects/healthy-taste/prototypes/hi-fi.png",
+              ]}
+              alt="Healthy Taste prototype: lo-fi to hi-fi"
+              maxHeight={[520, 700, 700]}
+            />
+          </FadeUp>
+
+          <FadeUp>
+            <div style={{ borderLeft: `4px solid ${BG}`, paddingLeft: "28px", margin: "48px 0 56px" }}>
               <p style={{
                 fontFamily: "var(--font-display)", fontSize: "22px", color: DARK,
                 lineHeight: "1.55", fontStyle: "italic", fontWeight: 400,
@@ -458,14 +644,23 @@ export function HealthyTastePage() {
                 <p style={{ fontSize: "12px", color: TEXT_ON_BG, opacity: 0.4, marginBottom: "4px" }}>View the design</p>
                 <p style={{ fontFamily: "var(--font-display)", fontSize: "24px", color: TEXT_ON_BG, fontWeight: 400 }}>Open in Figma</p>
               </div>
-              <motion.a
-                href="https://www.figma.com/proto/hf7ANRmL8OIWOSZY06Y6md/953351-Term-Project-_-HEALTHY-TASTE?node-id=4546-20561&p=f&t=1lUlThABv12oi2Ku-9&scaling=scale-down&content-scaling=fixed&starting-point-node-id=4546%3A20561&show-proto-sidebar=1"
-                target="_blank" rel="noopener noreferrer"
-                whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}
-                style={{ background: "#FFFFFF", color: BG, borderRadius: "100px", padding: "13px 26px", fontSize: "14px", textDecoration: "none", fontWeight: 500 }}
-              >
-                Figma ↗
-              </motion.a>
+              <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+                <motion.a
+                  href="https://www.figma.com/proto/hf7ANRmL8OIWOSZY06Y6md/953351-Term-Project-_-HEALTHY-TASTE?node-id=4546-20561&p=f&t=1lUlThABv12oi2Ku-9&scaling=scale-down&content-scaling=fixed&starting-point-node-id=4546%3A20561&show-proto-sidebar=1"
+                  target="_blank" rel="noopener noreferrer"
+                  whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}
+                  style={{ background: "#FFFFFF", color: BG, borderRadius: "100px", padding: "13px 26px", fontSize: "14px", textDecoration: "none", fontWeight: 500 }}
+                >
+                  View prototype ↗
+                </motion.a>
+                <motion.a
+                  href="https://www.figma.com/design/hf7ANRmL8OIWOSZY06Y6md/953351-Term-Project-_-HEALTHY-TASTE?node-id=1-2&t=DnCGveC0tKCWH211-1" target="_blank" rel="noopener noreferrer"
+                  whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}
+                  style={{ background: "transparent", color: TEXT_ON_BG, borderRadius: "100px", padding: "13px 26px", fontSize: "14px", textDecoration: "none", border: "1.5px solid rgba(255,255,255,0.4)" }}
+                >
+                  Figma ↗
+                </motion.a>
+              </div>
             </div>
           </FadeUp>
         </div>

@@ -5,10 +5,12 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 interface PrototypeCarouselProps {
   images: string[];
   alt?: string;
+  maxHeight?: number | number[];
 }
 
-export function PrototypeCarousel({ images, alt = "Prototype" }: PrototypeCarouselProps) {
+export function PrototypeCarousel({ images, alt = "Prototype", maxHeight = 700 }: PrototypeCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const heightFor = (i: number) => `${Array.isArray(maxHeight) ? (maxHeight[i] ?? 700) : maxHeight}px`;
 
   const goToPrevious = () => {
     setCurrentIndex((prev) => (prev === 0 ? images.length - 1 : prev - 1));
@@ -42,7 +44,7 @@ export function PrototypeCarousel({ images, alt = "Prototype" }: PrototypeCarous
         <img
           src={images[0]}
           alt={alt}
-          style={{ width: "100%", height: "auto", maxHeight: "700px", objectFit: "contain", display: "block" }}
+          style={{ width: "100%", height: "auto", maxHeight: heightFor(0), objectFit: "contain", display: "block" }}
         />
       </motion.div>
     );
@@ -75,7 +77,7 @@ export function PrototypeCarousel({ images, alt = "Prototype" }: PrototypeCarous
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
-          style={{ width: "100%", height: "auto", maxHeight: "700px", objectFit: "contain", display: "block" }}
+          style={{ width: "100%", height: "auto", maxHeight: heightFor(currentIndex), objectFit: "contain", display: "block" }}
         />
       </AnimatePresence>
 

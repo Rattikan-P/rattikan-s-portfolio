@@ -122,7 +122,7 @@ function ProjectCard({ project, isEven }: { project: typeof projects[0]; isEven:
               </div>
             )}
 
-            <div style={{ display: "flex", gap: "16px", alignItems: "center", flexWrap: "wrap" }}>
+            <div style={{ display: "flex", gap: "10px", alignItems: "center", flexWrap: "wrap" }}>
               <motion.div whileHover={{ scale: 1.05, x: 2 }} whileTap={{ scale: 0.97 }}>
                 <Link
                   to={`/${project.slug}`}
@@ -135,24 +135,46 @@ function ProjectCard({ project, isEven }: { project: typeof projects[0]; isEven:
                   View case study <ArrowUpRight size={13} />
                 </Link>
               </motion.div>
-              {project.prototypeLink && (
-                <motion.div whileHover={{ scale: 1.05, x: 2 }} whileTap={{ scale: 0.97 }}>
-                  <a
+              <div style={{ display: "flex", gap: "8px", alignItems: "center" }}>
+                {project.prototypeLink && (
+                  <motion.a
                     href={project.prototypeLink}
                     target="_blank"
                     rel="noopener noreferrer"
+                    title="View Figma prototype"
+                    whileHover={{ scale: 1.1, y: -2 }}
+                    whileTap={{ scale: 0.92 }}
                     style={{
-                      background: "transparent", color: project.textColor,
-                      borderRadius: "100px", padding: "12px 24px", fontSize: "13px",
-                      textDecoration: "none", display: "inline-flex", alignItems: "center",
-                      gap: "6px", letterSpacing: "0.02em",
+                      width: "38px", height: "38px", borderRadius: "50%",
+                      display: "flex", alignItems: "center", justifyContent: "center",
                       border: `1.5px solid ${project.textColor}30`,
+                      background: "#fff",
+                      textDecoration: "none",
                     }}
                   >
-                    View prototype <ArrowUpRight size={13} />
-                  </a>
-                </motion.div>
-              )}
+                    <img src="/logos/figma-logo.png" alt="Figma" style={{ width: "16px", height: "16px", objectFit: "contain" }} />
+                  </motion.a>
+                )}
+                {project.githubLink && (
+                  <motion.a
+                    href={project.githubLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    title="View code on GitHub"
+                    whileHover={{ scale: 1.1, y: -2 }}
+                    whileTap={{ scale: 0.92 }}
+                    style={{
+                      width: "38px", height: "38px", borderRadius: "50%",
+                      display: "flex", alignItems: "center", justifyContent: "center",
+                      border: `1.5px solid ${project.textColor}30`,
+                      background: "#fff",
+                      textDecoration: "none",
+                    }}
+                  >
+                    <img src="/logos/github-logo.png" alt="GitHub" style={{ width: "16px", height: "16px", objectFit: "contain" }} />
+                  </motion.a>
+                )}
+              </div>
             </div>
           </div>
 

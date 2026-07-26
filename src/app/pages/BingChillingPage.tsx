@@ -115,15 +115,19 @@ export function BingChillingPage() {
             </Link>
           </motion.div>
 
-          <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }}
-            style={{ fontSize: "11px", color: DARK, opacity: 0.35, letterSpacing: "0.1em", marginBottom: "12px" }}>
-            05 / 2024 · Art Toy E-Commerce · Full-stack
-          </motion.p>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "48px", alignItems: "center" }}>
+        <div style={{ flex: "1.25 1 340px" }}>
+
+          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }}
+            style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "12px", flexWrap: "wrap" }}>
+            <span style={{ fontSize: "11px", color: DARK, opacity: 0.35, letterSpacing: "0.1em" }}>05 · 2025</span>
+            <span style={{ fontSize: "11px", color: DARK, background: "rgba(0,0,0,0.07)", borderRadius: "4px", padding: "2px 8px", opacity: 0.75 }}>Art Toy E-Commerce Platform</span>
+          </motion.div>
 
           <motion.h1 initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
             style={{
-              fontFamily: "var(--font-display)", fontSize: "clamp(52px, 8vw, 100px)",
+              fontFamily: "var(--font-display)", fontSize: "clamp(48px, 6.5vw, 84px)",
               lineHeight: 1, color: DARK, letterSpacing: "-0.03em", marginBottom: "20px", fontWeight: 400,
             }}>
             BingChilling
@@ -170,6 +174,29 @@ export function BingChillingPage() {
               </div>
             ))}
           </motion.div>
+
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.85, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          style={{ flex: "0.9 1 300px" }}
+        >
+          <motion.div
+            whileHover={{ scale: 1.02, y: -4 }}
+            transition={{ duration: 0.3 }}
+            style={{ filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.18))" }}
+          >
+            <img
+              src="/projects/bing-chilling/hero.png"
+              alt="BingChilling — art toy e-commerce platform"
+              style={{ width: "100%", display: "block" }}
+            />
+          </motion.div>
+        </motion.div>
+
+        </div>
         </div>
       </div>
 
@@ -493,7 +520,7 @@ export function BingChillingPage() {
           <FadeUp delay={0.05}>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px", marginBottom: "28px" }}>
               {[
-                { label: "GitHub repository", href: "https://github.com/camt-pathathai/term-project-section-701-bingchilling.git", desc: "Full source: Express.js, EJS, MySQL, Bootstrap" },
+                { label: "GitHub repository", href: "https://github.com/Rattikan-P/bingchilling", desc: "Full source: Express.js, EJS, MySQL, Bootstrap" },
                 { label: "Desktop demo", href: "https://drive.google.com/file/d/1XV_gr-ufzJjWxWFOfnZYc2nEyzrMJJcl/view?usp=sharing", desc: "Full customer + admin flow on desktop" },
                 { label: "Mobile demo", href: "https://drive.google.com/file/d/1rU_g7DCUAav6CUpnvO8K_d4hgjix3biK/view?usp=sharing", desc: "Responsive mobile experience demo" },
                 { label: "Customer flow", href: "https://drive.google.com/file/d/1HjsfCZ60BJwM_QCdjd3otIOfISRAdPpt/view", desc: "Webstore pages user flow diagram" },
@@ -537,23 +564,30 @@ export function BingChillingPage() {
             </div>
           </FadeUp>
 
-          <FadeUp delay={0.15}>
-            <PrototypeCarousel
-              images={[
-                "/projects/bing-chilling/prototypes/prototype-desktop.png",
-                "/projects/bing-chilling/prototypes/prototype-mobile.png",
-              ]}
-              alt="BingChilling Prototype"
-            />
-          </FadeUp>
         </div>
       </div>
 
       {/* Closing quote */}
       <div style={{ background: "#FAFAF8", padding: "72px 40px" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
+          {/* Hi-fi prototype showcase */}
           <FadeUp>
-            <div style={{ borderLeft: `4px solid ${BG}`, paddingLeft: "28px", marginBottom: "56px" }}>
+            <p style={{ fontSize: "11px", color: ACCENT, letterSpacing: "0.12em", marginBottom: "14px", fontWeight: 600 }}>
+              HI-FI PROTOTYPE
+            </p>
+          </FadeUp>
+          <FadeUp delay={0.1}>
+            <PrototypeCarousel
+              images={[
+                "/projects/bing-chilling/prototypes/prototype-desktop.png",
+                "/projects/bing-chilling/prototypes/prototype-mobile.png",
+              ]}
+              alt="BingChilling hi-fi prototype"
+            />
+          </FadeUp>
+
+          <FadeUp>
+            <div style={{ borderLeft: `4px solid ${BG}`, paddingLeft: "28px", margin: "48px 0 56px" }}>
               <p style={{
                 fontFamily: "var(--font-display)", fontSize: "22px", color: DARK,
                 lineHeight: "1.55", fontStyle: "italic", fontWeight: 400,
@@ -572,17 +606,27 @@ export function BingChillingPage() {
               flexWrap: "wrap", gap: "20px",
             }}>
               <div>
-                <p style={{ fontSize: "12px", color: DARK, opacity: 0.4, marginBottom: "4px" }}>See the code</p>
-                <p style={{ fontFamily: "var(--font-display)", fontSize: "24px", color: DARK, fontWeight: 400 }}>View on GitHub</p>
+                <p style={{ fontSize: "12px", color: DARK, opacity: 0.4, marginBottom: "4px" }}>Want to explore it?</p>
+                <p style={{ fontFamily: "var(--font-display)", fontSize: "24px", color: DARK, fontWeight: 400 }}>View the project</p>
               </div>
-              <motion.a
-                href="https://github.com/camt-pathathai/term-project-section-701-bingchilling.git"
-                target="_blank" rel="noopener noreferrer"
-                whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}
-                style={{ background: DARK, color: BG, borderRadius: "100px", padding: "13px 26px", fontSize: "14px", textDecoration: "none" }}
-              >
-                GitHub ↗
-              </motion.a>
+              <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+                <motion.a
+                  href="https://www.figma.com/proto/IwY4fgYyhyrWUqvg3E2M1M/Project?node-id=38-3605&p=f&t=62P5KEsJIY7rXZwr-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=38%3A3605"
+                  target="_blank" rel="noopener noreferrer"
+                  whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}
+                  style={{ background: DARK, color: BG, borderRadius: "100px", padding: "13px 26px", fontSize: "14px", textDecoration: "none" }}
+                >
+                  View prototype ↗
+                </motion.a>
+                <motion.a
+                  href="https://github.com/Rattikan-P/bingchilling"
+                  target="_blank" rel="noopener noreferrer"
+                  whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}
+                  style={{ background: "transparent", color: DARK, borderRadius: "100px", padding: "13px 26px", fontSize: "14px", textDecoration: "none", border: "1.5px solid rgba(26,26,26,0.3)" }}
+                >
+                  GitHub ↗
+                </motion.a>
+              </div>
             </div>
           </FadeUp>
         </div>

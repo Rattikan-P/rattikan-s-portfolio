@@ -140,15 +140,19 @@ export function TerramonPage() {
             </Link>
           </motion.div>
 
-          <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }}
-            style={{ fontSize: "11px", color: TEXT, opacity: 0.25, letterSpacing: "0.1em", marginBottom: "12px" }}>
-            04 / 2023 · AI Plant Care App · Team Project
-          </motion.p>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "48px", alignItems: "center" }}>
+        <div style={{ flex: "1.25 1 340px" }}>
+
+          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }}
+            style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "12px", flexWrap: "wrap" }}>
+            <span style={{ fontSize: "11px", color: TEXT, opacity: 0.25, letterSpacing: "0.1em" }}>04 · 2025</span>
+            <span style={{ fontSize: "11px", color: TEXT, background: "rgba(0,0,0,0.1)", borderRadius: "4px", padding: "2px 8px", opacity: 0.75 }}>AI Plant Care App</span>
+          </motion.div>
 
           <motion.h1 initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
             style={{
-              fontFamily: "var(--font-display)", fontSize: "clamp(52px, 8vw, 100px)",
+              fontFamily: "var(--font-display)", fontSize: "clamp(48px, 6.5vw, 84px)",
               lineHeight: 1, color: TEXT, letterSpacing: "-0.03em", marginBottom: "20px", fontWeight: 400,
             }}>
             Terramon
@@ -194,6 +198,29 @@ export function TerramonPage() {
               </div>
             ))}
           </motion.div>
+
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.85, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          style={{ flex: "0.9 1 300px" }}
+        >
+          <motion.div
+            whileHover={{ scale: 1.02, y: -4 }}
+            transition={{ duration: 0.3 }}
+            style={{ filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.18))" }}
+          >
+            <img
+              src="/projects/terramon/hero.png"
+              alt="Terramon app — AI plant identification and care"
+              style={{ width: "100%", display: "block" }}
+            />
+          </motion.div>
+        </motion.div>
+
+        </div>
         </div>
       </div>
 
@@ -458,7 +485,7 @@ export function TerramonPage() {
           <div style={{ display: "flex", flexDirection: "column", gap: "10px", marginBottom: "32px" }}>
             {[
               { area: "Design-to-dev handoff", detail: "Structured sprints with the UX sub-team of 4, building shared components and documenting design decisions before handing to engineers; reducing back-and-forth during implementation." },
-              { area: "Component library", detail: "Managed a shared Figma + code component library keeping design and implementation in sync across all 10 team members. Enforced Terramon Brand Style Guide (primary color #319F5E, Lexend typography)." },
+              { area: "Component library", detail: "Managed a shared Figma + code component library keeping design and implementation in sync across all 10 team members." },
               { area: "Front-end contribution", detail: "Built UI screens in Vue.js, implementing scroll-aware header behavior, consistent icon standards, and the unified login input field; all requirements from the Change Request approved by the team." },
               { area: "Requirements authoring", detail: "Authored UC-001 (Plant Identification with Camera): the most complex use case in the SRS with 5 URS, 14+ SRS items, 9 alternative flows, and 4 exception flows covering all edge cases." },
             ].map((b, i) => (
@@ -478,21 +505,27 @@ export function TerramonPage() {
             ))}
           </div>
 
-          {/* Hi-fi prototype */}
-          <FadeUp delay={0.1}>
-            <PrototypeCarousel
-              images={["/projects/terramon/prototypes/prototype.png"]}
-              alt="Terramon Prototype"
-            />
-          </FadeUp>
         </div>
       </div>
 
       {/* Closing */}
       <div style={{ background: BG, padding: "72px 40px" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
+          {/* Hi-fi prototype showcase */}
           <FadeUp>
-            <div style={{ borderLeft: `4px solid ${ACCENT}`, paddingLeft: "28px", marginBottom: "56px" }}>
+            <p style={{ fontSize: "11px", color: ACCENT, letterSpacing: "0.12em", marginBottom: "14px", fontWeight: 600 }}>
+              HI-FI PROTOTYPE
+            </p>
+          </FadeUp>
+          <FadeUp delay={0.1}>
+            <PrototypeCarousel
+              images={["/projects/terramon/prototypes/prototype.png"]}
+              alt="Terramon hi-fi prototype"
+            />
+          </FadeUp>
+
+          <FadeUp>
+            <div style={{ borderLeft: `4px solid ${ACCENT}`, paddingLeft: "28px", margin: "48px 0 56px" }}>
               <p style={{
                 fontFamily: "var(--font-display)", fontSize: "22px", color: TEXT,
                 lineHeight: "1.55", fontStyle: "italic", fontWeight: 400, opacity: 0.8,
@@ -513,14 +546,16 @@ export function TerramonPage() {
                 <p style={{ fontSize: "12px", color: TEXT, opacity: 0.25, marginBottom: "4px" }}>Want to explore it?</p>
                 <p style={{ fontFamily: "var(--font-display)", fontSize: "24px", color: TEXT, fontWeight: 400 }}>View the prototype</p>
               </div>
-              <motion.a
-                href="https://www.figma.com/proto/xq3f7ikHBApT45PQb8nxqE/SW-Req-Wireframe-G4?node-id=613-2987&p=f&t=mQtS9ZFqwbFlmQoY-1&scaling=scale-down&content-scaling=fixed&page-id=595%3A12&starting-point-node-id=613%3A2987"
-                target="_blank" rel="noopener noreferrer"
-                whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}
-                style={{ background: ACCENT, color: BG, borderRadius: "100px", padding: "13px 26px", fontSize: "14px", textDecoration: "none" }}
-              >
-                View prototype ↗
-              </motion.a>
+              <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+                <motion.a
+                  href="https://www.figma.com/proto/xq3f7ikHBApT45PQb8nxqE/SW-Req-Wireframe-G4?node-id=613-2987&p=f&t=mQtS9ZFqwbFlmQoY-1&scaling=scale-down&content-scaling=fixed&page-id=595%3A12&starting-point-node-id=613%3A2987"
+                  target="_blank" rel="noopener noreferrer"
+                  whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}
+                  style={{ background: ACCENT, color: BG, borderRadius: "100px", padding: "13px 26px", fontSize: "14px", textDecoration: "none" }}
+                >
+                  View prototype ↗
+                </motion.a>
+              </div>
             </div>
           </FadeUp>
         </div>

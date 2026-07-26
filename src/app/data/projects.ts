@@ -29,6 +29,7 @@ export interface Project {
   research?: string[];
   closing?: string;
   prototypeLink?: string;
+  githubLink?: string;
 }
 
 export const projects: Project[] = [
@@ -40,15 +41,15 @@ export const projects: Project[] = [
     description:
       "A booking platform designed to make reserving cat hotel stays simple and stress-free for pet owners.",
     longDescription:
-      "I led the end-to-end UX process for Whisker Haven: from early discovery research through to a validated high-fidelity prototype. The goal was to remove the confusion and distrust that pet owners face when searching for a reliable cat hotel.",
+      "An end-to-end UX project for Whisker Haven: from early discovery research through to a validated high-fidelity prototype. The goal was to remove the confusion and distrust that pet owners face when searching for a reliable cat hotel.",
     role: "UX/UI Designer",
     duration: "12 weeks",
-    team: "Solo project",
-    tools: "Figma, Maze",
-    platform: "Mobile App (Flutter)",
-    tags: ["UX Research", "UI Design", "Usability Testing", "End-to-end UX"],
+    team: "2-person team (Rattikan + Nuanwan)",
+    tools: "Figma",
+    platform: "Web Application",
+    tags: ["UX Research", "UI Design", "Usability Testing", "End-to-end UX", "Web App"],
     year: "2026",
-    bg: "#FDB813",
+    bg: "#F5A623",
     textColor: "#1A1A1A",
     tagBg: "rgba(0,0,0,0.08)",
     accent: "#7A4F00",
@@ -63,9 +64,9 @@ export const projects: Project[] = [
         step: "01:Discover",
         title: "The problem",
         content: [
-          "Finding a cat hotel stay is often confusing, with unclear pricing, limited visibility into caregiver quality, and no easy way to check real-time availability.",
-          "Interviewed 6 cat owners and reviewed 4 competing platforms to map where trust breaks down in the booking journey.",
-          "Key insight: users abandon bookings not because of price, but because they can't verify the caregiver's credibility before committing.",
+          "Cat owners face persistent anxiety when boarding their cats: most facilities offer only occasional LINE messages or sporadic photos, leaving owners uncertain about their cat's wellbeing.",
+          "Interviewed 5 cat owners and surveyed 15 more to validate the problem. The average anxiety level during a stay measured 4.2/5.0, with 93% worrying about their cat's diet and wellbeing due to a lack of proactive updates.",
+          "Key insight: the core problem isn't price or trust in the facility; it's a structural gap in communication. Owners experience an 'information blackout' throughout the stay.",
         ],
         imageNote: "Insert: research synthesis / affinity diagram",
       },
@@ -73,19 +74,19 @@ export const projects: Project[] = [
         step: "02:Define",
         title: "Finding direction",
         content: [
-          "Turned research insights into two primary personas and a set of How-Might-We questions centred on trust and friction.",
-          "HMW: How might we help pet owners feel confident in a caregiver's quality before making a booking?",
-          "Mapped the current user journey to pinpoint the three highest-friction moments: searching without filters, reading vague profiles, and unclear pricing breakdowns.",
+          "Synthesised research into 5 problem clusters via an affinity diagram: Emotional Anxiety, Emergency & Safety, Care & Profile Management, Communication Gap, and Booking & Information.",
+          "HMW: How might we shift the communication model from reactive to proactive, so owners feel informed and in control without feeling like a burden to the facility?",
+          "Defined a primary persona (Nat) and an As-Is journey map pinpointing where emotional low points occur during the boarding experience.",
         ],
-        imageNote: "Insert: personas + user journey map",
+        imageNote: "Insert: affinity diagram + persona + journey map",
       },
       {
         step: "03:Design",
         title: "Shaping the flow",
         content: [
-          "Translated priorities into user flows and wireframes, iterating toward a high-fidelity Figma prototype through three rounds of internal review.",
-          "Key design decisions: verified caregiver badges, photo-forward profiles, and upfront pricing with no hidden fees.",
-          "Built a streamlined Search → Profile → Book → Confirm experience, reducing the path from discovery to confirmation to 5 steps.",
+          "Designed three core pillars: a Booking Engine (visual-first room reservation), Stay Management or 'Digital Nanny' (24/7 CCTV, daily reports, SOS), and Pet Identity or 'Cat Passport' (a single source of truth for each cat).",
+          "Built a strict linear booking flow: Select Dates > Select Cat > Select Room > Confirm, using progressive disclosure to prevent cognitive overload.",
+          "Iterated from low-fidelity wireframes to a high-fidelity Figma prototype, guided by a 'Cozy Efficiency' design language and warm, golden-hour visual references.",
         ],
         imageNote: "Insert: wireframes / hi-fi mockups",
       },
@@ -93,14 +94,14 @@ export const projects: Project[] = [
         step: "04:Validate",
         title: "Testing it works",
         content: [
-          "Ran usability testing on core tasks: searching availability, reading a caregiver profile, and completing a booking.",
-          "Measured success using the System Usability Scale (SUS) alongside task completion and error rates.",
-          "Result: 100% task completion rate across all participants · SUS score 85:Grade A, 'Excellent' usability.",
+          "Ran formative testing on the low-fi prototype with 5 cat owners using a think-aloud protocol, surfacing 3 friction points (step indicator, CTA clarity, room card detail) that were fixed before hi-fi.",
+          "Summative testing measured effectiveness, efficiency, and satisfaction on the hi-fi prototype.",
+          "Result: 100% task completion · 79-second average booking time (~1.3 min) · SUS score 85.0, Grade A 'Excellent'.",
         ],
         imageNote: "Insert: usability testing session / SUS result chart",
       },
     ],
-    closing: "Whisker Haven proved that trust is the core conversion driver in care-service platforms: not price. A clear caregiver verification system and transparent upfront pricing resolved the key friction points identified in research.",
+    closing: "Whisker Haven proved that in care-service platforms, proactive transparency, not price, is what reduces owner anxiety. A structured booking flow, real-time stay monitoring, and a centralised pet profile transformed a reactive, high-friction experience into a high-assurance one.",
   },
   {
     slug: "starmory",
@@ -108,26 +109,27 @@ export const projects: Project[] = [
     title: "Starmory",
     subtitle: "Memory-Based Language Learning Application",
     description:
-      "A language-learning app that uses AI and the FSRS spaced-repetition algorithm to help users build vocabulary more effectively: grounded in 6 learning theories, not trends.",
+      "A language-learning app that turns personal photos into English lessons using Gemini 3 Flash AI and the FSRS spaced-repetition algorithm; grounded in 7 learning theories, not trends.",
     longDescription:
-      "Most language apps treat learning as drills disconnected from real life. Starmory is different: users photograph their world, and AI turns those personal images into vocabulary lessons. I contributed across the full stack:UX research, UI design, database architecture, and front-end development.",
+      "Most language apps treat learning as drills disconnected from real life. Starmory is different: users photograph their world, and Gemini 3 Flash turns those personal images into vocabulary lessons calibrated to their CEFR level. I contributed across the full stack: UX research, UI design, database architecture, and front-end development.",
     role: "UX/UI Designer & Full-stack Developer",
     duration: "16 weeks",
-    team: "2 developers (Rattikan + 1 teammate)",
-    tools: "Figma, Flutter, Supabase, Firebase",
+    team: "2-person team (Rattikan + Nuanwan)",
+    tools: "Figma, Flutter, Supabase, Gemini 3 Flash",
     platform: "Mobile App (Flutter)",
     tags: ["AI", "UX/UI Design", "Flutter", "Full-stack", "Spaced Repetition"],
     year: "2026-present",
-    bg: "#8B5CF6",
+    bg: "#60A5FA",
     textColor: "#FFFFFF",
     tagBg: "rgba(255,255,255,0.2)",
-    accent: "#A78BFA",
+    accent: "#66C0F4",
     image: "/projects/starmory/hero.png",
     stats: [
-      { label: "Learning theories grounding the design", value: "6" },
+      { label: "Learning theories grounding the design", value: "7" },
       { label: "Core features shipped", value: "6" },
     ],
     prototypeLink: "https://www.figma.com/proto/iBvrbgDMKsCAo8KEdjN7aa/Starmory?node-id=1070-5519&t=xkQ1ZoM9rCOyrXpA-9&scaling=scale-down&content-scaling=fixed&page-id=299%3A199&starting-point-node-id=1070%3A5519&show-proto-sidebar=1",
+    githubLink: "https://github.com/Rattikan-P/starmory-app",
     phases: [
       {
         step: "01:Discover",
@@ -172,11 +174,12 @@ export const projects: Project[] = [
     ],
     research: [
       "Episodic Memory: Tulving, 1972",
-      "FSRS Spaced-Repetition: Ye et al., 2023",
-      "Input Hypothesis 'i+1': Krashen, 1985",
       "Self-Reference Effect: Rogers et al., 1977",
-      "Speech Act Theory: Austin 1962; Searle 1969",
       "Context-Dependent Memory: Godden & Baddeley, 1975",
+      "Depth of Processing: Craik & Lockhart, 1972",
+      "Input Hypothesis 'i+1': Krashen, 1985",
+      "FSRS Spaced-Repetition: Ye et al., 2023",
+      "Speech Act Theory: Austin 1962; Searle 1969",
     ],
     closing: "Starmory taught me that the strongest design decisions come from understanding the science of how people actually learn: not from copying what popular apps do. Grounding every feature in an established theory gave us a clear reason to say yes or no to any idea during the build.",
   },
@@ -314,6 +317,7 @@ export const projects: Project[] = [
     accent: "#C0405A",
     image: "/projects/bing-chilling/hero.png",
     prototypeLink: "https://www.figma.com/proto/IwY4fgYyhyrWUqvg3E2M1M/Project?node-id=38-3605&p=f&t=62P5KEsJIY7rXZwr-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=38%3A3605",
+    githubLink: "https://github.com/Rattikan-P/bingchilling",
     phases: [
       {
         step: "01:Research",
@@ -364,7 +368,7 @@ export const projects: Project[] = [
     platform: "Mobile App (iOS / Android)",
     tags: ["App Redesign", "UX Research", "Heuristic Evaluation", "Mobile"],
     year: "2026",
-    bg: "#60A5FA",
+    bg: "#1b2838",
     textColor: "#FFFFFF",
     tagBg: "rgba(255,255,255,0.2)",
     accent: "#66C0F4",

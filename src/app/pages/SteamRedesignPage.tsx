@@ -153,15 +153,19 @@ export function SteamRedesignPage() {
             </Link>
           </motion.div>
 
-          <motion.p initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }}
-            style={{ fontSize: "11px", color: TEXT, opacity: 0.25, letterSpacing: "0.1em", marginBottom: "12px" }}>
-            06 / 2025 · App Redesign: UX Research & UI Design
-          </motion.p>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: "48px", alignItems: "center" }}>
+        <div style={{ flex: "1.25 1 340px" }}>
+
+          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }}
+            style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "12px", flexWrap: "wrap" }}>
+            <span style={{ fontSize: "11px", color: TEXT, opacity: 0.25, letterSpacing: "0.1em" }}>06 · 2026</span>
+            <span style={{ fontSize: "11px", color: TEXT, background: "rgba(255,255,255,0.2)", borderRadius: "4px", padding: "2px 8px", opacity: 0.85 }}>App Redesign:UX Research & UI Design</span>
+          </motion.div>
 
           <motion.h1 initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.65, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
             style={{
-              fontFamily: "var(--font-display)", fontSize: "clamp(48px, 7vw, 90px)",
+              fontFamily: "var(--font-display)", fontSize: "clamp(44px, 6.5vw, 80px)",
               lineHeight: 1, color: TEXT, letterSpacing: "-0.03em", marginBottom: "20px", fontWeight: 400,
             }}>
             Steam Mobile<br />
@@ -206,6 +210,29 @@ export function SteamRedesignPage() {
               }}>{p}</span>
             ))}
           </motion.div>
+
+        </div>
+
+        <motion.div
+          initial={{ opacity: 0, x: 40 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.85, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          style={{ flex: "0.9 1 300px" }}
+        >
+          <motion.div
+            whileHover={{ scale: 1.02, y: -4 }}
+            transition={{ duration: 0.3 }}
+            style={{ filter: "drop-shadow(0 20px 40px rgba(0,0,0,0.4))" }}
+          >
+            <img
+              src="/projects/steam-redesign/hero.png"
+              alt="Steam Mobile redesign — improved home and library experience"
+              style={{ width: "100%", display: "block" }}
+            />
+          </motion.div>
+        </motion.div>
+
+        </div>
         </div>
       </div>
 
@@ -499,21 +526,27 @@ export function SteamRedesignPage() {
             </div>
           </FadeUp>
 
-          {/* Hi-fi placeholder */}
-          <FadeUp delay={0.1}>
-            <PrototypeCarousel
-              images={["/projects/steam-redesign/prototypes/prototype.png"]}
-              alt="Steam Redesign Prototype"
-            />
-          </FadeUp>
         </div>
       </div>
 
       {/* Closing */}
       <div style={{ background: BG, padding: "72px 40px" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
+          {/* Hi-fi prototype showcase */}
           <FadeUp>
-            <div style={{ borderLeft: `4px solid ${ACCENT}`, paddingLeft: "28px", marginBottom: "56px" }}>
+            <p style={{ fontSize: "11px", color: ACCENT, letterSpacing: "0.12em", marginBottom: "14px", fontWeight: 600 }}>
+              HI-FI PROTOTYPE
+            </p>
+          </FadeUp>
+          <FadeUp delay={0.1}>
+            <PrototypeCarousel
+              images={["/projects/steam-redesign/prototypes/prototype.png"]}
+              alt="Steam Mobile Redesign hi-fi prototype"
+            />
+          </FadeUp>
+
+          <FadeUp>
+            <div style={{ borderLeft: `4px solid ${ACCENT}`, paddingLeft: "28px", margin: "48px 0 56px" }}>
               <p style={{
                 fontFamily: "var(--font-display)", fontSize: "22px", color: TEXT,
                 lineHeight: "1.55", fontStyle: "italic", fontWeight: 400, opacity: 0.8,
@@ -533,10 +566,17 @@ export function SteamRedesignPage() {
                 <p style={{ fontSize: "12px", color: TEXT, opacity: 0.25, marginBottom: "4px" }}>Want to explore it?</p>
                 <p style={{ fontFamily: "var(--font-display)", fontSize: "24px", color: TEXT, fontWeight: 400 }}>View the prototype</p>
               </div>
-              <motion.a href="#" whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}
-                style={{ background: ACCENT, color: BG, borderRadius: "100px", padding: "13px 26px", fontSize: "14px", textDecoration: "none" }}>
-                View prototype ↗
-              </motion.a>
+              <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
+                <motion.a href="#" whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}
+                  style={{ background: ACCENT, color: BG, borderRadius: "100px", padding: "13px 26px", fontSize: "14px", textDecoration: "none" }}>
+                  View prototype ↗
+                </motion.a>
+                <motion.a href="https://www.figma.com/design/riR68PZoZWPbomdRdy7vvT/UI-Redesign?node-id=0-1&t=YoiWJ4KnercHDHLz-1" target="_blank" rel="noopener noreferrer"
+                  whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}
+                  style={{ background: "transparent", color: TEXT, borderRadius: "100px", padding: "13px 26px", fontSize: "14px", textDecoration: "none", border: "1.5px solid rgba(255,255,255,0.3)" }}>
+                  Figma ↗
+                </motion.a>
+              </div>
             </div>
           </FadeUp>
         </div>
