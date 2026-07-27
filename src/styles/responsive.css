@@ -89,13 +89,14 @@
 /* About section grid */
 .about-grid {
   display: grid;
-  gap: 24px;
+  gap: clamp(24px, 4vw, 48px);
   align-items: center;
 }
 
 @media (min-width: 768px) {
   .about-grid.photo-text {
     grid-template-columns: 180px 1fr;
+    gap: clamp(32px, 5vw, 56px);
   }
 }
 

@@ -631,6 +631,23 @@ export function TerramonPage() {
               </Link>
             ))}
           </div>
+
+          {/* Footer */}
+          <div style={{
+            borderTop: "1px solid #2A2A2A", paddingTop: "clamp(24px, 4vw, 32px)",
+            marginTop: "32px", display: "flex", justifyContent: "space-between",
+            alignItems: "center", flexWrap: "wrap", gap: "16px",
+          }}>
+            <p style={{
+              fontFamily: "var(--font-display)", fontSize: "clamp(18px, 3vw, 22px)",
+              color: "#333", letterSpacing: "-0.02em", fontWeight: 400, fontStyle: "italic",
+            }}>
+              Ratti.
+            </p>
+            <p style={{ fontSize: "12px", color: "#3A3A3A", letterSpacing: "0.03em" }}>
+              © 2026 · Rattikan Muangmoon
+            </p>
+          </div>
         </div>
       </div>
     </div>

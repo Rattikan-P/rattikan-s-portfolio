@@ -3,6 +3,7 @@
 :root {
   --font-sans: 'Plus Jakarta Sans', sans-serif;
   --font-display: 'DM Serif Display', serif;
+  --font-rascal: 'Rascal', cursive;
   --font-size: 16px;
   --background: #fafaf8;
   --foreground: oklch(0.145 0 0);
