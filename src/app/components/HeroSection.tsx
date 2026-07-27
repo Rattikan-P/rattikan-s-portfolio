@@ -127,11 +127,11 @@ export function HeroSection() {
                 onClick={scrollToWork}
                 whileHover={{ scale: 1.04, y: -2 }} whileTap={{ scale: 0.97 }}
                 style={{
-                  background: "linear-gradient(135deg, #FF6B35, #FF3D77)",
+                  background: "#FF6B35",
                   color: "#FFFFFF", border: "none",
                   borderRadius: "100px", padding: "14px 28px",
                   fontSize: "14px", cursor: "pointer", letterSpacing: "0.02em",
-                  boxShadow: "0 6px 24px rgba(255,60,80,0.3)",
+                  boxShadow: "0 4px 16px rgba(255,107,53,0.35)",
                 }}
               >
                 View my work ↓
@@ -153,14 +153,14 @@ export function HeroSection() {
 
             {/* Social links */}
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={stagger(5)}
-              style={{ display: "flex", gap: "20px", alignItems: "center", flexWrap: "wrap" }}>
+              style={{ display: "flex", gap: "20px", alignItems: "center", flexWrap: "wrap", position: "relative", zIndex: 2 }}>
               {[
                 { href: "mailto:rattikan.mm01@gmail.com", icon: <Mail size={14} />, label: "rattikan.mm01@gmail.com" },
                 { href: "https://www.linkedin.com/in/rattikan-muangmoon-9b0534405/", icon: <Linkedin size={14} />, label: "rattikan-muangmoon" },
               ].map((l) => (
                 <motion.a key={l.label} href={l.href}
                   whileHover={{ x: 3 }}
-                  style={{ color: "#999", display: "flex", alignItems: "center", gap: "6px", fontSize: "13px", textDecoration: "none", transition: "color 0.2s" }}
+                  style={{ color: "#999", display: "flex", alignItems: "center", gap: "6px", fontSize: "13px", textDecoration: "none", transition: "color 0.2s", pointerEvents: "auto", cursor: "pointer" }}
                   onMouseEnter={(e) => (e.currentTarget.style.color = "#1A1A1A")}
                   onMouseLeave={(e) => (e.currentTarget.style.color = "#999")}
                 >

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import { Lightbox } from "@/app/components/Lightbox";
 
 interface PrototypeCarouselProps {
   images: string[];
@@ -10,6 +11,8 @@ interface PrototypeCarouselProps {
 
 export function PrototypeCarousel({ images, alt = "Prototype", maxHeight = 700 }: PrototypeCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+
   const heightFor = (i: number) => `${Array.isArray(maxHeight) ? (maxHeight[i] ?? 700) : maxHeight}px`;
 
   const goToPrevious = () => {
@@ -20,141 +23,172 @@ export function PrototypeCarousel({ images, alt = "Prototype", maxHeight = 700 }
     setCurrentIndex((prev) => (prev === images.length - 1 ? 0 : prev + 1));
   };
 
+  const openLightbox = () => setIsLightboxOpen(true);
+
   if (images.length === 0) return null;
 
   // Single image - no carousel needed
   if (images.length === 1) {
     return (
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        style={{
-          marginTop: "48px",
-          borderRadius: "12px",
-          overflow: "hidden",
-          border: "1px solid rgba(0,0,0,0.08)",
-          boxShadow: "0 8px 32px rgba(0,0,0,0.06)",
-          maxWidth: "900px",
-          margin: "48px auto 0",
-          background: "#fff",
-        }}
-      >
-        <img
+      <>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          onClick={openLightbox}
+          style={{
+            marginTop: "48px",
+            borderRadius: "12px",
+            overflow: "hidden",
+            border: "1px solid rgba(0,0,0,0.08)",
+            boxShadow: "0 8px 32px rgba(0,0,0,0.06)",
+            maxWidth: "900px",
+            margin: "48px auto 0",
+            background: "#fff",
+            cursor: "zoom-in",
+          }}
+        >
+          <img
+            src={images[0]}
+            alt={alt}
+            style={{ width: "100%", height: "auto", maxHeight: heightFor(0), objectFit: "contain", display: "block" }}
+          />
+        </motion.div>
+        <Lightbox
+          isOpen={isLightboxOpen}
           src={images[0]}
           alt={alt}
-          style={{ width: "100%", height: "auto", maxHeight: heightFor(0), objectFit: "contain", display: "block" }}
+          onClose={() => setIsLightboxOpen(false)}
         />
-      </motion.div>
+      </>
     );
   }
 
   // Multiple images - show carousel
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5 }}
-      style={{
-        maxWidth: "900px",
-        margin: "48px auto 0",
-        borderRadius: "12px",
-        overflow: "hidden",
-        border: "1px solid rgba(0,0,0,0.08)",
-        boxShadow: "0 8px 32px rgba(0,0,0,0.06)",
-        position: "relative",
-        background: "#fff",
-      }}
-    >
-      <AnimatePresence mode="wait">
-        <motion.img
-          key={currentIndex}
-          src={images[currentIndex]}
-          alt={`${alt} ${currentIndex + 1}`}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.3 }}
-          style={{ width: "100%", height: "auto", maxHeight: heightFor(currentIndex), objectFit: "contain", display: "block" }}
-        />
-      </AnimatePresence>
-
-      {/* Navigation buttons */}
-      <button
-        onClick={goToPrevious}
+    <>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        onClick={openLightbox}
         style={{
-          position: "absolute",
-          left: "12px",
-          top: "50%",
-          transform: "translateY(-50%)",
-          width: "40px",
-          height: "40px",
-          borderRadius: "50%",
-          background: "rgba(255,255,255,0.9)",
-          border: "1px solid rgba(0,0,0,0.1)",
-          cursor: "pointer",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
+          maxWidth: "900px",
+          margin: "48px auto 0",
+          borderRadius: "12px",
+          overflow: "hidden",
+          border: "1px solid rgba(0,0,0,0.08)",
+          boxShadow: "0 8px 32px rgba(0,0,0,0.06)",
+          position: "relative",
+          background: "#fff",
+          cursor: "zoom-in",
         }}
-        onMouseEnter={(e) => e.currentTarget.style.background = "#fff"}
-        onMouseLeave={(e) => e.currentTarget.style.background = "rgba(255,255,255,0.9)"}
       >
-        <ChevronLeft size={18} style={{ color: "#333" }} />
-      </button>
-
-      <button
-        onClick={goToNext}
-        style={{
-          position: "absolute",
-          right: "12px",
-          top: "50%",
-          transform: "translateY(-50%)",
-          width: "40px",
-          height: "40px",
-          borderRadius: "50%",
-          background: "rgba(255,255,255,0.9)",
-          border: "1px solid rgba(0,0,0,0.1)",
-          cursor: "pointer",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
-        }}
-        onMouseEnter={(e) => e.currentTarget.style.background = "#fff"}
-        onMouseLeave={(e) => e.currentTarget.style.background = "rgba(255,255,255,0.9)"}
-      >
-        <ChevronRight size={18} style={{ color: "#333" }} />
-      </button>
-
-      {/* Dots indicator */}
-      <div style={{
-        position: "absolute",
-        bottom: "16px",
-        left: "50%",
-        transform: "translateX(-50%)",
-        display: "flex",
-        gap: "8px",
-      }}>
-        {images.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => setCurrentIndex(index)}
-            style={{
-              width: "8px",
-              height: "8px",
-              borderRadius: "50%",
-              background: index === currentIndex ? "#fff" : "rgba(255,255,255,0.5)",
-              border: index === currentIndex ? "none" : "1px solid rgba(0,0,0,0.2)",
-              cursor: "pointer",
-              padding: 0,
-            }}
+        <AnimatePresence mode="wait">
+          <motion.img
+            key={currentIndex}
+            src={images[currentIndex]}
+            alt={`${alt} ${currentIndex + 1}`}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            style={{ width: "100%", height: "auto", maxHeight: heightFor(currentIndex), objectFit: "contain", display: "block" }}
           />
-        ))}
-      </div>
-    </motion.div>
+        </AnimatePresence>
+
+        {/* Navigation buttons */}
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            goToPrevious();
+          }}
+          style={{
+            position: "absolute",
+            left: "12px",
+            top: "50%",
+            transform: "translateY(-50%)",
+            width: "40px",
+            height: "40px",
+            borderRadius: "50%",
+            background: "rgba(255,255,255,0.9)",
+            border: "1px solid rgba(0,0,0,0.1)",
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
+          }}
+          onMouseEnter={(e) => e.currentTarget.style.background = "#fff"}
+          onMouseLeave={(e) => e.currentTarget.style.background = "rgba(255,255,255,0.9)"}
+        >
+          <ChevronLeft size={18} style={{ color: "#333" }} />
+        </button>
+
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            goToNext();
+          }}
+          style={{
+            position: "absolute",
+            right: "12px",
+            top: "50%",
+            transform: "translateY(-50%)",
+            width: "40px",
+            height: "40px",
+            borderRadius: "50%",
+            background: "rgba(255,255,255,0.9)",
+            border: "1px solid rgba(0,0,0,0.1)",
+            cursor: "pointer",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            boxShadow: "0 2px 8px rgba(0,0,0,0.15)",
+          }}
+          onMouseEnter={(e) => e.currentTarget.style.background = "#fff"}
+          onMouseLeave={(e) => e.currentTarget.style.background = "rgba(255,255,255,0.9)"}
+        >
+          <ChevronRight size={18} style={{ color: "#333" }} />
+        </button>
+
+        {/* Dots indicator */}
+        <div style={{
+          position: "absolute",
+          bottom: "16px",
+          left: "50%",
+          transform: "translateX(-50%)",
+          display: "flex",
+          gap: "8px",
+        }}>
+          {images.map((_, index) => (
+            <button
+              key={index}
+              onClick={(e) => {
+                e.stopPropagation();
+                setCurrentIndex(index);
+              }}
+              style={{
+                width: "8px",
+                height: "8px",
+                borderRadius: "50%",
+                background: index === currentIndex ? "#fff" : "rgba(255,255,255,0.5)",
+                border: index === currentIndex ? "none" : "1px solid rgba(0,0,0,0.2)",
+                cursor: "pointer",
+                padding: 0,
+              }}
+            />
+          ))}
+        </div>
+      </motion.div>
+      <Lightbox
+        isOpen={isLightboxOpen}
+        src={images[currentIndex]}
+        alt={`${alt} ${currentIndex + 1}`}
+        onClose={() => setIsLightboxOpen(false)}
+      />
+    </>
   );
 }

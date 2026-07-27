@@ -1,0 +1,31 @@
+/* Fix text justification and word wrapping issues */
+html {
+  text-rendering: optimizeSpeed;
+}
+
+body {
+  text-align: left !important;
+  text-justify: none !important;
+}
+
+p, h1, h2, h3, h4, h5, h6, span, div, li, td, th, figcaption, label, button, input, textarea {
+  text-align: left !important;
+  text-align-last: auto !important;
+  text-justify: none !important;
+  word-spacing: normal !important;
+  letter-spacing: normal !important;
+  word-break: normal !important;
+  overflow-wrap: break-word !important;
+  hyphens: manual !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Allow center alignment where explicitly set */
+[style*="textAlign: center"], [style*="text-align: center"] {
+  text-align: center !important;
+}
+
+[style*="textAlign: right"], [style*="text-align: right"] {
+  text-align: right !important;
+}

@@ -4,8 +4,8 @@ import { Menu, X } from "lucide-react";
 import { projects } from "../data/projects";
 
 const navLinks = [
-  { label: "Work", href: "work" },
   { label: "About", href: "about" },
+  { label: "Work", href: "work" },
   { label: "Skills", href: "skills" },
   { label: "Contact", href: "contact" },
 ];
@@ -13,6 +13,7 @@ const navLinks = [
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const isHome = pathname === "/";
@@ -27,6 +28,49 @@ export function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Track active section on scroll
+  useEffect(() => {
+    // Clear active section when not on home
+    if (!isHome) {
+      setActiveSection("");
+      return;
+    }
+
+    const sections = navLinks.map((link) => document.getElementById(link.href)).filter(Boolean);
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        // Find the entry with the largest intersection ratio
+        const visibleEntries = entries.filter((entry) => entry.isIntersecting);
+        if (visibleEntries.length > 0) {
+          const mostVisible = visibleEntries.reduce((prev, curr) =>
+            curr.intersectionRatio > prev.intersectionRatio ? curr : prev
+          );
+          // Only set active if section is significantly visible (more than 20%)
+          if (mostVisible.intersectionRatio > 0.2) {
+            setActiveSection(mostVisible.target.id);
+          }
+        }
+      },
+      { threshold: Array.from({ length: 100 }, (_, i) => i / 100) }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+
+    // Also clear active section when near top (hero section)
+    const handleScrollForHero = () => {
+      if (window.scrollY < 100) {
+        setActiveSection("");
+      }
+    };
+    window.addEventListener("scroll", handleScrollForHero);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", handleScrollForHero);
+    };
+  }, [isHome]);
 
   const handleNavClick = (sectionId: string) => {
     setMenuOpen(false);
@@ -85,13 +129,29 @@ export function Navbar() {
                 onClick={() => handleNavClick(link.href)}
                 style={{
                   fontSize: "14px", color: textColor, background: "none",
-                  border: "none", cursor: "pointer", opacity: 0.65,
+                  border: "none", cursor: "pointer",
                   transition: "opacity 0.2s", letterSpacing: "0.02em",
+                  display: "flex", alignItems: "center", gap: "8px",
                 }}
-                onMouseEnter={(e) => (e.currentTarget.style.opacity = "1")}
-                onMouseLeave={(e) => (e.currentTarget.style.opacity = "0.65")}
+                onMouseEnter={(e) => {
+                  if (activeSection !== link.href) e.currentTarget.style.opacity = "1";
+                }}
+                onMouseLeave={(e) => {
+                  if (activeSection !== link.href) e.currentTarget.style.opacity = "0.65";
+                }}
               >
-                {link.label}
+                {activeSection === link.href && (
+                  <span style={{
+                    width: "6px", height: "6px", borderRadius: "50%",
+                    background: "#FF6B35",
+                  }} />
+                )}
+                <span style={{
+                  opacity: activeSection === link.href ? 1 : 0.65,
+                  fontWeight: activeSection === link.href ? 500 : 400,
+                }}>
+                  {link.label}
+                </span>
               </button>
             ))}
             <a

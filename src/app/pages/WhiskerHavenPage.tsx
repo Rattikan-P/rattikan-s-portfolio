@@ -5,6 +5,7 @@ import { getAdjacentProjects, projects } from "../data/projects";
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "motion/react";
 import { PrototypeCarousel } from "@/app/components/PrototypeCarousel";
+import { Lightbox } from "@/app/components/Lightbox";
 
 import empathyMap from "@/imports/Empathy_Map.png";
 import surveyResults from "@/imports/Google_Form_Response.png";
@@ -45,12 +46,15 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 }
 
 function Img({ src, alt, caption, ratio }: { src: string; alt: string; caption?: string; ratio?: string }) {
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+
   return (
     <FadeUp>
       <figure style={{ margin: 0 }}>
         <motion.div
           whileHover={{ scale: 1.015, boxShadow: "0 12px 40px rgba(0,0,0,0.12)" }}
           transition={{ duration: 0.3, ease: "easeOut" }}
+          onClick={() => setIsLightboxOpen(true)}
           style={{ borderRadius: "12px", overflow: "hidden", cursor: "zoom-in" }}
         >
           <ImageWithFallback
@@ -67,6 +71,12 @@ function Img({ src, alt, caption, ratio }: { src: string; alt: string; caption?:
             marginTop: "10px", textAlign: "center",
           }}>{caption}</figcaption>
         )}
+        <Lightbox
+          isOpen={isLightboxOpen}
+          src={src}
+          alt={alt}
+          onClose={() => setIsLightboxOpen(false)}
+        />
       </figure>
     </FadeUp>
   );
@@ -271,7 +281,8 @@ function PhaseSection({
           }}>{title}</h2>
           <p style={{
             fontSize: "16px", color: isDark ? DARK : "#777",
-            lineHeight: "1.75", maxWidth: "640px", marginBottom: "44px",
+            lineHeight: "1.75", maxWidth: "100%", marginBottom: "44px",
+            textAlign: "left", wordBreak: "break-word", overflowWrap: "break-word",
           }}>{description}</p>
         </FadeUp>
         {children}
@@ -308,6 +319,8 @@ function SideProgress({ activePhase }: { activePhase: number }) {
 export function WhiskerHavenPage() {
   const { next } = getAdjacentProjects("whisker-haven");
   const [activePhase, setActivePhase] = useState(0);
+  const [isPersonaLightboxOpen, setPersonaLightboxOpen] = useState(false);
+  const [isMoodboardLightboxOpen, setMoodboardLightboxOpen] = useState(false);
   const sectionRefs = useRef<(HTMLDivElement | null)[]>([]);
 
   useEffect(() => {
@@ -549,7 +562,9 @@ export function WhiskerHavenPage() {
             </motion.div>
           ))}
         </div>
-        <Img src={affinityDiagram} alt="Affinity diagram" caption="Affinity Diagram: grouped research insights" />
+        <div style={{ maxWidth: "700px", margin: "0 auto" }}>
+          <Img src={affinityDiagram} alt="Affinity diagram" caption="Affinity Diagram: grouped research insights" />
+        </div>
         <PullQuote>
           Owners always initiate contact. Replies are vague or a blurry photo, and asking more feels like being a burden.
         </PullQuote>
@@ -571,12 +586,17 @@ export function WhiskerHavenPage() {
             border: "1px solid rgba(0,0,0,0.06)",
           }}>
             <figure style={{ margin: 0 }}>
-              <div style={{ borderRadius: "10px", overflow: "hidden", border: "1px solid rgba(0,0,0,0.06)" }}>
+              <motion.div
+                whileHover={{ scale: 1.015, boxShadow: "0 12px 40px rgba(0,0,0,0.12)" }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                onClick={() => setPersonaLightboxOpen(true)}
+                style={{ borderRadius: "10px", overflow: "hidden", border: "1px solid rgba(0,0,0,0.06)", cursor: "zoom-in" }}
+              >
                 <ImageWithFallback
                   src={persona} alt="Persona: Nat"
                   style={{ width: "100%", height: "auto", display: "block" }}
                 />
-              </div>
+              </motion.div>
               <figcaption style={{ fontSize: "11px", color: "#AAA", letterSpacing: "0.04em", marginTop: "8px", textAlign: "center" }}>
                 Persona: Nat, Sales Executive, cat owner of Mochi & Milo
               </figcaption>
@@ -624,8 +644,16 @@ export function WhiskerHavenPage() {
               </div>
             </div>
           </div>
+          <Lightbox
+            isOpen={isPersonaLightboxOpen}
+            src={persona}
+            alt="Persona: Nat"
+            onClose={() => setPersonaLightboxOpen(false)}
+          />
         </FadeUp>
-        <Img src={userJourneyMap} alt="As-Is user journey map" caption="User Journey Map (As-Is): Focused ➔ Irritated ➔ Frustrated ➔ Exhausted ➔ Anxious ➔ Stressed ➔ Annoyed" />
+        <div style={{ marginTop: "32px" }}>
+          <Img src={userJourneyMap} alt="As-Is user journey map" caption="User Journey Map (As-Is): Focused ➔ Irritated ➔ Frustrated ➔ Exhausted ➔ Anxious ➔ Stressed ➔ Annoyed" />
+        </div>
       </PhaseSection>
 
       {/* ═══ 04 IDEATE ═══ */}
@@ -717,7 +745,7 @@ export function WhiskerHavenPage() {
             }}>
               A bridge of reassurance between owners and their cats
             </h2>
-            <p style={{ fontSize: "16px", color: "#777", lineHeight: "1.75", maxWidth: "640px", marginBottom: "36px" }}>
+            <p style={{ fontSize: "16px", color: "#777", lineHeight: "1.75", maxWidth: "100%", marginBottom: "36px" }}>
               The prioritised features crystallised into three core functional areas. Each one solves a specific pain
               point uncovered in research, and together they turn a reactive, anxious experience into an assured one.
             </p>
@@ -783,12 +811,17 @@ export function WhiskerHavenPage() {
             border: "1px solid rgba(0,0,0,0.06)",
           }}>
             <figure style={{ margin: 0 }}>
-              <div style={{ borderRadius: "10px", overflow: "hidden", border: "1px solid rgba(0,0,0,0.06)" }}>
+              <motion.div
+                whileHover={{ scale: 1.015, boxShadow: "0 12px 40px rgba(0,0,0,0.12)" }}
+                transition={{ duration: 0.3, ease: "easeOut" }}
+                onClick={() => setMoodboardLightboxOpen(true)}
+                style={{ borderRadius: "10px", overflow: "hidden", border: "1px solid rgba(0,0,0,0.06)", cursor: "zoom-in" }}
+              >
                 <ImageWithFallback
                   src={moodBoard} alt="Whisker Haven mood board"
                   style={{ width: "100%", height: "auto", display: "block" }}
                 />
-              </div>
+              </motion.div>
               <figcaption style={{ fontSize: "11px", color: "#AAA", letterSpacing: "0.04em", marginTop: "8px", textAlign: "center" }}>
                 Mood board: Cozy · Calm · Warm · Homey
               </figcaption>
@@ -850,6 +883,12 @@ export function WhiskerHavenPage() {
               </div>
             </div>
           </div>
+          <Lightbox
+            isOpen={isMoodboardLightboxOpen}
+            src={moodBoard}
+            alt="Whisker Haven mood board"
+            onClose={() => setMoodboardLightboxOpen(false)}
+          />
         </FadeUp>
         <Img src={sitemap} alt="Sitemap" caption="Sitemap: information architecture" />
         <div style={{ marginTop: "16px" }}>
@@ -942,9 +981,7 @@ export function WhiskerHavenPage() {
         <FadeUp delay={0.2}>
           <div style={{
             marginTop: "40px", padding: "28px 32px",
-            background: "#FFFFFF", borderRadius: "14px",
-            border: "1px solid rgba(0,0,0,0.06)",
-            boxShadow: "0 4px 16px rgba(0,0,0,0.05)",
+            background: AMBER, borderRadius: "14px",
             display: "flex", alignItems: "center", justifyContent: "space-between",
             flexWrap: "wrap", gap: "16px",
           }}>
@@ -1009,19 +1046,19 @@ export function WhiskerHavenPage() {
       {/* All projects */}
       <div style={{ background: "#111", padding: "40px" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-          <p style={{ fontSize: "11px", color: "#333", letterSpacing: "0.1em", marginBottom: "16px" }}>ALL PROJECTS</p>
+          <p style={{ fontSize: "11px", color: "#666", letterSpacing: "0.1em", marginBottom: "16px" }}>ALL PROJECTS</p>
           <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
             {projects.map((p) => (
               <Link key={p.slug} to={`/${p.slug}`} style={{
                 display: "inline-flex", alignItems: "center", gap: "8px",
                 padding: "8px 18px", borderRadius: "100px", textDecoration: "none", fontSize: "13px",
-                background: p.slug === "whisker-haven" ? p.bg : "transparent",
-                color: p.slug === "whisker-haven" ? p.textColor : "#444",
-                border: p.slug === "whisker-haven" ? "none" : "1px solid #222",
+                background: p.slug === "whisker-haven" ? "#FFFFFF" : "transparent",
+                color: p.slug === "whisker-haven" ? "#111" : "#888",
+                border: p.slug === "whisker-haven" ? "none" : "1px solid #333",
                 transition: "all 0.2s",
               }}
-                onMouseEnter={(e) => { if (p.slug !== "whisker-haven") { e.currentTarget.style.borderColor = "#444"; e.currentTarget.style.color = "#888"; } }}
-                onMouseLeave={(e) => { if (p.slug !== "whisker-haven") { e.currentTarget.style.borderColor = "#222"; e.currentTarget.style.color = "#444"; } }}
+                onMouseEnter={(e) => { if (p.slug !== "whisker-haven") { e.currentTarget.style.borderColor = "#555"; e.currentTarget.style.color = "#CCC"; } }}
+                onMouseLeave={(e) => { if (p.slug !== "whisker-haven") { e.currentTarget.style.borderColor = "#333"; e.currentTarget.style.color = "#888"; } }}
               >
                 <span style={{ width: "7px", height: "7px", borderRadius: "50%", background: p.bg, flexShrink: 0, border: "1px solid rgba(255,255,255,0.08)" }} />
                 {p.title}

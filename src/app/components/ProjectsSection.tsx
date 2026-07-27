@@ -35,8 +35,8 @@ function ProjectCard({ project, isEven }: { project: typeof projects[0]; isEven:
         }}>
           {isEven && project.image && (
             <motion.img
-              whileHover={{ scale: project.slug === "starmory" ? 1.45 : 1.02 }}
-              initial={{ scale: project.slug === "starmory" ? 1.4 : 1 }}
+              whileHover={{ scale: project.slug === "starmory" ? 1.18 : 1.02 }}
+              initial={{ scale: project.slug === "starmory" ? 1.15 : 1 }}
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
               src={project.image}
               alt={project.title}
@@ -180,7 +180,8 @@ function ProjectCard({ project, isEven }: { project: typeof projects[0]; isEven:
 
           {!isEven && project.image && (
             <motion.img
-              whileHover={{ scale: 1.02 }}
+              whileHover={{ scale: project.slug === "whisker-haven" ? 1.18 : 1.02 }}
+              initial={{ scale: project.slug === "whisker-haven" ? 1.15 : 1 }}
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
               src={project.image}
               alt={project.title}
@@ -216,21 +217,24 @@ export function ProjectsSection() {
   return (
     <section id="work">
       <div style={{ background: "#FAFAF8", padding: "80px 32px 40px", textAlign: "center" }}>
-        <motion.p
-          initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }} transition={{ duration: 0.4 }}
-          style={{ fontSize: "12px", color: "#CCC", letterSpacing: "0.12em", marginBottom: "12px" }}>
-          SELECTED WORK
-        </motion.p>
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }} transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          style={{
-            fontFamily: "var(--font-display)", fontSize: "clamp(36px, 5vw, 56px)",
-            color: "#1A1A1A", letterSpacing: "-0.02em", fontWeight: 400,
-          }}>
-          Projects I&apos;m proud of
-        </motion.h2>
+        <div style={{ maxWidth: "800px", margin: "0 auto", textAlign: "center" }}>
+          <motion.p
+            initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }} transition={{ duration: 0.4 }}
+            style={{ fontSize: "12px", color: "#CCC", letterSpacing: "0.12em", marginBottom: "12px", textAlign: "center" }}>
+            SELECTED WORK
+          </motion.p>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }} transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+            style={{
+              fontFamily: "var(--font-display)", fontSize: "clamp(36px, 5vw, 56px)",
+              color: "#1A1A1A", letterSpacing: "-0.02em", fontWeight: 400,
+              textAlign: "center",
+            }}>
+            Projects I&apos;m proud of
+          </motion.h2>
+        </div>
       </div>
 
       {projects.map((project, i) => (

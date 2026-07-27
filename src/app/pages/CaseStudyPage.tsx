@@ -433,21 +433,21 @@ export function CaseStudyPage() {
       {/* ── All projects ── */}
       <div style={{ background: "#111", padding: "40px" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-          <p style={{ fontSize: "11px", color: "#333", letterSpacing: "0.1em", marginBottom: "16px" }}>ALL PROJECTS</p>
+          <p style={{ fontSize: "11px", color: "#666", letterSpacing: "0.1em", marginBottom: "16px" }}>ALL PROJECTS</p>
           <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
             {projects.map((p) => (
               <Link key={p.slug} to={`/${p.slug}`} style={{
                 display: "inline-flex", alignItems: "center", gap: "8px",
                 padding: "8px 18px", borderRadius: "100px", textDecoration: "none", fontSize: "13px",
-                background: p.slug === project.slug ? p.bg : "transparent",
-                color: p.slug === project.slug ? p.textColor : "#444",
-                border: p.slug === project.slug ? "none" : "1px solid #222",
+                background: p.slug === project.slug ? "#FFFFFF" : "transparent",
+                color: p.slug === project.slug ? "#111" : "#888",
+                border: p.slug === project.slug ? "none" : "1px solid #333",
                 transition: "all 0.2s",
               }}
-                onMouseEnter={(e) => { if (p.slug !== project.slug) { e.currentTarget.style.borderColor = "#444"; e.currentTarget.style.color = "#888"; } }}
-                onMouseLeave={(e) => { if (p.slug !== project.slug) { e.currentTarget.style.borderColor = "#222"; e.currentTarget.style.color = "#444"; } }}
+                onMouseEnter={(e) => { if (p.slug !== project.slug) { e.currentTarget.style.borderColor = "#555"; e.currentTarget.style.color = "#CCC"; } }}
+                onMouseLeave={(e) => { if (p.slug !== project.slug) { e.currentTarget.style.borderColor = "#333"; e.currentTarget.style.color = "#888"; } }}
               >
-                <span style={{ width: "7px", height: "7px", borderRadius: "50%", background: p.bg, flexShrink: 0, border: "1px solid rgba(255,255,255,0.08)" }} />
+                <span style={{ width: "7px", height: "7px", borderRadius: "50%", background: p.bg, flexShrink: 0, border: `1px solid ${project.textColor}15` }} />
                 {p.title}
               </Link>
             ))}

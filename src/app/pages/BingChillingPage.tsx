@@ -5,6 +5,7 @@ import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 import { PrototypeCarousel } from "@/app/components/PrototypeCarousel";
+import { Lightbox } from "@/app/components/Lightbox";
 import userFlowImg from "@/imports/User_flow_of_webstore_pages__1_.png";
 import backOfficeImg from "@/imports/bingChilliing-backend.drawio.png";
 
@@ -16,10 +17,9 @@ const PHASES = [
   { num: "01", label: "RESEARCH" },
   { num: "02", label: "DESIGN" },
   { num: "03", label: "BUILD" },
-  { num: "04", label: "SHIP" },
 ];
 
-const PHASE_BG = ["#fdf0f2", "#f9e5e9", "#f5d8de", "#F2C4CE"];
+const PHASE_BG = ["#FAFAF8", "#F2EDF0", "#FAFAF8"];
 
 function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
   return (
@@ -31,6 +31,43 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
     >
       {children}
     </motion.div>
+  );
+}
+
+function Img({ src, alt, description }: { src: string; alt: string; description?: string }) {
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+
+  return (
+    <div>
+      <motion.div
+        whileHover={{ scale: 1.01 }}
+        transition={{ duration: 0.3 }}
+        onClick={() => setIsLightboxOpen(true)}
+        style={{
+          borderRadius: "16px", overflow: "hidden",
+          border: "1px solid rgba(192,64,90,0.1)",
+          background: "#FFFFFF",
+          boxShadow: "0 4px 32px rgba(192,64,90,0.06)",
+          cursor: "zoom-in",
+        }}>
+        <ImageWithFallback
+          src={src}
+          alt={alt}
+          style={{ width: "100%", display: "block", objectFit: "contain" }}
+        />
+      </motion.div>
+      {description && (
+        <p style={{ fontSize: "11px", color: "#BBB", marginTop: "10px", textAlign: "center" }}>
+          {description}
+        </p>
+      )}
+      <Lightbox
+        isOpen={isLightboxOpen}
+        src={src}
+        alt={alt}
+        onClose={() => setIsLightboxOpen(false)}
+      />
+    </div>
   );
 }
 
@@ -145,14 +182,15 @@ export function BingChillingPage() {
             transition={{ duration: 0.6, delay: 0.35 }}
             style={{
               display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(130px, 1fr))",
-              gap: "1px", background: "rgba(0,0,0,0.1)", borderRadius: "14px",
+              gap: "1px", background: "rgba(192,64,90,0.2)", borderRadius: "14px",
               overflow: "hidden", maxWidth: "700px",
             }}>
             {[
-              { label: "My role", value: "UX/UI Designer & Full-stack Dev" },
-              { label: "Platform", value: "Web" },
+              { label: "My role", value: "Full-stack Product Designer" },
+              { label: "Team", value: "4-person team" },
+              { label: "Platform", value: "Web App" },
             ].map((m) => (
-              <div key={m.label} style={{ background: "rgba(0,0,0,0.04)", padding: "14px 18px" }}>
+              <div key={m.label} style={{ background: "#FDE8ED", padding: "14px 18px" }}>
                 <p style={{ fontSize: "10px", color: DARK, opacity: 0.35, letterSpacing: "0.08em", marginBottom: "3px" }}>{m.label.toUpperCase()}</p>
                 <p style={{ fontSize: "13px", color: DARK, lineHeight: "1.4" }}>{m.value}</p>
               </div>
@@ -166,7 +204,6 @@ export function BingChillingPage() {
             {[
               { value: "11", label: "Use cases implemented" },
               { value: "2", label: "User journeys: shopper + admin" },
-              { value: "4", label: "Art toy brands" },
             ].map((s) => (
               <div key={s.label}>
                 <div style={{ fontFamily: "var(--font-display)", fontSize: "54px", color: ACCENT, lineHeight: 1, marginBottom: "4px" }}>{s.value}</div>
@@ -201,12 +238,12 @@ export function BingChillingPage() {
       </div>
 
       {/* Tags */}
-      <div style={{ background: "#F3F1EE", padding: "18px 40px", borderBottom: "1px solid rgba(0,0,0,0.07)" }}>
+      <div style={{ background: "#FDE8ED", padding: "18px 40px" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto", display: "flex", gap: "8px", flexWrap: "wrap" }}>
           {["E-Commerce", "UX/UI Design", "Full-stack", "Web", "Express.js", "MySQL"].map((t) => (
             <span key={t} style={{
-              background: "#FFFFFF", color: "#666", borderRadius: "100px",
-              padding: "6px 16px", fontSize: "12px", border: "1px solid rgba(0,0,0,0.08)",
+              background: "rgba(192,64,90,0.1)", color: ACCENT, borderRadius: "100px",
+              padding: "6px 16px", fontSize: "12px", border: "1px solid rgba(192,64,90,0.25)",
             }}>{t}</span>
           ))}
         </div>
@@ -228,7 +265,7 @@ export function BingChillingPage() {
             }}>
               Understanding the art toy collector
             </h2>
-            <p style={{ fontSize: "16px", color: "#666", lineHeight: "1.75", maxWidth: "640px", marginBottom: "40px" }}>
+            <p style={{ fontSize: "16px", color: "#666", lineHeight: "1.75", maxWidth: "100%", marginBottom: "40px" }}>
               Art toy collectors don't browse the way typical shoppers do; they shop for the story, the scarcity, and the brand world.
               We identified 4 user characteristics that shaped every design decision.
             </p>
@@ -290,7 +327,7 @@ export function BingChillingPage() {
             }}>
               Two journeys. One design system.
             </h2>
-            <p style={{ fontSize: "16px", color: "#666", lineHeight: "1.75", maxWidth: "640px", marginBottom: "40px" }}>
+            <p style={{ fontSize: "16px", color: "#666", lineHeight: "1.75", maxWidth: "100%", marginBottom: "40px" }}>
               The core design challenge: a single visual system serving two completely different users; the collector browsing limited drops, and the admin managing inventory in bulk.
             </p>
           </FadeUp>
@@ -350,24 +387,11 @@ export function BingChillingPage() {
           <FadeUp delay={0.12}>
             <div style={{ marginBottom: "28px" }}>
               <p style={{ fontSize: "11px", color: "#AAA", letterSpacing: "0.08em", marginBottom: "14px", fontWeight: 600 }}>USER FLOW: WEBSTORE PAGES</p>
-              <motion.div
-                whileHover={{ scale: 1.01 }}
-                transition={{ duration: 0.3 }}
-                style={{
-                  borderRadius: "16px", overflow: "hidden",
-                  border: "1px solid rgba(192,64,90,0.1)",
-                  background: "#FFFFFF",
-                  boxShadow: "0 4px 32px rgba(192,64,90,0.06)",
-                }}>
-                <ImageWithFallback
-                  src={userFlowImg}
-                  alt="User flow diagram for BingChilling webstore pages: showing all customer and admin journeys"
-                  style={{ width: "100%", display: "block", objectFit: "contain" }}
-                />
-              </motion.div>
-              <p style={{ fontSize: "11px", color: "#BBB", marginTop: "10px", textAlign: "center" }}>
-                Complete user flow: from landing page through checkout, account management, and admin back-office
-              </p>
+              <Img
+                src={userFlowImg}
+                alt="User flow diagram for BingChilling webstore pages: showing all customer and admin journeys"
+                description="Complete user flow: from landing page through checkout, account management, and admin back-office"
+              />
             </div>
           </FadeUp>
 
@@ -395,6 +419,27 @@ export function BingChillingPage() {
               ))}
             </div>
           </FadeUp>
+
+          {/* Hi-fi prototype */}
+          <FadeUp>
+            <p style={{ fontSize: "14px", color: "#1A1A1A", opacity: 0.6, marginBottom: "24px", lineHeight: "1.6", maxWidth: "100%" }}>
+              The final product: e-commerce platform balancing art toy collector experience with back-office efficiency.
+            </p>
+          </FadeUp>
+          <FadeUp delay={0.1}>
+            <p style={{ fontSize: "11px", color: ACCENT, letterSpacing: "0.12em", marginBottom: "14px", fontWeight: 600 }}>
+              HI-FI PROTOTYPE
+            </p>
+          </FadeUp>
+          <FadeUp delay={0.2}>
+            <PrototypeCarousel
+              images={[
+                "/projects/bing-chilling/prototypes/prototype-desktop.png",
+                "/projects/bing-chilling/prototypes/prototype-mobile.png",
+              ]}
+              alt="BingChilling hi-fi prototype"
+            />
+          </FadeUp>
         </div>
       </div>
 
@@ -414,9 +459,9 @@ export function BingChillingPage() {
             }}>
               Database to front-end, end-to-end
             </h2>
-            <p style={{ fontSize: "16px", color: "#666", lineHeight: "1.75", maxWidth: "640px", marginBottom: "40px" }}>
+            <p style={{ fontSize: "16px", color: "#666", lineHeight: "1.75", maxWidth: "100%", marginBottom: "40px" }}>
               Built the full application stack: MySQL schema, RESTful Express.js API, EJS templates, and external API integrations.
-              Role-based sessions separate customer and admin throughout.
+              Role-based sessions separate customer and admin throughout. The team collaborated via Git and shipped the app through Docker deployment.
             </p>
           </FadeUp>
 
@@ -446,24 +491,11 @@ export function BingChillingPage() {
           <FadeUp delay={0.08}>
             <div style={{ marginBottom: "28px" }}>
               <p style={{ fontSize: "11px", color: "#AAA", letterSpacing: "0.08em", marginBottom: "14px", fontWeight: 600 }}>ADMIN BACK OFFICE: SYSTEM FLOW</p>
-              <motion.div
-                whileHover={{ scale: 1.01 }}
-                transition={{ duration: 0.3 }}
-                style={{
-                  borderRadius: "16px", overflow: "hidden",
-                  border: "1px solid rgba(192,64,90,0.1)",
-                  background: "#FFFFFF",
-                  boxShadow: "0 4px 32px rgba(192,64,90,0.06)",
-                }}>
-                <ImageWithFallback
-                  src={backOfficeImg}
-                  alt="Admin back office flow: Login, Dashboard, Category Management (Add/Edit/Delete), Product Management (Add/Edit/Delete)"
-                  style={{ width: "100%", display: "block", objectFit: "contain" }}
-                />
-              </motion.div>
-              <p style={{ fontSize: "11px", color: "#BBB", marginTop: "10px", textAlign: "center" }}>
-                Admin flow: Login → Dashboard → Category & Product management with full CRUD operations
-              </p>
+              <Img
+                src={backOfficeImg}
+                alt="Admin back office flow: Login, Dashboard, Category Management (Add/Edit/Delete), Product Management (Add/Edit/Delete)"
+                description="Admin flow: Login → Dashboard → Category & Product management with full CRUD operations"
+              />
             </div>
           </FadeUp>
 
@@ -496,105 +528,18 @@ export function BingChillingPage() {
         </div>
       </div>
 
-      {/* ═══ 04 SHIP ═══ */}
-      <div data-bing-phase="3" style={{ background: PHASE_BG[3], position: "relative", overflow: "hidden" }}>
-        <div style={{
-          position: "absolute", top: "-10px", right: "-10px",
-          fontFamily: "var(--font-display)", fontSize: "clamp(120px, 18vw, 220px)",
-          color: "rgba(192,64,90,0.06)", fontWeight: 700, lineHeight: 1, pointerEvents: "none", userSelect: "none",
-        }}>04</div>
-        <PhaseStrip num="04" label="SHIP" />
-        <div style={{ maxWidth: "900px", margin: "0 auto", padding: "56px 40px 72px", position: "relative", zIndex: 1 }}>
-          <FadeUp>
-            <h2 style={{
-              fontFamily: "var(--font-display)", fontSize: "clamp(26px, 3vw, 40px)",
-              color: DARK, letterSpacing: "-0.02em", fontWeight: 400, lineHeight: 1.1, marginBottom: "14px",
-            }}>
-              Shipped: desktop & mobile
-            </h2>
-            <p style={{ fontSize: "16px", color: DARK, opacity: 0.55, lineHeight: "1.75", maxWidth: "640px", marginBottom: "40px" }}>
-              Separate demo recordings for desktop and mobile, covering the complete customer and admin experience.
-            </p>
-          </FadeUp>
-
-          <FadeUp delay={0.05}>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px", marginBottom: "28px" }}>
-              {[
-                { label: "GitHub repository", href: "https://github.com/Rattikan-P/bingchilling", desc: "Full source: Express.js, EJS, MySQL, Bootstrap" },
-                { label: "Desktop demo", href: "https://drive.google.com/file/d/1XV_gr-ufzJjWxWFOfnZYc2nEyzrMJJcl/view?usp=sharing", desc: "Full customer + admin flow on desktop" },
-                { label: "Mobile demo", href: "https://drive.google.com/file/d/1rU_g7DCUAav6CUpnvO8K_d4hgjix3biK/view?usp=sharing", desc: "Responsive mobile experience demo" },
-                { label: "Customer flow", href: "https://drive.google.com/file/d/1HjsfCZ60BJwM_QCdjd3otIOfISRAdPpt/view", desc: "Webstore pages user flow diagram" },
-              ].map((l) => (
-                <motion.a key={l.label}
-                  href={l.href} target="_blank" rel="noopener noreferrer"
-                  whileHover={{ y: -2 }}
-                  style={{
-                    background: "#FFFFFF", borderRadius: "12px", padding: "20px 22px",
-                    textDecoration: "none", display: "block",
-                    border: "1px solid rgba(192,64,90,0.1)",
-                  }}>
-                  <p style={{ fontSize: "13px", color: ACCENT, fontWeight: 500, marginBottom: "4px" }}>{l.label} ↗</p>
-                  <p style={{ fontSize: "12px", color: "#999", lineHeight: "1.5" }}>{l.desc}</p>
-                </motion.a>
-              ))}
-            </div>
-          </FadeUp>
-
-          <FadeUp delay={0.1}>
-            <div style={{
-              background: "rgba(0,0,0,0.04)", borderRadius: "14px", padding: "22px 26px",
-            }}>
-              <p style={{ fontSize: "11px", color: "#888", letterSpacing: "0.08em", marginBottom: "12px", fontWeight: 600 }}>TEAM</p>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
-                {[
-                  { name: "Rattikan Muangmoon", id: "662115042" },
-                  { name: "Chonticha Kummayom", id: "662115009" },
-                  { name: "Thanathorn Teekawong", id: "652115021" },
-                  { name: "Nuanwan Wongrat", id: "662115028" },
-                ].map((m) => (
-                  <div key={m.id} style={{
-                    background: "#FFFFFF", borderRadius: "8px", padding: "8px 14px",
-                    border: "1px solid rgba(0,0,0,0.07)",
-                  }}>
-                    <p style={{ fontSize: "13px", color: DARK }}>{m.name}</p>
-                    <p style={{ fontSize: "11px", color: "#AAA" }}>{m.id}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </FadeUp>
-
-        </div>
-      </div>
-
       {/* Closing quote */}
       <div style={{ background: "#FAFAF8", padding: "72px 40px" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
-          {/* Hi-fi prototype showcase */}
-          <FadeUp>
-            <p style={{ fontSize: "11px", color: ACCENT, letterSpacing: "0.12em", marginBottom: "14px", fontWeight: 600 }}>
-              HI-FI PROTOTYPE
-            </p>
-          </FadeUp>
-          <FadeUp delay={0.1}>
-            <PrototypeCarousel
-              images={[
-                "/projects/bing-chilling/prototypes/prototype-desktop.png",
-                "/projects/bing-chilling/prototypes/prototype-mobile.png",
-              ]}
-              alt="BingChilling hi-fi prototype"
-            />
-          </FadeUp>
-
           <FadeUp>
             <div style={{ borderLeft: `4px solid ${BG}`, paddingLeft: "28px", margin: "48px 0 56px" }}>
               <p style={{
                 fontFamily: "var(--font-display)", fontSize: "22px", color: DARK,
                 lineHeight: "1.55", fontStyle: "italic", fontWeight: 400,
               }}>
-                BingChilling showed me that the best design decisions come from understanding not just what users do,
-                but why collecting art toys matters to them emotionally. The whole product experience
-                is a reflection of that emotional value.
+                Building BingChilling end-to-end reinforced that solid execution only earns its keep when it serves
+                a real emotional need, here, the collector's relationship with the objects they hunt for.
+                Every schema, session, and screen was in service of that story.
               </p>
             </div>
           </FadeUp>
@@ -665,21 +610,21 @@ export function BingChillingPage() {
       </div>
 
       {/* All projects */}
-      <div style={{ background: "#1A1A1A", padding: "40px" }}>
+      <div style={{ background: "#111", padding: "40px" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-          <p style={{ fontSize: "11px", color: "#333", letterSpacing: "0.1em", marginBottom: "16px" }}>ALL PROJECTS</p>
+          <p style={{ fontSize: "11px", color: "#666", letterSpacing: "0.1em", marginBottom: "16px" }}>ALL PROJECTS</p>
           <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
             {projects.map((p) => (
               <Link key={p.slug} to={`/${p.slug}`} style={{
                 display: "inline-flex", alignItems: "center", gap: "8px",
                 padding: "8px 18px", borderRadius: "100px", textDecoration: "none", fontSize: "13px",
-                background: p.slug === "bingchilling" ? p.bg : "transparent",
-                color: p.slug === "bingchilling" ? p.textColor : "#444",
-                border: p.slug === "bingchilling" ? "none" : "1px solid #222",
+                background: p.slug === "bingchilling" ? "#FFFFFF" : "transparent",
+                color: p.slug === "bingchilling" ? "#111" : "#888",
+                border: p.slug === "bingchilling" ? "none" : "1px solid #333",
                 transition: "all 0.2s",
               }}
-                onMouseEnter={(e) => { if (p.slug !== "bingchilling") { e.currentTarget.style.borderColor = "#444"; e.currentTarget.style.color = "#888"; } }}
-                onMouseLeave={(e) => { if (p.slug !== "bingchilling") { e.currentTarget.style.borderColor = "#222"; e.currentTarget.style.color = "#444"; } }}
+                onMouseEnter={(e) => { if (p.slug !== "bingchilling") { e.currentTarget.style.borderColor = "#555"; e.currentTarget.style.color = "#CCC"; } }}
+                onMouseLeave={(e) => { if (p.slug !== "bingchilling") { e.currentTarget.style.borderColor = "#333"; e.currentTarget.style.color = "#888"; } }}
               >
                 <span style={{ width: "7px", height: "7px", borderRadius: "50%", background: p.bg, flexShrink: 0, border: "1px solid rgba(255,255,255,0.1)" }} />
                 {p.title}

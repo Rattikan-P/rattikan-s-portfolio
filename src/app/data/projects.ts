@@ -34,85 +34,15 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    slug: "whisker-haven",
-    number: "01",
-    title: "Whisker Haven",
-    subtitle: "Cat Hotel Booking & Management Platform",
-    description:
-      "A booking platform designed to make reserving cat hotel stays simple and stress-free for pet owners.",
-    longDescription:
-      "An end-to-end UX project for Whisker Haven: from early discovery research through to a validated high-fidelity prototype. The goal was to remove the confusion and distrust that pet owners face when searching for a reliable cat hotel.",
-    role: "UX/UI Designer",
-    duration: "12 weeks",
-    team: "2-person team (Rattikan + Nuanwan)",
-    tools: "Figma",
-    platform: "Web Application",
-    tags: ["UX Research", "UI Design", "Usability Testing", "End-to-end UX", "Web App"],
-    year: "2026",
-    bg: "#F5A623",
-    textColor: "#1A1A1A",
-    tagBg: "rgba(0,0,0,0.08)",
-    accent: "#7A4F00",
-    image: "/projects/whisker-haven/hero.png",
-    stats: [
-      { label: "Task completion rate", value: "100%" },
-      { label: "SUS score:Grade A, 'Excellent'", value: "85" },
-    ],
-    prototypeLink: "https://www.figma.com/proto/PkZWq94nimC2alRFRcTrlL/UI-Term-Project?node-id=89-227&starting-point-node-id=89%3A227&t=2iidHy6ASEbMyMS1-1",
-    phases: [
-      {
-        step: "01:Discover",
-        title: "The problem",
-        content: [
-          "Cat owners face persistent anxiety when boarding their cats: most facilities offer only occasional LINE messages or sporadic photos, leaving owners uncertain about their cat's wellbeing.",
-          "Interviewed 5 cat owners and surveyed 15 more to validate the problem. The average anxiety level during a stay measured 4.2/5.0, with 93% worrying about their cat's diet and wellbeing due to a lack of proactive updates.",
-          "Key insight: the core problem isn't price or trust in the facility; it's a structural gap in communication. Owners experience an 'information blackout' throughout the stay.",
-        ],
-        imageNote: "Insert: research synthesis / affinity diagram",
-      },
-      {
-        step: "02:Define",
-        title: "Finding direction",
-        content: [
-          "Synthesised research into 5 problem clusters via an affinity diagram: Emotional Anxiety, Emergency & Safety, Care & Profile Management, Communication Gap, and Booking & Information.",
-          "HMW: How might we shift the communication model from reactive to proactive, so owners feel informed and in control without feeling like a burden to the facility?",
-          "Defined a primary persona (Nat) and an As-Is journey map pinpointing where emotional low points occur during the boarding experience.",
-        ],
-        imageNote: "Insert: affinity diagram + persona + journey map",
-      },
-      {
-        step: "03:Design",
-        title: "Shaping the flow",
-        content: [
-          "Designed three core pillars: a Booking Engine (visual-first room reservation), Stay Management or 'Digital Nanny' (24/7 CCTV, daily reports, SOS), and Pet Identity or 'Cat Passport' (a single source of truth for each cat).",
-          "Built a strict linear booking flow: Select Dates > Select Cat > Select Room > Confirm, using progressive disclosure to prevent cognitive overload.",
-          "Iterated from low-fidelity wireframes to a high-fidelity Figma prototype, guided by a 'Cozy Efficiency' design language and warm, golden-hour visual references.",
-        ],
-        imageNote: "Insert: wireframes / hi-fi mockups",
-      },
-      {
-        step: "04:Validate",
-        title: "Testing it works",
-        content: [
-          "Ran formative testing on the low-fi prototype with 5 cat owners using a think-aloud protocol, surfacing 3 friction points (step indicator, CTA clarity, room card detail) that were fixed before hi-fi.",
-          "Summative testing measured effectiveness, efficiency, and satisfaction on the hi-fi prototype.",
-          "Result: 100% task completion · 79-second average booking time (~1.3 min) · SUS score 85.0, Grade A 'Excellent'.",
-        ],
-        imageNote: "Insert: usability testing session / SUS result chart",
-      },
-    ],
-    closing: "Whisker Haven proved that in care-service platforms, proactive transparency, not price, is what reduces owner anxiety. A structured booking flow, real-time stay monitoring, and a centralised pet profile transformed a reactive, high-friction experience into a high-assurance one.",
-  },
-  {
     slug: "starmory",
-    number: "02",
+    number: "01",
     title: "Starmory",
     subtitle: "Memory-Based Language Learning Application",
     description:
       "A language-learning app that turns personal photos into English lessons using Gemini 3 Flash AI and the FSRS spaced-repetition algorithm; grounded in 7 learning theories, not trends.",
     longDescription:
       "Most language apps treat learning as drills disconnected from real life. Starmory is different: users photograph their world, and Gemini 3 Flash turns those personal images into vocabulary lessons calibrated to their CEFR level. I contributed across the full stack: UX research, UI design, database architecture, and front-end development.",
-    role: "UX/UI Designer & Full-stack Developer",
+    role: "Full-stack Product Designer",
     duration: "16 weeks",
     team: "2-person team (Rattikan + Nuanwan)",
     tools: "Figma, Flutter, Supabase, Gemini 3 Flash",
@@ -184,6 +114,76 @@ export const projects: Project[] = [
     closing: "Starmory taught me that the strongest design decisions come from understanding the science of how people actually learn: not from copying what popular apps do. Grounding every feature in an established theory gave us a clear reason to say yes or no to any idea during the build.",
   },
   {
+    slug: "whisker-haven",
+    number: "02",
+    title: "Whisker Haven",
+    subtitle: "Cat Hotel Booking & Management Platform",
+    description:
+      "A booking platform designed to make reserving cat hotel stays simple and stress-free for pet owners.",
+    longDescription:
+      "An end-to-end UX project for Whisker Haven: from early discovery research through to a validated high-fidelity prototype. The goal was to remove the confusion and distrust that pet owners face when searching for a reliable cat hotel.",
+    role: "UX/UI Designer",
+    duration: "12 weeks",
+    team: "2-person team (Rattikan + Nuanwan)",
+    tools: "Figma",
+    platform: "Web Application",
+    tags: ["UX Research", "UI Design", "Usability Testing", "End-to-end UX", "Web App"],
+    year: "2026",
+    bg: "#F5A623",
+    textColor: "#1A1A1A",
+    tagBg: "rgba(0,0,0,0.08)",
+    accent: "#7A4F00",
+    image: "/projects/whisker-haven/hero.png",
+    stats: [
+      { label: "Task completion rate", value: "100%" },
+      { label: "SUS score:Grade A, 'Excellent'", value: "85" },
+    ],
+    prototypeLink: "https://www.figma.com/proto/PkZWq94nimC2alRFRcTrlL/UI-Term-Project?node-id=89-227&starting-point-node-id=89%3A227&t=2iidHy6ASEbMyMS1-1",
+    phases: [
+      {
+        step: "01:Discover",
+        title: "The problem",
+        content: [
+          "Cat owners face persistent anxiety when boarding their cats: most facilities offer only occasional LINE messages or sporadic photos, leaving owners uncertain about their cat's wellbeing.",
+          "Interviewed 5 cat owners and surveyed 15 more to validate the problem. The average anxiety level during a stay measured 4.2/5.0, with 93% worrying about their cat's diet and wellbeing due to a lack of proactive updates.",
+          "Key insight: the core problem isn't price or trust in the facility; it's a structural gap in communication. Owners experience an 'information blackout' throughout the stay.",
+        ],
+        imageNote: "Insert: research synthesis / affinity diagram",
+      },
+      {
+        step: "02:Define",
+        title: "Finding direction",
+        content: [
+          "Synthesised research into 5 problem clusters via an affinity diagram: Emotional Anxiety, Emergency & Safety, Care & Profile Management, Communication Gap, and Booking & Information.",
+          "HMW: How might we shift the communication model from reactive to proactive, so owners feel informed and in control without feeling like a burden to the facility?",
+          "Defined a primary persona (Nat) and an As-Is journey map pinpointing where emotional low points occur during the boarding experience.",
+        ],
+        imageNote: "Insert: affinity diagram + persona + journey map",
+      },
+      {
+        step: "03:Design",
+        title: "Shaping the flow",
+        content: [
+          "Designed three core pillars: a Booking Engine (visual-first room reservation), Stay Management or 'Digital Nanny' (24/7 CCTV, daily reports, SOS), and Pet Identity or 'Cat Passport' (a single source of truth for each cat).",
+          "Built a strict linear booking flow: Select Dates > Select Cat > Select Room > Confirm, using progressive disclosure to prevent cognitive overload.",
+          "Iterated from low-fidelity wireframes to a high-fidelity Figma prototype, guided by a 'Cozy Efficiency' design language and warm, golden-hour visual references.",
+        ],
+        imageNote: "Insert: wireframes / hi-fi mockups",
+      },
+      {
+        step: "04:Validate",
+        title: "Testing it works",
+        content: [
+          "Ran formative testing on the low-fi prototype with 5 cat owners using a think-aloud protocol, surfacing 3 friction points (step indicator, CTA clarity, room card detail) that were fixed before hi-fi.",
+          "Summative testing measured effectiveness, efficiency, and satisfaction on the hi-fi prototype.",
+          "Result: 100% task completion · 79-second average booking time (~1.3 min) · SUS score 85.0, Grade A 'Excellent'.",
+        ],
+        imageNote: "Insert: usability testing session / SUS result chart",
+      },
+    ],
+    closing: "Whisker Haven proved that in care-service platforms, proactive transparency, not price, is what reduces owner anxiety. A structured booking flow, real-time stay monitoring, and a centralised pet profile transformed a reactive, high-friction experience into a high-assurance one.",
+  },
+  {
     slug: "healthy-taste",
     number: "03",
     title: "Healthy Taste",
@@ -248,7 +248,7 @@ export const projects: Project[] = [
       "A plant care app combining AI-powered plant identification, care reminders, and a digital plant journal to help users keep their plants healthy.",
     longDescription:
       "Terramon was a 10-person university team project. UX/UI design and documentation was led by a sub-team of 4, including myself. The challenge: making plant care knowledge accessible to people who want to grow things but don't know where to start.",
-    role: "UX/UI Designer & Front-end Developer",
+    role: "Product Designer",
     duration: "14 weeks",
     team: "10-person cross-functional team (sub-team of 4 for UX/UI)",
     tools: "Figma, React Native, Node.js",
@@ -296,7 +296,7 @@ export const projects: Project[] = [
     closing: "Working in a 10-person team taught me that the design-to-dev handoff is itself a design problem. Clear documentation, shared components, and regular cross-team reviews made the difference between a product that ships and one that drifts.",
   },
   {
-    slug: "bing-chilling",
+    slug: "bingchilling",
     number: "05",
     title: "BingChilling",
     subtitle: "Art Toy E-Commerce Platform",
@@ -304,7 +304,7 @@ export const projects: Project[] = [
       "An e-commerce site for an art toy brand. Analysed user characteristics, mapped dual user journeys, then built the full application from database to front-end.",
     longDescription:
       "BingChilling required designing for two completely different user types on one platform: the art toy collector browsing for limited drops, and the back-office administrator managing inventory and orders. Balancing both journeys without compromising either was the core design challenge.",
-    role: "UX/UI Designer & Full-stack Developer",
+    role: "Full-stack Product Designer",
     duration: "12 weeks",
     team: "Solo project",
     tools: "Figma, React, Node.js, PostgreSQL",

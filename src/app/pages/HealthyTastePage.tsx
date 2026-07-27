@@ -5,6 +5,7 @@ import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { PrototypeCarousel } from "@/app/components/PrototypeCarousel";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
+import { Lightbox } from "@/app/components/Lightbox";
 
 const BG = "#E8522A";
 const DARK = "#1A0A00";
@@ -35,12 +36,15 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 }
 
 function Img({ src, alt, caption }: { src: string; alt: string; caption?: string }) {
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+
   return (
     <FadeUp>
       <figure style={{ margin: 0 }}>
         <motion.div
           whileHover={{ scale: 1.01, boxShadow: "0 12px 40px rgba(0,0,0,0.08)" }}
           transition={{ duration: 0.3, ease: "easeOut" }}
+          onClick={() => setIsLightboxOpen(true)}
           style={{ borderRadius: "12px", overflow: "hidden", cursor: "zoom-in" }}
         >
           <ImageWithFallback
@@ -51,6 +55,12 @@ function Img({ src, alt, caption }: { src: string; alt: string; caption?: string
         {caption && (
           <figcaption style={{ fontSize: "11px", color: "#AAA", letterSpacing: "0.04em", marginTop: "10px", textAlign: "center" }}>{caption}</figcaption>
         )}
+        <Lightbox
+          isOpen={isLightboxOpen}
+          src={src}
+          alt={alt}
+          onClose={() => setIsLightboxOpen(false)}
+        />
       </figure>
     </FadeUp>
   );
@@ -172,6 +182,7 @@ export function HealthyTastePage() {
             }}>
             {[
               { label: "My role", value: "UX/UI Designer" },
+              { label: "Team", value: "5-person team" },
               { label: "Platform", value: "Mobile App" },
             ].map((m) => (
               <div key={m.label} style={{ background: "#FDE6DC", padding: "14px 18px" }}>
@@ -188,7 +199,6 @@ export function HealthyTastePage() {
             {[
               { value: "3", label: "Competitor apps analysed" },
               { value: "30+", label: "Figma components built" },
-              { value: "<30s", label: "Target logging time per meal" },
             ].map((s) => (
               <div key={s.label}>
                 <div style={{ fontFamily: "var(--font-display)", fontSize: "54px", color: ACCENT, lineHeight: 1, marginBottom: "4px" }}>{s.value}</div>
@@ -225,7 +235,7 @@ export function HealthyTastePage() {
       {/* Tags */}
       <div style={{ background: "#FDE6DC", padding: "18px 40px" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto", display: "flex", gap: "8px", flexWrap: "wrap" }}>
-          {["Mobile App", "UX/UI Design", "Design System", "Figma", "Solo Project"].map((t) => (
+          {["Mobile App", "UX/UI Design", "Design System", "Figma"].map((t) => (
             <span key={t} style={{
               background: "rgba(232,82,42,0.12)", color: "#9A3412", borderRadius: "100px",
               padding: "6px 16px", fontSize: "12px", border: "1px solid rgba(232,82,42,0.25)",
@@ -250,13 +260,15 @@ export function HealthyTastePage() {
             }}>
               Understanding the friction
             </h2>
-            <p style={{ fontSize: "16px", color: "#666", lineHeight: "1.75", maxWidth: "640px", marginBottom: "36px" }}>
+            <p style={{ fontSize: "16px", color: "#666", lineHeight: "1.75", maxWidth: "100%", marginBottom: "36px" }}>
               The research question was simple: why do people who want to track calories stop doing it within two weeks?
               The answer wasn't willpower; it was the app.
             </p>
           </FadeUp>
 
-          <Img src="/projects/healthy-taste/competitive-analysis.png" alt="Competitive analysis comparing MyFitnessPal, Cronometer, and Lose It! on strengths and gaps" caption="Competitive Analysis: 3 apps compared on strengths and gaps" />
+          <div style={{ maxWidth: "700px", margin: "0 auto" }}>
+            <Img src="/projects/healthy-taste/competitive-analysis.png" alt="Competitive analysis comparing MyFitnessPal, Cronometer, and Lose It! on strengths and gaps" caption="Competitive Analysis: 3 apps compared on strengths and gaps" />
+          </div>
 
           {/* Key friction points */}
           <FadeUp delay={0.05}>
@@ -326,7 +338,7 @@ export function HealthyTastePage() {
             }}>
               From scattered complaints to clusters
             </h2>
-            <p style={{ fontSize: "16px", color: "#666", lineHeight: "1.75", maxWidth: "640px", marginBottom: "36px" }}>
+            <p style={{ fontSize: "16px", color: "#666", lineHeight: "1.75", maxWidth: "100%", marginBottom: "36px" }}>
               Research notes were grouped into an affinity diagram, turning scattered user complaints into a clear picture of
               where calorie-tracking apps consistently fail.
             </p>
@@ -352,7 +364,7 @@ export function HealthyTastePage() {
             }}>
               Who we're designing for
             </h2>
-            <p style={{ fontSize: "16px", color: "#666", lineHeight: "1.75", maxWidth: "640px", marginBottom: "36px" }}>
+            <p style={{ fontSize: "16px", color: "#666", lineHeight: "1.75", maxWidth: "100%", marginBottom: "36px" }}>
               Research findings shaped a primary persona and an as-is journey map, showing exactly where the daily
               tracking experience breaks down.
             </p>
@@ -422,7 +434,7 @@ export function HealthyTastePage() {
             }}>
               Prioritising what to fix first
             </h2>
-            <p style={{ fontSize: "16px", color: "#666", lineHeight: "1.75", maxWidth: "640px", marginBottom: "36px" }}>
+            <p style={{ fontSize: "16px", color: "#666", lineHeight: "1.75", maxWidth: "100%", marginBottom: "36px" }}>
               Each problem cluster was reframed as a How Might We question, then scored on Impact vs Effort to decide
               which fixes would deliver the most value for the least work.
             </p>
@@ -448,7 +460,7 @@ export function HealthyTastePage() {
             }}>
               Simplified logging flow
             </h2>
-            <p style={{ fontSize: "16px", color: "#666", lineHeight: "1.75", maxWidth: "640px", marginBottom: "36px" }}>
+            <p style={{ fontSize: "16px", color: "#666", lineHeight: "1.75", maxWidth: "100%", marginBottom: "36px" }}>
               Every screen was designed with one constraint: logging a meal must take under 30 seconds.
               That constraint forced every unnecessary step out of the flow.
             </p>
@@ -492,7 +504,7 @@ export function HealthyTastePage() {
               }}>
                 Scalable component library
               </h3>
-              <p style={{ fontSize: "15px", color: "#666", lineHeight: "1.7", maxWidth: "640px", marginBottom: "32px" }}>
+              <p style={{ fontSize: "15px", color: "#666", lineHeight: "1.7", maxWidth: "100%", marginBottom: "32px" }}>
                 A comprehensive Figma design system built to scale; so future features like meal planning, social sharing,
                 and coach integration can be built without reinventing the visual language.
               </p>
@@ -602,6 +614,11 @@ export function HealthyTastePage() {
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
           {/* Hi-fi prototype showcase */}
           <FadeUp>
+            <p style={{ fontSize: "14px", color: "#1A1A1A", opacity: 0.6, marginBottom: "24px", lineHeight: "1.6", maxWidth: "100%" }}>
+              From wireframes to polished screens: a quick-logging flow and design system built for scalability.
+            </p>
+          </FadeUp>
+          <FadeUp>
             <p style={{ fontSize: "11px", color: BG, letterSpacing: "0.12em", marginBottom: "14px", fontWeight: 600, display: "inline-flex", alignItems: "center", gap: "8px" }}>
               LO-FI
               <svg width="16" height="16" viewBox="0 0 24 24" fill={BG}>
@@ -699,21 +716,21 @@ export function HealthyTastePage() {
       </div>
 
       {/* All projects */}
-      <div style={{ background: "#1A1A1A", padding: "40px" }}>
+      <div style={{ background: "#111", padding: "40px" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-          <p style={{ fontSize: "11px", color: "#333", letterSpacing: "0.1em", marginBottom: "16px" }}>ALL PROJECTS</p>
+          <p style={{ fontSize: "11px", color: "#666", letterSpacing: "0.1em", marginBottom: "16px" }}>ALL PROJECTS</p>
           <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
             {projects.map((p) => (
               <Link key={p.slug} to={`/${p.slug}`} style={{
                 display: "inline-flex", alignItems: "center", gap: "8px",
                 padding: "8px 18px", borderRadius: "100px", textDecoration: "none", fontSize: "13px",
-                background: p.slug === "healthy-taste" ? p.bg : "transparent",
-                color: p.slug === "healthy-taste" ? p.textColor : "#444",
-                border: p.slug === "healthy-taste" ? "none" : "1px solid #222",
+                background: p.slug === "healthy-taste" ? "#FFFFFF" : "transparent",
+                color: p.slug === "healthy-taste" ? "#111" : "#888",
+                border: p.slug === "healthy-taste" ? "none" : "1px solid #333",
                 transition: "all 0.2s",
               }}
-                onMouseEnter={(e) => { if (p.slug !== "healthy-taste") { e.currentTarget.style.borderColor = "#444"; e.currentTarget.style.color = "#888"; } }}
-                onMouseLeave={(e) => { if (p.slug !== "healthy-taste") { e.currentTarget.style.borderColor = "#222"; e.currentTarget.style.color = "#444"; } }}
+                onMouseEnter={(e) => { if (p.slug !== "healthy-taste") { e.currentTarget.style.borderColor = "#555"; e.currentTarget.style.color = "#CCC"; } }}
+                onMouseLeave={(e) => { if (p.slug !== "healthy-taste") { e.currentTarget.style.borderColor = "#333"; e.currentTarget.style.color = "#888"; } }}
               >
                 <span style={{ width: "7px", height: "7px", borderRadius: "50%", background: p.bg, flexShrink: 0, border: "1px solid rgba(255,255,255,0.1)" }} />
                 {p.title}

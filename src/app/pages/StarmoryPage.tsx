@@ -5,8 +5,8 @@ import { getAdjacentProjects, projects } from "../data/projects";
 import { motion } from "motion/react";
 import { useState, useEffect } from "react";
 import { PrototypeCarousel } from "@/app/components/PrototypeCarousel";
+import { Lightbox } from "@/app/components/Lightbox";
 
-import competitiveAnalysis from "@/imports/Competitive_Analysis.png";
 import kickoffCanvas from "@/imports/Project_Kickoff_Canvas_Worksheet.png";
 import journeyMap from "@/imports/Journey_map.png";
 
@@ -37,12 +37,15 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 }
 
 function Img({ src, alt, caption }: { src: string; alt: string; caption?: string }) {
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+
   return (
     <FadeUp>
       <figure style={{ margin: 0 }}>
         <motion.div
           whileHover={{ scale: 1.015, boxShadow: "0 16px 48px rgba(0,0,0,0.4)" }}
           transition={{ duration: 0.3, ease: "easeOut" }}
+          onClick={() => setIsLightboxOpen(true)}
           style={{ borderRadius: "12px", overflow: "hidden", cursor: "zoom-in" }}
         >
           <ImageWithFallback
@@ -56,6 +59,12 @@ function Img({ src, alt, caption }: { src: string; alt: string; caption?: string
             marginTop: "10px", textAlign: "center",
           }}>{caption}</figcaption>
         )}
+        <Lightbox
+          isOpen={isLightboxOpen}
+          src={src}
+          alt={alt}
+          onClose={() => setIsLightboxOpen(false)}
+        />
       </figure>
     </FadeUp>
   );
@@ -198,9 +207,9 @@ export function StarmoryPage() {
             }}
           >
             {[
-              { label: "My role", value: "UX/UI Designer & Full-stack Dev" },
-              { label: "Team", value: "Rattikan + Nuanwan" },
-              { label: "Platform", value: "Mobile App (Flutter)" },
+              { label: "My role", value: "Full-stack Product Designer" },
+              { label: "Team", value: "2-person team" },
+              { label: "Platform", value: "Mobile App" },
             ].map((m) => (
               <div key={m.label} style={{ background: "#DBEAFE", padding: "14px 18px" }}>
                 <p style={{ fontSize: "10px", color: TEXT, opacity: 0.3, letterSpacing: "0.08em", marginBottom: "3px" }}>
@@ -285,7 +294,7 @@ export function StarmoryPage() {
             }}>
               Why do language apps fail people?
             </h2>
-            <p style={{ fontSize: "16px", color: TEXT, opacity: 0.72, lineHeight: "1.75", maxWidth: "640px", marginBottom: "28px" }}>
+            <p style={{ fontSize: "16px", color: TEXT, opacity: 0.72, lineHeight: "1.75", maxWidth: "100%", marginBottom: "28px" }}>
               We started by mapping the competitive landscape and understanding the emotional reality of our target users:
               Gen Z visual learners (18-27) in urban Thailand; people who tried Duolingo and quit within 3 months.
             </p>
@@ -338,7 +347,7 @@ export function StarmoryPage() {
             </div>
           </FadeUp>
 
-          <Img src={competitiveAnalysis} alt="Competitive analysis comparing Duolingo, Longjournal, Moodo, My Diary: feature matrix, screenshots, SWO analysis, and reflection" caption="Competitive Analysis: feature matrix, SWO, and design reflections" />
+          <Img src="/projects/starmory/competitive-analysis.png" alt="Competitive analysis comparing language learning apps: feature matrix, strengths, and gaps" caption="Competitive Analysis: feature matrix, strengths, and gaps" />
 
           <div style={{ marginTop: "20px" }}>
             <Img src="/projects/starmory/empathy-map.png" alt="Empathy map for a language learner: Think & Feel, See, Say & Do, Pain, Gain" caption="Empathy Map: the emotional reality of a tired learner" />
@@ -383,7 +392,7 @@ export function StarmoryPage() {
             }}>
               Turning insight into a design hypothesis
             </h2>
-            <p style={{ fontSize: "16px", color: TEXT, opacity: 0.72, lineHeight: "1.75", maxWidth: "640px", marginBottom: "40px" }}>
+            <p style={{ fontSize: "16px", color: TEXT, opacity: 0.72, lineHeight: "1.75", maxWidth: "100%", marginBottom: "40px" }}>
               The Project Kickoff Canvas forced us to articulate the problem, our assumptions, and a testable hypothesis before writing a single line of code or sketching a single screen.
             </p>
           </FadeUp>
@@ -441,7 +450,7 @@ export function StarmoryPage() {
             }}>
               Designing the ideal user journey
             </h2>
-            <p style={{ fontSize: "16px", color: TEXT, opacity: 0.72, lineHeight: "1.75", maxWidth: "640px", marginBottom: "40px" }}>
+            <p style={{ fontSize: "16px", color: TEXT, opacity: 0.72, lineHeight: "1.75", maxWidth: "100%", marginBottom: "40px" }}>
               Persona Phukan, 21, returns home mentally exhausted after class and just wants to improve her English, without it feeling like work. The journey map plots exactly how Starmory fits into that moment.
             </p>
           </FadeUp>
@@ -499,6 +508,11 @@ export function StarmoryPage() {
               </div>
             </div>
           </FadeUp>
+
+          {/* Mood board */}
+          <div style={{ maxWidth: "560px", margin: "40px auto 0" }}>
+            <Img src="/projects/starmory/mood-board.png" alt="Starmory mood board: visual direction, colors, and mood references" caption="Mood Board: visual direction for Starmory" />
+          </div>
         </div>
       </div>
 
@@ -516,7 +530,7 @@ export function StarmoryPage() {
             }}>
               7 learning theories, not trends
             </h2>
-            <p style={{ fontSize: "16px", color: "#1E3A5F", lineHeight: "1.75", maxWidth: "640px", marginBottom: "36px" }}>
+            <p style={{ fontSize: "16px", color: "#1E3A5F", lineHeight: "1.75", maxWidth: "100%", marginBottom: "36px" }}>
               Every feature traces back to an established theory of how humans actually remember and acquire language.
               The diagram maps each theory to the part of the product it informs.
             </p>
@@ -626,7 +640,7 @@ export function StarmoryPage() {
             }}>
               A memory keeper that teaches English
             </h2>
-            <p style={{ fontSize: "16px", color: TEXT, opacity: 0.72, lineHeight: "1.75", maxWidth: "640px", marginBottom: "36px" }}>
+            <p style={{ fontSize: "16px", color: TEXT, opacity: 0.72, lineHeight: "1.75", maxWidth: "100%", marginBottom: "36px" }}>
               The opportunities above pointed to one idea: turn personal photos into the lesson material itself.
               Three core mechanisms, each grounded in a specific learning science, work together so learning feels
               like reliving moments, not studying.
@@ -693,7 +707,7 @@ export function StarmoryPage() {
             }}>
               Full-stack ownership
             </h2>
-            <p style={{ fontSize: "16px", color: TEXT, opacity: 0.72, lineHeight: "1.75", maxWidth: "640px", marginBottom: "40px" }}>
+            <p style={{ fontSize: "16px", color: TEXT, opacity: 0.72, lineHeight: "1.75", maxWidth: "100%", marginBottom: "40px" }}>
               I took primary ownership of the database architecture and FSRS algorithm implementation, while also contributing to the Flutter front-end across the capture, lesson, and review flows.
             </p>
           </FadeUp>
@@ -730,8 +744,13 @@ export function StarmoryPage() {
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
           {/* Hi-fi prototype showcase */}
           <FadeUp>
+            <p style={{ fontSize: "14px", color: TEXT, opacity: 0.6, marginBottom: "24px", lineHeight: "1.6", maxWidth: "100%" }}>
+              Science meets real life: turning your own photos into lasting vocabulary memories.
+            </p>
+          </FadeUp>
+          <FadeUp>
             <p style={{ fontSize: "11px", color: ACCENT, letterSpacing: "0.12em", marginBottom: "14px", fontWeight: 600 }}>
-              HI-FI PROTOTYPE
+              MID-FI PROTOTYPE
             </p>
           </FadeUp>
           <FadeUp delay={0.1}>
@@ -754,17 +773,15 @@ export function StarmoryPage() {
 
           <FadeUp delay={0.1}>
             <div style={{
-              background: "#FFFFFF", borderRadius: "20px",
+              background: BG, borderRadius: "20px",
               padding: "36px 40px",
               display: "flex", alignItems: "center", justifyContent: "space-between",
               flexWrap: "wrap", gap: "20px",
-              border: "1px solid rgba(37,99,235,0.12)",
-              boxShadow: "0 4px 16px rgba(37,99,235,0.06)",
             }}>
               <div>
-                <p style={{ fontSize: "12px", color: TEXT, opacity: 0.3, marginBottom: "4px" }}>Want to explore it?</p>
-                <p style={{ fontFamily: "var(--font-display)", fontSize: "24px", color: TEXT, fontWeight: 400 }}>
-                  View the prototype
+                <p style={{ fontSize: "12px", color: "#FFFFFF", opacity: 0.7, marginBottom: "4px" }}>Want to explore it?</p>
+                <p style={{ fontFamily: "var(--font-display)", fontSize: "24px", color: "#FFFFFF", fontWeight: 400 }}>
+                  View the project
                 </p>
               </div>
               <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
@@ -775,7 +792,7 @@ export function StarmoryPage() {
                   whileHover={{ scale: 1.04 }}
                   whileTap={{ scale: 0.97 }}
                   style={{
-                    background: ACCENT, color: BG, borderRadius: "100px",
+                    background: "#FFFFFF", color: ACCENT, borderRadius: "100px",
                     padding: "13px 26px", fontSize: "14px", textDecoration: "none",
                   }}
                 >
@@ -784,14 +801,14 @@ export function StarmoryPage() {
                 <motion.a
                   href="https://www.figma.com/design/iBvrbgDMKsCAo8KEdjN7aa/Starmory?node-id=0-1&t=vKqMRBP87CLwki38-1" target="_blank" rel="noopener noreferrer"
                   whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}
-                  style={{ background: "transparent", color: TEXT, borderRadius: "100px", padding: "13px 26px", fontSize: "14px", textDecoration: "none", border: "1.5px solid rgba(15,27,45,0.3)" }}
+                  style={{ background: "transparent", color: "#FFFFFF", borderRadius: "100px", padding: "13px 26px", fontSize: "14px", textDecoration: "none", border: "1.5px solid rgba(255,255,255,0.4)" }}
                 >
                   Figma ↗
                 </motion.a>
                 <motion.a
                   href="https://github.com/Rattikan-P/starmory-app" target="_blank" rel="noopener noreferrer"
                   whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}
-                  style={{ background: "transparent", color: TEXT, borderRadius: "100px", padding: "13px 26px", fontSize: "14px", textDecoration: "none", border: "1.5px solid rgba(15,27,45,0.3)" }}
+                  style={{ background: "transparent", color: "#FFFFFF", borderRadius: "100px", padding: "13px 26px", fontSize: "14px", textDecoration: "none", border: "1.5px solid rgba(255,255,255,0.4)" }}
                 >
                   GitHub ↗
                 </motion.a>
@@ -839,21 +856,21 @@ export function StarmoryPage() {
       </div>
 
       {/* All projects */}
-      <div style={{ background: "#0D0D15", padding: "40px" }}>
+      <div style={{ background: "#111", padding: "40px" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-          <p style={{ fontSize: "11px", color: "#222", letterSpacing: "0.1em", marginBottom: "16px" }}>ALL PROJECTS</p>
+          <p style={{ fontSize: "11px", color: "#666", letterSpacing: "0.1em", marginBottom: "16px" }}>ALL PROJECTS</p>
           <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
             {projects.map((p) => (
               <Link key={p.slug} to={`/${p.slug}`} style={{
                 display: "inline-flex", alignItems: "center", gap: "8px",
                 padding: "8px 18px", borderRadius: "100px", textDecoration: "none", fontSize: "13px",
-                background: p.slug === "starmory" ? p.bg : "transparent",
-                color: p.slug === "starmory" ? ACCENT : "#333",
-                border: p.slug === "starmory" ? `1px solid ${ACCENT}30` : "1px solid #1A1A1A",
+                background: p.slug === "starmory" ? "#FFFFFF" : "transparent",
+                color: p.slug === "starmory" ? "#111" : "#888",
+                border: p.slug === "starmory" ? "none" : "1px solid #333",
                 transition: "all 0.2s",
               }}
-                onMouseEnter={(e) => { if (p.slug !== "starmory") { e.currentTarget.style.borderColor = "#333"; e.currentTarget.style.color = "#555"; } }}
-                onMouseLeave={(e) => { if (p.slug !== "starmory") { e.currentTarget.style.borderColor = "#1A1A1A"; e.currentTarget.style.color = "#333"; } }}
+                onMouseEnter={(e) => { if (p.slug !== "starmory") { e.currentTarget.style.borderColor = "#555"; e.currentTarget.style.color = "#CCC"; } }}
+                onMouseLeave={(e) => { if (p.slug !== "starmory") { e.currentTarget.style.borderColor = "#333"; e.currentTarget.style.color = "#888"; } }}
               >
                 <span style={{ width: "7px", height: "7px", borderRadius: "50%", background: p.bg, flexShrink: 0, border: "1px solid rgba(15,27,45,0.1)" }} />
                 {p.title}

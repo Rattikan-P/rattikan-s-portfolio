@@ -5,13 +5,14 @@ import { getAdjacentProjects, projects } from "../data/projects";
 import { motion } from "motion/react";
 import { useEffect, useState } from "react";
 import { PrototypeCarousel } from "@/app/components/PrototypeCarousel";
+import { Lightbox } from "@/app/components/Lightbox";
 
 import userJourneyMap from "@/imports/User_Journey_Map__Without_App_.png";
 import userFlow from "@/imports/User_Flow_Low-fidelity_Prototype.png";
 
-const BG = "#2D5016";
-const ACCENT = "#86EFAC";
-const TEXT = "#FFFFFF";
+const BG = "#aacb01";
+const ACCENT = "#4d7c0f";
+const TEXT = "#1A2E0A";
 
 const PHASES = [
   { num: "01", label: "DISCOVER" },
@@ -20,7 +21,7 @@ const PHASES = [
   { num: "04", label: "BUILD" },
 ];
 
-const PHASE_BG = ["#2D5016", "#32581a", "#294d14", "#2a5212"];
+const PHASE_BG = ["#F4FCE8", "#E8F5D0", "#F4FCE8", "#E8F5D0"];
 
 function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
   return (
@@ -36,24 +37,33 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 }
 
 function Img({ src, alt, caption }: { src: string; alt: string; caption?: string }) {
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+
   return (
     <FadeUp>
       <figure style={{ margin: 0 }}>
         <motion.div
-          whileHover={{ scale: 1.012, boxShadow: "0 16px 48px rgba(0,0,0,0.4)" }}
+          whileHover={{ scale: 1.012, boxShadow: "0 12px 40px rgba(0,0,0,0.1)" }}
           transition={{ duration: 0.3, ease: "easeOut" }}
+          onClick={() => setIsLightboxOpen(true)}
           style={{ borderRadius: "12px", overflow: "hidden", cursor: "zoom-in" }}
         >
           <ImageWithFallback
             src={src} alt={alt}
-            style={{ width: "100%", display: "block", border: "1px solid rgba(255,255,255,0.07)" }}
+            style={{ width: "100%", display: "block", border: "1px solid rgba(0,0,0,0.06)" }}
           />
         </motion.div>
         {caption && (
-          <figcaption style={{ fontSize: "11px", color: "#4a6a3a", letterSpacing: "0.04em", marginTop: "10px", textAlign: "center" }}>
+          <figcaption style={{ fontSize: "11px", color: "#888", letterSpacing: "0.04em", marginTop: "10px", textAlign: "center" }}>
             {caption}
           </figcaption>
         )}
+        <Lightbox
+          isOpen={isLightboxOpen}
+          src={src}
+          alt={alt}
+          onClose={() => setIsLightboxOpen(false)}
+        />
       </figure>
     </FadeUp>
   );
@@ -64,12 +74,12 @@ function PhaseStrip({ num, label }: { num: string; label: string }) {
     <div style={{
       display: "flex", alignItems: "center", gap: "16px",
       padding: "22px 40px",
-      background: "rgba(134,239,172,0.05)",
-      borderTop: "1px solid rgba(134,239,172,0.08)",
+      background: "rgba(0,0,0,0.03)",
+      borderTop: "1px solid rgba(0,0,0,0.06)",
     }}>
       <span style={{ fontFamily: "var(--font-display)", fontSize: "13px", color: ACCENT, fontStyle: "italic" }}>{num}</span>
-      <div style={{ width: "1px", height: "16px", background: "rgba(255,255,255,0.1)" }} />
-      <span style={{ fontSize: "10px", letterSpacing: "0.14em", fontWeight: 600, color: "#4a6a3a" }}>{label}</span>
+      <div style={{ width: "1px", height: "16px", background: "rgba(0,0,0,0.1)" }} />
+      <span style={{ fontSize: "10px", letterSpacing: "0.14em", fontWeight: 600, color: "#999" }}>{label}</span>
     </div>
   );
 }
@@ -82,7 +92,7 @@ function SideProgress({ activePhase }: { activePhase: number }) {
     }}>
       {PHASES.map((_, i) => (
         <motion.div key={i}
-          animate={{ width: i === activePhase ? 24 : 6, background: i === activePhase ? ACCENT : "rgba(255,255,255,0.1)" }}
+          animate={{ width: i === activePhase ? 24 : 6, background: i === activePhase ? ACCENT : "rgba(0,0,0,0.15)" }}
           transition={{ duration: 0.3, ease: "easeOut" }}
           style={{ height: "6px", borderRadius: "100px" }}
         />
@@ -110,7 +120,7 @@ export function TerramonPage() {
   }, []);
 
   return (
-    <div style={{ background: BG, minHeight: "100vh" }}>
+    <div style={{ background: "#FAFAF8", minHeight: "100vh" }}>
       <SideProgress activePhase={activePhase} />
 
       {/* ── Hero ── */}
@@ -121,7 +131,7 @@ export function TerramonPage() {
           style={{
             position: "absolute", bottom: "-60px", right: "-20px",
             fontFamily: "var(--font-display)", fontSize: "clamp(180px, 24vw, 340px)",
-            lineHeight: 1, color: "rgba(134,239,172,0.04)", fontWeight: 700,
+            lineHeight: 1, color: "rgba(255,255,255,0.18)", fontWeight: 700,
             pointerEvents: "none", userSelect: "none", letterSpacing: "-0.05em",
           }}
         >04</motion.div>
@@ -130,11 +140,11 @@ export function TerramonPage() {
           <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
             <Link to="/" style={{
               display: "inline-flex", alignItems: "center", gap: "8px",
-              color: TEXT, opacity: 0.3, textDecoration: "none", fontSize: "13px",
+              color: TEXT, opacity: 0.5, textDecoration: "none", fontSize: "13px",
               letterSpacing: "0.03em", transition: "opacity 0.2s", marginBottom: "48px",
             }}
               onMouseEnter={(e) => (e.currentTarget.style.opacity = "1")}
-              onMouseLeave={(e) => (e.currentTarget.style.opacity = "0.3")}
+              onMouseLeave={(e) => (e.currentTarget.style.opacity = "0.5")}
             >
               <ArrowLeft size={14} /> Back to work
             </Link>
@@ -145,8 +155,8 @@ export function TerramonPage() {
 
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.1 }}
             style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "12px", flexWrap: "wrap" }}>
-            <span style={{ fontSize: "11px", color: TEXT, opacity: 0.25, letterSpacing: "0.1em" }}>04 · 2025</span>
-            <span style={{ fontSize: "11px", color: TEXT, background: "rgba(0,0,0,0.1)", borderRadius: "4px", padding: "2px 8px", opacity: 0.75 }}>AI Plant Care App</span>
+            <span style={{ fontSize: "11px", color: TEXT, opacity: 0.5, letterSpacing: "0.1em" }}>04 · 2025</span>
+            <span style={{ fontSize: "11px", color: TEXT, background: "rgba(0,0,0,0.08)", borderRadius: "4px", padding: "2px 8px", opacity: 0.8 }}>AI Plant Care App</span>
           </motion.div>
 
           <motion.h1 initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }}
@@ -160,7 +170,7 @@ export function TerramonPage() {
 
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.25 }}
-            style={{ fontSize: "18px", color: TEXT, opacity: 0.5, maxWidth: "560px", lineHeight: "1.7", marginBottom: "48px" }}>
+            style={{ fontSize: "18px", color: TEXT, opacity: 0.7, maxWidth: "560px", lineHeight: "1.7", marginBottom: "48px" }}>
             A smart gardening assistant that bridges the gap between plant enthusiasm and plant care knowledge: combining AI identification, automated reminders, and community support in one app.
           </motion.p>
 
@@ -169,15 +179,16 @@ export function TerramonPage() {
             transition={{ duration: 0.6, delay: 0.35 }}
             style={{
               display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(130px, 1fr))",
-              gap: "1px", background: "rgba(134,239,172,0.1)", borderRadius: "14px",
+              gap: "1px", background: "rgba(77,124,15,0.2)", borderRadius: "14px",
               overflow: "hidden", maxWidth: "700px",
             }}>
             {[
-              { label: "My role", value: "UX/UI Designer & Front-end Dev" },
+              { label: "My role", value: "Product Designer" },
+              { label: "Team", value: "10-person team" },
               { label: "Platform", value: "Mobile App" },
             ].map((m) => (
-              <div key={m.label} style={{ background: "rgba(134,239,172,0.04)", padding: "14px 18px" }}>
-                <p style={{ fontSize: "10px", color: TEXT, opacity: 0.25, letterSpacing: "0.08em", marginBottom: "3px" }}>{m.label.toUpperCase()}</p>
+              <div key={m.label} style={{ background: "rgba(255,255,255,0.65)", padding: "14px 18px" }}>
+                <p style={{ fontSize: "10px", color: TEXT, opacity: 0.5, letterSpacing: "0.08em", marginBottom: "3px" }}>{m.label.toUpperCase()}</p>
                 <p style={{ fontSize: "13px", color: TEXT, lineHeight: "1.4" }}>{m.value}</p>
               </div>
             ))}
@@ -189,12 +200,11 @@ export function TerramonPage() {
             style={{ display: "flex", gap: "48px", marginTop: "40px", flexWrap: "wrap" }}>
             {[
               { value: "6", label: "Core features shipped" },
-              { value: "10", label: "Cross-functional team size" },
               { value: "13", label: "Screens in plant ID flow" },
             ].map((s) => (
               <div key={s.label}>
                 <div style={{ fontFamily: "var(--font-display)", fontSize: "54px", color: ACCENT, lineHeight: 1, marginBottom: "4px" }}>{s.value}</div>
-                <div style={{ fontSize: "13px", color: TEXT, opacity: 0.4 }}>{s.label}</div>
+                <div style={{ fontSize: "13px", color: TEXT, opacity: 0.6 }}>{s.label}</div>
               </div>
             ))}
           </motion.div>
@@ -225,13 +235,13 @@ export function TerramonPage() {
       </div>
 
       {/* Tags */}
-      <div style={{ background: "rgba(134,239,172,0.04)", padding: "18px 40px", borderBottom: "1px solid rgba(134,239,172,0.07)" }}>
+      <div style={{ background: "#EFF7D2", padding: "18px 40px" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto", display: "flex", gap: "8px", flexWrap: "wrap" }}>
           {["AI", "UX/UI Design", "Full-stack", "Team Project", "Vue.js", "Spring Boot", "TensorFlow"].map((t) => (
             <span key={t} style={{
-              background: "rgba(134,239,172,0.08)", color: ACCENT,
+              background: "rgba(77,124,15,0.1)", color: ACCENT,
               borderRadius: "100px", padding: "6px 16px", fontSize: "12px",
-              border: "1px solid rgba(134,239,172,0.15)",
+              border: "1px solid rgba(77,124,15,0.2)",
             }}>{t}</span>
           ))}
         </div>
@@ -242,7 +252,7 @@ export function TerramonPage() {
         <div style={{
           position: "absolute", top: "-10px", right: "-10px",
           fontFamily: "var(--font-display)", fontSize: "clamp(120px, 18vw, 220px)",
-          color: "rgba(134,239,172,0.03)", fontWeight: 700, lineHeight: 1, pointerEvents: "none", userSelect: "none",
+          color: "rgba(77,124,15,0.04)", fontWeight: 700, lineHeight: 1, pointerEvents: "none", userSelect: "none",
         }}>01</div>
         <PhaseStrip num="01" label="DISCOVER" />
         <div style={{ maxWidth: "900px", margin: "0 auto", padding: "56px 40px 72px", position: "relative", zIndex: 1 }}>
@@ -253,7 +263,7 @@ export function TerramonPage() {
             }}>
               The plant dies. Every time.
             </h2>
-            <p style={{ fontSize: "16px", color: TEXT, opacity: 0.45, lineHeight: "1.75", maxWidth: "640px", marginBottom: "40px" }}>
+            <p style={{ fontSize: "16px", color: TEXT, opacity: 0.6, lineHeight: "1.75", maxWidth: "100%", marginBottom: "40px" }}>
               We mapped the experience of a plant owner <em>without</em> any app; across 8 stages from impulse buy to dead plant.
               The journey revealed where confidence turns to guilt, and where a smart assistant could intervene.
             </p>
@@ -279,13 +289,13 @@ export function TerramonPage() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: i * 0.07 }}
                   style={{
-                    background: "rgba(134,239,172,0.05)", borderRadius: "10px", padding: "14px 20px",
-                    border: "1px solid rgba(134,239,172,0.08)",
+                    background: "#FFFFFF", borderRadius: "10px", padding: "14px 20px",
+                    border: "1px solid rgba(0,0,0,0.06)",
                     display: "grid", gridTemplateColumns: "160px 180px 1fr", gap: "16px", alignItems: "center",
                   }}>
                   <p style={{ fontSize: "13px", color: ACCENT, fontWeight: 500 }}>{s.stage}</p>
-                  <p style={{ fontSize: "12px", color: TEXT, opacity: 0.5 }}>{s.emotion}</p>
-                  <p style={{ fontSize: "13px", color: TEXT, opacity: 0.55, lineHeight: "1.5", fontStyle: "italic" }}>{s.insight}</p>
+                  <p style={{ fontSize: "12px", color: TEXT, opacity: 0.6 }}>{s.emotion}</p>
+                  <p style={{ fontSize: "13px", color: TEXT, opacity: 0.65, lineHeight: "1.5", fontStyle: "italic" }}>{s.insight}</p>
                 </motion.div>
               ))}
             </div>
@@ -298,7 +308,7 @@ export function TerramonPage() {
         <div style={{
           position: "absolute", top: "-10px", right: "-10px",
           fontFamily: "var(--font-display)", fontSize: "clamp(120px, 18vw, 220px)",
-          color: "rgba(134,239,172,0.03)", fontWeight: 700, lineHeight: 1, pointerEvents: "none", userSelect: "none",
+          color: "rgba(77,124,15,0.04)", fontWeight: 700, lineHeight: 1, pointerEvents: "none", userSelect: "none",
         }}>02</div>
         <PhaseStrip num="02" label="DEFINE" />
         <div style={{ maxWidth: "900px", margin: "0 auto", padding: "56px 40px 72px", position: "relative", zIndex: 1 }}>
@@ -309,7 +319,7 @@ export function TerramonPage() {
             }}>
               6 features. Every one with a purpose.
             </h2>
-            <p style={{ fontSize: "16px", color: TEXT, opacity: 0.45, lineHeight: "1.75", maxWidth: "640px", marginBottom: "40px" }}>
+            <p style={{ fontSize: "16px", color: TEXT, opacity: 0.6, lineHeight: "1.75", maxWidth: "100%", marginBottom: "40px" }}>
               The journey map revealed three root causes: lack of identification knowledge, no care routine, and no community to ask.
               We defined 6 features to address each; backed by a full Software Requirements Specification.
             </p>
@@ -330,20 +340,20 @@ export function TerramonPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.07 }}
                 style={{
-                  background: "rgba(134,239,172,0.05)", borderRadius: "12px", padding: "18px 22px",
-                  border: "1px solid rgba(134,239,172,0.08)",
+                  background: "#FFFFFF", borderRadius: "12px", padding: "18px 22px",
+                  border: "1px solid rgba(0,0,0,0.06)",
                   display: "grid", gridTemplateColumns: "36px 160px 1fr", gap: "16px", alignItems: "start",
                 }}>
-                <span style={{ fontFamily: "var(--font-display)", fontSize: "14px", color: ACCENT, opacity: 0.5, fontStyle: "italic" }}>{f.num}</span>
+                <span style={{ fontFamily: "var(--font-display)", fontSize: "14px", color: ACCENT, opacity: 0.6, fontStyle: "italic" }}>{f.num}</span>
                 <p style={{ fontSize: "13px", color: ACCENT, fontWeight: 500, paddingTop: "1px" }}>{f.name}</p>
-                <p style={{ fontSize: "13px", color: TEXT, opacity: 0.5, lineHeight: "1.6" }}>{f.desc}</p>
+                <p style={{ fontSize: "13px", color: TEXT, opacity: 0.65, lineHeight: "1.6" }}>{f.desc}</p>
               </motion.div>
             ))}
           </div>
 
           <FadeUp delay={0.1}>
             <div style={{
-              background: "rgba(134,239,172,0.07)", borderRadius: "14px", padding: "24px 28px",
+              background: "rgba(77,124,15,0.06)", borderRadius: "14px", padding: "24px 28px",
               borderLeft: `4px solid ${ACCENT}`,
             }}>
               <p style={{ fontSize: "11px", color: ACCENT, letterSpacing: "0.08em", marginBottom: "12px", fontWeight: 600 }}>SYSTEM ARCHITECTURE</p>
@@ -356,9 +366,9 @@ export function TerramonPage() {
                   "Firebase Cloud Messaging",
                 ].map((t) => (
                   <span key={t} style={{
-                    background: "rgba(134,239,172,0.1)", color: ACCENT,
+                    background: "rgba(77,124,15,0.1)", color: ACCENT,
                     borderRadius: "6px", padding: "5px 12px", fontSize: "12px",
-                    border: "1px solid rgba(134,239,172,0.15)",
+                    border: "1px solid rgba(77,124,15,0.2)",
                   }}>{t}</span>
                 ))}
               </div>
@@ -367,11 +377,11 @@ export function TerramonPage() {
 
           <FadeUp delay={0.15}>
             <div style={{
-              marginTop: "16px", background: "rgba(255,255,255,0.03)", borderRadius: "14px",
-              padding: "22px 28px", border: "1px solid rgba(255,255,255,0.06)",
+              marginTop: "16px", background: "#FFFFFF", borderRadius: "14px",
+              padding: "22px 28px", border: "1px solid rgba(0,0,0,0.06)",
             }}>
-              <p style={{ fontSize: "11px", color: "#4a6a3a", letterSpacing: "0.08em", marginBottom: "12px", fontWeight: 600 }}>MY CONTRIBUTION: USE CASE OWNERSHIP</p>
-              <p style={{ fontSize: "14px", color: TEXT, opacity: 0.6, lineHeight: "1.7" }}>
+              <p style={{ fontSize: "11px", color: "#999", letterSpacing: "0.08em", marginBottom: "12px", fontWeight: 600 }}>MY CONTRIBUTION: USE CASE OWNERSHIP</p>
+              <p style={{ fontSize: "14px", color: TEXT, opacity: 0.7, lineHeight: "1.7" }}>
                 I authored the full Use Case Description for <strong style={{ color: ACCENT }}>Feature #2: Plant Identification</strong>:
                 5 URS, 14+ SRS items, Normal/Alternative/Exception flows (A1–A9, E1–E4), input specifications,
                 pre/post conditions, and a traceability matrix. I also led the design sub-team through sprints and design-to-dev handoff.
@@ -386,7 +396,7 @@ export function TerramonPage() {
         <div style={{
           position: "absolute", top: "-10px", right: "-10px",
           fontFamily: "var(--font-display)", fontSize: "clamp(120px, 18vw, 220px)",
-          color: "rgba(134,239,172,0.03)", fontWeight: 700, lineHeight: 1, pointerEvents: "none", userSelect: "none",
+          color: "rgba(77,124,15,0.04)", fontWeight: 700, lineHeight: 1, pointerEvents: "none", userSelect: "none",
         }}>03</div>
         <PhaseStrip num="03" label="DESIGN" />
         <div style={{ maxWidth: "900px", margin: "0 auto", padding: "56px 40px 72px", position: "relative", zIndex: 1 }}>
@@ -397,7 +407,7 @@ export function TerramonPage() {
             }}>
               13-screen plant identification flow
             </h2>
-            <p style={{ fontSize: "16px", color: TEXT, opacity: 0.45, lineHeight: "1.75", maxWidth: "640px", marginBottom: "40px" }}>
+            <p style={{ fontSize: "16px", color: TEXT, opacity: 0.6, lineHeight: "1.75", maxWidth: "100%", marginBottom: "40px" }}>
               Low-fidelity wireframes mapped every state of the Plant Identification feature; including all error, loading, and edge-case screens; before a single pixel of hi-fi was designed.
             </p>
           </FadeUp>
@@ -428,11 +438,11 @@ export function TerramonPage() {
                 { id: "UI-013", name: "My Garden" },
               ].map((s) => (
                 <div key={s.id} style={{
-                  background: "rgba(134,239,172,0.05)", borderRadius: "8px", padding: "10px 14px",
-                  border: "1px solid rgba(134,239,172,0.08)",
+                  background: "#FFFFFF", borderRadius: "8px", padding: "10px 14px",
+                  border: "1px solid rgba(0,0,0,0.06)",
                 }}>
-                  <p style={{ fontSize: "10px", color: ACCENT, opacity: 0.6, letterSpacing: "0.06em", marginBottom: "2px" }}>{s.id}</p>
-                  <p style={{ fontSize: "12px", color: TEXT, opacity: 0.65 }}>{s.name}</p>
+                  <p style={{ fontSize: "10px", color: ACCENT, opacity: 0.7, letterSpacing: "0.06em", marginBottom: "2px" }}>{s.id}</p>
+                  <p style={{ fontSize: "12px", color: TEXT, opacity: 0.75 }}>{s.name}</p>
                 </div>
               ))}
             </div>
@@ -440,7 +450,7 @@ export function TerramonPage() {
 
           <FadeUp delay={0.15}>
             <div style={{
-              marginTop: "20px", background: "rgba(134,239,172,0.07)", borderRadius: "12px",
+              marginTop: "20px", background: "rgba(77,124,15,0.06)", borderRadius: "12px",
               padding: "20px 24px", borderLeft: `4px solid ${ACCENT}`,
             }}>
               <p style={{ fontSize: "11px", color: ACCENT, letterSpacing: "0.08em", marginBottom: "8px", fontWeight: 600 }}>USABILITY REQUIREMENTS MET BY DESIGN</p>
@@ -452,7 +462,7 @@ export function TerramonPage() {
                 ].map((r, i) => (
                   <div key={i} style={{ display: "grid", gridTemplateColumns: "16px 1fr", gap: "10px", alignItems: "start" }}>
                     <div style={{ width: "5px", height: "5px", borderRadius: "50%", background: ACCENT, marginTop: "7px", flexShrink: 0 }} />
-                    <p style={{ fontSize: "13px", color: TEXT, opacity: 0.6, lineHeight: "1.6" }}>{r}</p>
+                    <p style={{ fontSize: "13px", color: TEXT, opacity: 0.7, lineHeight: "1.6" }}>{r}</p>
                   </div>
                 ))}
               </div>
@@ -466,7 +476,7 @@ export function TerramonPage() {
         <div style={{
           position: "absolute", top: "-10px", right: "-10px",
           fontFamily: "var(--font-display)", fontSize: "clamp(120px, 18vw, 220px)",
-          color: "rgba(134,239,172,0.03)", fontWeight: 700, lineHeight: 1, pointerEvents: "none", userSelect: "none",
+          color: "rgba(77,124,15,0.04)", fontWeight: 700, lineHeight: 1, pointerEvents: "none", userSelect: "none",
         }}>04</div>
         <PhaseStrip num="04" label="BUILD" />
         <div style={{ maxWidth: "900px", margin: "0 auto", padding: "56px 40px 72px", position: "relative", zIndex: 1 }}>
@@ -477,7 +487,7 @@ export function TerramonPage() {
             }}>
               Bridging design and engineering across a 10-person team
             </h2>
-            <p style={{ fontSize: "16px", color: TEXT, opacity: 0.45, lineHeight: "1.75", maxWidth: "640px", marginBottom: "40px" }}>
+            <p style={{ fontSize: "16px", color: TEXT, opacity: 0.6, lineHeight: "1.75", maxWidth: "100%", marginBottom: "40px" }}>
               Acting as the bridge between the UX sub-team and engineering, I contributed to front-end implementation while ensuring design intent survived handoff; managing a shared component library across the full team.
             </p>
           </FadeUp>
@@ -495,12 +505,12 @@ export function TerramonPage() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.45, delay: i * 0.09 }}
                 style={{
-                  background: "rgba(134,239,172,0.05)", borderRadius: "12px", padding: "20px 24px",
-                  border: "1px solid rgba(134,239,172,0.08)",
+                  background: "#FFFFFF", borderRadius: "12px", padding: "20px 24px",
+                  border: "1px solid rgba(0,0,0,0.06)",
                   display: "grid", gridTemplateColumns: "180px 1fr", gap: "20px", alignItems: "start",
                 }}>
                 <p style={{ fontSize: "13px", color: ACCENT, fontWeight: 500 }}>{b.area}</p>
-                <p style={{ fontSize: "13px", color: TEXT, opacity: 0.55, lineHeight: "1.65" }}>{b.detail}</p>
+                <p style={{ fontSize: "13px", color: TEXT, opacity: 0.65, lineHeight: "1.65" }}>{b.detail}</p>
               </motion.div>
             ))}
           </div>
@@ -509,9 +519,14 @@ export function TerramonPage() {
       </div>
 
       {/* Closing */}
-      <div style={{ background: BG, padding: "72px 40px" }}>
+      <div style={{ background: "#F4FCE8", padding: "72px 40px" }}>
         <div style={{ maxWidth: "900px", margin: "0 auto" }}>
           {/* Hi-fi prototype showcase */}
+          <FadeUp>
+            <p style={{ fontSize: "14px", color: TEXT, opacity: 0.6, marginBottom: "24px", lineHeight: "1.6", maxWidth: "100%" }}>
+              From low-fi wireframes to ready-to-build screens: the complete plant identification flow.
+            </p>
+          </FadeUp>
           <FadeUp>
             <p style={{ fontSize: "11px", color: ACCENT, letterSpacing: "0.12em", marginBottom: "14px", fontWeight: 600 }}>
               HI-FI PROTOTYPE
@@ -528,7 +543,7 @@ export function TerramonPage() {
             <div style={{ borderLeft: `4px solid ${ACCENT}`, paddingLeft: "28px", margin: "48px 0 56px" }}>
               <p style={{
                 fontFamily: "var(--font-display)", fontSize: "22px", color: TEXT,
-                lineHeight: "1.55", fontStyle: "italic", fontWeight: 400, opacity: 0.8,
+                lineHeight: "1.55", fontStyle: "italic", fontWeight: 400, opacity: 0.85,
               }}>
                 Working in a 10-person team taught me that the design-to-dev handoff is itself a design problem.
                 Clear documentation, shared components, and regular cross-team reviews made the difference between a product that ships and one that drifts.
@@ -538,12 +553,12 @@ export function TerramonPage() {
 
           <FadeUp delay={0.1}>
             <div style={{
-              background: "rgba(134,239,172,0.08)", borderRadius: "20px", padding: "36px 40px",
+              background: BG, borderRadius: "20px", padding: "36px 40px",
               display: "flex", alignItems: "center", justifyContent: "space-between",
-              flexWrap: "wrap", gap: "20px", border: "1px solid rgba(134,239,172,0.12)",
+              flexWrap: "wrap", gap: "20px",
             }}>
               <div>
-                <p style={{ fontSize: "12px", color: TEXT, opacity: 0.25, marginBottom: "4px" }}>Want to explore it?</p>
+                <p style={{ fontSize: "12px", color: TEXT, opacity: 0.5, marginBottom: "4px" }}>Want to explore it?</p>
                 <p style={{ fontFamily: "var(--font-display)", fontSize: "24px", color: TEXT, fontWeight: 400 }}>View the prototype</p>
               </div>
               <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
@@ -551,7 +566,7 @@ export function TerramonPage() {
                   href="https://www.figma.com/proto/xq3f7ikHBApT45PQb8nxqE/SW-Req-Wireframe-G4?node-id=613-2987&p=f&t=mQtS9ZFqwbFlmQoY-1&scaling=scale-down&content-scaling=fixed&page-id=595%3A12&starting-point-node-id=613%3A2987"
                   target="_blank" rel="noopener noreferrer"
                   whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }}
-                  style={{ background: ACCENT, color: BG, borderRadius: "100px", padding: "13px 26px", fontSize: "14px", textDecoration: "none" }}
+                  style={{ background: "#111", color: BG, borderRadius: "100px", padding: "13px 26px", fontSize: "14px", textDecoration: "none" }}
                 >
                   View prototype ↗
                 </motion.a>
@@ -562,7 +577,7 @@ export function TerramonPage() {
       </div>
 
       {/* Prev / Next */}
-      <div style={{ display: "grid", gridTemplateColumns: prev ? (next ? "1fr 1fr" : "1fr") : "1fr", borderTop: "1px solid rgba(134,239,172,0.06)" }}>
+      <div style={{ display: "grid", gridTemplateColumns: prev ? (next ? "1fr 1fr" : "1fr") : "1fr", borderTop: "1px solid rgba(0,0,0,0.07)" }}>
         {prev && (
           <motion.div whileHover={{ opacity: 0.88 }} style={{ opacity: 1 }}>
             <Link to={`/${prev.slug}`} style={{
@@ -594,21 +609,21 @@ export function TerramonPage() {
       </div>
 
       {/* All projects */}
-      <div style={{ background: "#1a2f0d", padding: "40px" }}>
+      <div style={{ background: "#111", padding: "40px" }}>
         <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-          <p style={{ fontSize: "11px", color: "#2a4a1a", letterSpacing: "0.1em", marginBottom: "16px" }}>ALL PROJECTS</p>
+          <p style={{ fontSize: "11px", color: "#666", letterSpacing: "0.1em", marginBottom: "16px" }}>ALL PROJECTS</p>
           <div style={{ display: "flex", gap: "10px", flexWrap: "wrap" }}>
             {projects.map((p) => (
               <Link key={p.slug} to={`/${p.slug}`} style={{
                 display: "inline-flex", alignItems: "center", gap: "8px",
                 padding: "8px 18px", borderRadius: "100px", textDecoration: "none", fontSize: "13px",
-                background: p.slug === "terramon" ? "rgba(134,239,172,0.1)" : "transparent",
-                color: p.slug === "terramon" ? ACCENT : "#3a5a2a",
-                border: p.slug === "terramon" ? "1px solid rgba(134,239,172,0.2)" : "1px solid #223a14",
+                background: p.slug === "terramon" ? "#FFFFFF" : "transparent",
+                color: p.slug === "terramon" ? "#111" : "#888",
+                border: p.slug === "terramon" ? "none" : "1px solid #333",
                 transition: "all 0.2s",
               }}
-                onMouseEnter={(e) => { if (p.slug !== "terramon") { e.currentTarget.style.borderColor = "#3a5a2a"; e.currentTarget.style.color = "#5a8a4a"; } }}
-                onMouseLeave={(e) => { if (p.slug !== "terramon") { e.currentTarget.style.borderColor = "#223a14"; e.currentTarget.style.color = "#3a5a2a"; } }}
+                onMouseEnter={(e) => { if (p.slug !== "terramon") { e.currentTarget.style.borderColor = "#555"; e.currentTarget.style.color = "#CCC"; } }}
+                onMouseLeave={(e) => { if (p.slug !== "terramon") { e.currentTarget.style.borderColor = "#333"; e.currentTarget.style.color = "#888"; } }}
               >
                 <span style={{ width: "7px", height: "7px", borderRadius: "50%", background: p.bg, flexShrink: 0, border: "1px solid rgba(255,255,255,0.1)" }} />
                 {p.title}
