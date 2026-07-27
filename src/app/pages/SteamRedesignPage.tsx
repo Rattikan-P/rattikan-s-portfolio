@@ -521,19 +521,25 @@ export function SteamRedesignPage() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.45, delay: i * 0.08 }}
+                  className="steam-before-after-grid"
                   style={{
                     background: "#FFFFFF", borderRadius: "12px", padding: "20px 24px",
                     border: "1px solid rgba(0,0,0,0.06)",
-                    display: "grid", gridTemplateColumns: "120px 1fr 1fr", gap: "20px", alignItems: "start",
+                    display: "grid", gap: "20px", alignItems: "start",
                   }}>
-                  <p style={{ fontSize: "13px", color: ACCENT, fontWeight: 500 }}>{d.area}</p>
+                  <p style={{ fontSize: "13px", color: ACCENT, fontWeight: 500, wordBreak: "break-word", overflowWrap: "break-word" }}>{d.area}</p>
                   <div>
                     <p style={{ fontSize: "10px", color: "#999", letterSpacing: "0.06em", marginBottom: "4px" }}>BEFORE</p>
-                    <p style={{ fontSize: "13px", color: TEXT, opacity: 0.55, lineHeight: "1.55" }}>{d.before}</p>
+                    <p style={{ fontSize: "13px", color: TEXT, opacity: 0.55, lineHeight: "1.55", wordBreak: "break-word", overflowWrap: "break-word" }}>{d.before}</p>
                   </div>
-                  <div>
+                  <div style={{
+                    background: "rgba(59,130,246,0.04)",
+                    borderRadius: "8px",
+                    padding: "12px 14px",
+                    border: "1px solid rgba(59,130,246,0.15)"
+                  }}>
                     <p style={{ fontSize: "10px", color: ACCENT, letterSpacing: "0.06em", marginBottom: "4px" }}>AFTER</p>
-                    <p style={{ fontSize: "13px", color: TEXT, opacity: 0.8, lineHeight: "1.55" }}>{d.after}</p>
+                    <p style={{ fontSize: "13px", color: TEXT, opacity: 0.9, lineHeight: "1.55", fontWeight: 500, wordBreak: "break-word", overflowWrap: "break-word" }}>{d.after}</p>
                   </div>
                 </motion.div>
               ))}

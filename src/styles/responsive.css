@@ -1,0 +1,385 @@
+/* Responsive utilities for inline-style components */
+
+/* Container widths */
+.responsive-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+@media (max-width: 768px) {
+  .responsive-container {
+    padding: 0 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .responsive-container {
+    padding: 0 16px;
+  }
+}
+
+/* Responsive grid helpers */
+.responsive-grid-2 {
+  display: grid;
+  gap: 24px;
+}
+
+@media (min-width: 768px) {
+  .responsive-grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 767px) {
+  .responsive-grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+.responsive-grid-3 {
+  display: grid;
+  gap: 20px;
+}
+
+@media (min-width: 1024px) {
+  .responsive-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .responsive-grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 639px) {
+  .responsive-grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Project card specific grid */
+.project-card-grid {
+  display: grid;
+  gap: 32px;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .project-card-grid.even {
+    grid-template-columns: 1fr 450px;
+  }
+  .project-card-grid.odd {
+    grid-template-columns: 450px 1fr;
+  }
+}
+
+@media (max-width: 1023px) {
+  .project-card-grid {
+    grid-template-columns: 1fr;
+  }
+  .project-card-grid.even .project-image,
+  .project-card-grid.odd .project-image {
+    order: -1;
+  }
+}
+
+/* About section grid */
+.about-grid {
+  display: grid;
+  gap: 24px;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .about-grid.photo-text {
+    grid-template-columns: 180px 1fr;
+  }
+}
+
+@media (max-width: 767px) {
+  .about-grid.photo-text {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+}
+
+/* Stats grid */
+.about-stats-grid {
+  display: grid;
+  gap: 12px;
+}
+
+@media (min-width: 768px) {
+  .about-stats-grid {
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+}
+
+@media (max-width: 767px) {
+  .about-stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Side progress indicator */
+.side-progress {
+  position: fixed;
+  right: 24px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 50;
+  transition: opacity 0.3s ease;
+}
+
+@media (max-width: 1024px) {
+  .side-progress {
+    right: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .side-progress {
+    display: none;
+  }
+}
+
+/* Hide side progress when mobile menu is open */
+body.mobile-menu-open .side-progress {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Also hide inline-style side progress indicators when menu is open */
+body.mobile-menu-open div[style*="position: fixed"][style*="right:"] {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: opacity 0.3s ease !important;
+}
+
+/* Responsive padding */
+.section-padding {
+  padding: 100px 24px;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding: 120px 32px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-padding {
+    padding: 80px 20px;
+  }
+}
+
+/* Hero specific */
+.hero-padding {
+  padding: 100px 24px 60px;
+}
+
+@media (min-width: 768px) {
+  .hero-padding {
+    padding: 120px 32px 80px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-padding {
+    padding: 80px 20px 40px;
+  }
+}
+
+/* Development card split */
+.dev-card-split {
+  display: grid;
+  gap: 16px;
+}
+
+@media (min-width: 640px) {
+  .dev-card-split {
+    grid-template-columns: 1fr 1px 1fr;
+  }
+}
+
+@media (max-width: 639px) {
+  .dev-card-split {
+    grid-template-columns: 1fr;
+  }
+  .dev-card-split .divider {
+    display: none;
+  }
+}
+
+/* Development card span 2 on desktop (1024px+) and tablet (640px - 1023px) */
+@media (min-width: 640px) {
+  .dev-card-span-2 {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 639px) {
+  .dev-card-span-2 {
+    grid-column: span 1;
+  }
+}
+
+/* Mobile card order - SE after UX/UI, Development third, others after */
+@media (max-width: 639px) {
+  .se-card-mobile-second {
+    order: 1;
+  }
+  .dev-card-mobile-third {
+    order: 2;
+  }
+  .tools-card-mobile-fourth {
+    order: 3;
+  }
+  .softskills-card-mobile-fifth {
+    order: 4;
+  }
+}
+
+/* Tablet card order (640px - 1023px) - Row1: UX/UI+SE, Row2: Dev, Row3: Tools+SoftSkills */
+@media (min-width: 640px) and (max-width: 1023px) {
+  .se-card-tablet-second {
+    order: 1;
+  }
+  .dev-card-tablet-third {
+    order: 2;
+  }
+  .tools-card-tablet-fourth {
+    order: 3;
+  }
+  .softskills-card-tablet-fifth {
+    order: 4;
+  }
+}
+
+/* Prev/Next navigation */
+.prev-next-grid {
+  display: grid;
+  gap: 1px;
+  border-top: 1px solid rgba(0, 0, 0, 0.07);
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .prev-next-grid.both {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .prev-next-grid.both {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 639px) {
+  .prev-next-grid.both {
+    grid-template-columns: 1fr;
+  }
+  .prev-next-grid.both .next-project {
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+}
+
+/* Meta grid on case study */
+.meta-grid {
+  display: grid;
+  gap: 1px;
+}
+
+@media (min-width: 640px) {
+  .meta-grid {
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  }
+}
+
+@media (max-width: 639px) {
+  .meta-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 374px) {
+  .meta-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Contact section grid */
+.contact-grid {
+  display: grid;
+  gap: 12px;
+}
+
+@media (min-width: 480px) {
+  .contact-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 479px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Prototype CTA flex */
+.prototype-cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+@media (max-width: 639px) {
+  .prototype-cta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* Stats responsive */
+.stats-flex {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 639px) {
+  .stats-flex {
+    gap: 24px;
+  }
+}
+
+/* Terramon journey stages grid - stack on mobile */
+.terramon-journey-grid {
+  grid-template-columns: 160px 180px 1fr;
+}
+
+@media (max-width: 639px) {
+  .terramon-journey-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+}
+
+/* Steam Before/After grid - responsive columns */
+.steam-before-after-grid {
+  grid-template-columns: 120px 1fr 1fr;
+}
+
+@media (max-width: 639px) {
+  .steam-before-after-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}

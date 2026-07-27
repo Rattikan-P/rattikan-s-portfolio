@@ -35,7 +35,7 @@ export function AboutSection() {
       id="about"
       style={{
         background: "#FAFAF8",
-        padding: "120px 32px",
+        padding: "clamp(80px, 10vw, 120px) clamp(20px, 4vw, 32px)",
         backgroundImage: `radial-gradient(circle, #D1D1D1 1px, transparent 1px)`,
         backgroundSize: "24px 24px",
       }}
@@ -45,7 +45,7 @@ export function AboutSection() {
         <motion.div
           initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }} transition={{ duration: 0.5 }}
-          style={{ textAlign: "center", marginBottom: "48px" }}>
+          style={{ textAlign: "center", marginBottom: "clamp(32px, 5vw, 48px)" }}>
           <motion.p
             initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }} transition={{ duration: 0.4 }}
@@ -57,7 +57,7 @@ export function AboutSection() {
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }} transition={{ duration: 0.55, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
             style={{
-              fontFamily: "var(--font-display)", fontSize: "clamp(36px, 4vw, 52px)",
+              fontFamily: "var(--font-display)", fontSize: "clamp(28px, 4vw, 52px)",
               color: "#1A1A1A", letterSpacing: "-0.02em",
               lineHeight: "1.1", fontWeight: 400,
             }}>
@@ -81,15 +81,15 @@ export function AboutSection() {
         </motion.div>
 
         {/* Main Content: Photo + Description */}
-        <div style={{ display: "grid", gridTemplateColumns: "200px 1fr", gap: "40px", alignItems: "center", marginBottom: "32px" }}>
+        <div className="about-grid photo-text" style={{ marginBottom: "clamp(24px, 4vw, 32px)" }}>
           {/* Photo - Left */}
           <motion.div
             initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }} transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
             whileHover={{ scale: 1.03 }}
             style={{
-              width: "200px",
-              height: "200px",
+              width: "clamp(140px, 20vw, 200px)",
+              height: "clamp(140px, 20vw, 200px)",
               borderRadius: "50%",
               overflow: "hidden",
               border: "4px solid #FFFFFF",
@@ -108,29 +108,29 @@ export function AboutSection() {
             initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.1 }}
           >
-            <p style={{ fontSize: "16px", color: "#555", lineHeight: "1.75", marginBottom: "16px" }}>
+            <p style={{ fontSize: "clamp(14px, 2vw, 16px)", color: "#555", lineHeight: "1.75", marginBottom: "16px" }}>
               I'm <strong style={{ color: "#1A1A1A" }}>Rattikan</strong>, a final-year Software Engineering student at Chiang Mai University
               with a strong focus on UX/UI Design and hands-on development experience.
             </p>
-            <p style={{ fontSize: "16px", color: "#777", lineHeight: "1.75" }}>
+            <p style={{ fontSize: "clamp(14px, 2vw, 16px)", color: "#777", lineHeight: "1.75" }}>
               Skilled in user research, wireframing, prototyping, design systems, and technical documentation, backed by a technical background that grounds designs in feasibility.
             </p>
           </motion.div>
         </div>
 
         {/* Middle: University + Stats */}
-        <div style={{ display: "grid", gridTemplateColumns: "2fr 1fr 1fr", gap: "16px", marginBottom: "16px" }}>
+        <div className="about-stats-grid" style={{ marginBottom: "16px" }}>
           {/* University Card */}
           <motion.div
             initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.25 }}
             style={{
-              background: "#1A1A1A", borderRadius: "16px", padding: "20px",
-              display: "flex", alignItems: "center", gap: "16px",
+              background: "#1A1A1A", borderRadius: "16px", padding: "clamp(16px, 2vw, 20px)",
+              display: "flex", alignItems: "center", gap: "12px",
             }}
           >
             <div style={{
-              width: "56px", height: "56px", borderRadius: "14px",
+              width: "clamp(44px, 6vw, 56px)", height: "clamp(44px, 6vw, 56px)", borderRadius: "14px",
               background: "#FFFFFF",
               display: "flex", alignItems: "center", justifyContent: "center",
               flexShrink: 0, overflow: "hidden",
@@ -141,12 +141,12 @@ export function AboutSection() {
                 style={{ width: "100%", height: "100%", objectFit: "contain", padding: "8px" }}
               />
             </div>
-            <div>
-              <p style={{ fontSize: "13px", color: "#FFFFFF", marginBottom: "2px", lineHeight: "1.35" }}>
+            <div style={{ flex: 1 }}>
+              <p style={{ fontSize: "clamp(11px, 1.5vw, 13px)", color: "#FFFFFF", marginBottom: "2px", lineHeight: "1.35" }}>
                 College of Arts, Media and Technology
               </p>
-              <p style={{ fontSize: "12px", color: "#888", marginBottom: "1px", lineHeight: "1.35" }}>Chiang Mai University</p>
-              <p style={{ fontSize: "11px", color: "#555", lineHeight: "1.35" }}>BSc Software Engineering</p>
+              <p style={{ fontSize: "clamp(10px, 1.5vw, 12px)", color: "#888", marginBottom: "1px", lineHeight: "1.35" }}>Chiang Mai University</p>
+              <p style={{ fontSize: "clamp(10px, 1.4vw, 11px)", color: "#555", lineHeight: "1.35" }}>BSc Software Engineering</p>
             </div>
           </motion.div>
 
@@ -158,20 +158,20 @@ export function AboutSection() {
               viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.3 + i * 0.05 }}
               whileHover={s.prominent ? { y: -3, boxShadow: `0 8px 24px ${s.color}22` } : {}}
               style={{
-                background: "#FFFFFF", borderRadius: "16px", padding: "20px",
+                background: "#FFFFFF", borderRadius: "16px", padding: "clamp(16px, 2vw, 20px)",
                 border: "1px solid rgba(0,0,0,0.04)", textAlign: "center",
                 transition: s.prominent ? "box-shadow 0.2s" : "none",
               }}
             >
               <div style={{
-                fontFamily: "var(--font-display)", fontSize: "32px",
+                fontFamily: "var(--font-display)", fontSize: "clamp(24px, 4vw, 32px)",
                 color: s.color, lineHeight: 1, marginBottom: "8px",
               }}>
                 {s.raw ? s.raw : (
                   <CountUp target={s.value!} decimals={s.decimals ?? 0} />
                 )}
               </div>
-              <div style={{ fontSize: "11px", color: "#AAA", lineHeight: "1.3" }}>{s.label}</div>
+              <div style={{ fontSize: "clamp(10px, 1.4vw, 11px)", color: "#AAA", lineHeight: "1.3" }}>{s.label}</div>
             </motion.div>
           ))}
         </div>
@@ -180,7 +180,7 @@ export function AboutSection() {
         <motion.div
           initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }} transition={{ duration: 0.5, delay: 0.35 }}
-          style={{ display: "flex", justifyContent: "center", gap: "12px", flexWrap: "wrap" }}
+          style={{ display: "flex", justifyContent: "center", gap: "clamp(8px, 2vw, 12px)", flexWrap: "wrap" }}
         >
           {[
             { code: "TH", lang: "Thai", level: "Native" },
@@ -191,9 +191,9 @@ export function AboutSection() {
               key={lang}
               whileHover={{ y: -2, backgroundColor: "#F5F5F5" }}
               style={{
-                fontSize: "13px", color: "#666",
+                fontSize: "clamp(11px, 1.5vw, 13px)", color: "#666",
                 display: "flex", alignItems: "center", gap: "6px",
-                padding: "8px 16px", borderRadius: "100px",
+                padding: "clamp(6px, 1.5vw, 8px) clamp(12px, 2vw, 16px)", borderRadius: "100px",
                 border: "1px solid rgba(0,0,0,0.06)",
                 backgroundColor: "#FFFFFF",
                 cursor: "default",
@@ -201,7 +201,7 @@ export function AboutSection() {
               }}
             >
               <span style={{
-                fontSize: "11px",
+                fontSize: "10px",
                 fontWeight: "500",
                 color: "#888",
                 padding: "2px 6px",
@@ -209,7 +209,7 @@ export function AboutSection() {
                 backgroundColor: "rgba(0,0,0,0.05)"
               }}>{code}</span>
               <span>{lang}</span>
-              <span style={{ fontSize: "11px", color: "#999" }}>· {level}</span>
+              <span style={{ fontSize: "10px", color: "#999" }}>· {level}</span>
             </motion.span>
           ))}
         </motion.div>

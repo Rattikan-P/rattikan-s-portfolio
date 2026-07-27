@@ -27,29 +27,26 @@ function ProjectCard({ project, isEven }: { project: typeof projects[0]; isEven:
         {project.number}
       </div>
 
-      <div style={{ padding: "80px 32px", maxWidth: "1100px", margin: "0 auto", width: "100%" }}>
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: isEven ? "1fr 500px" : "500px 1fr",
-          gap: "48px", alignItems: "center",
-        }}>
-          {isEven && project.image && (
+      <div style={{ padding: "clamp(48px, 8vw, 80px) clamp(24px, 4vw, 32px)", maxWidth: "1100px", margin: "0 auto", width: "100%" }}>
+        <div className={`project-card-grid ${isEven ? "even" : "odd"}`}>
+          {isEven && (project.image ? (
             <motion.img
               whileHover={{ scale: project.slug === "starmory" ? 1.18 : 1.02 }}
               initial={{ scale: project.slug === "starmory" ? 1.15 : 1 }}
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
               src={project.image}
               alt={project.title}
+              className="project-image"
               style={{
                 width: "100%",
                 borderRadius: "12px",
               }}
             />
-          )}
-          {isEven && !project.image && (
+          ) : (
             <motion.div
               whileHover={{ scale: 1.03, rotate: -1 }}
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="project-image"
               style={{
                 width: "100%", aspectRatio: "4/3",
                 background: "rgba(255,255,255,0.08)", borderRadius: "20px",
@@ -61,10 +58,10 @@ function ProjectCard({ project, isEven }: { project: typeof projects[0]; isEven:
                 <p style={{ fontSize: "11px", color: project.textColor, opacity: 0.25, letterSpacing: "0.08em" }}>PROJECT MOCKUP</p>
               </div>
             </motion.div>
-          )}
+          ))}
 
           <div>
-            <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "16px", flexWrap: "wrap" }}>
               <span style={{ fontSize: "12px", color: project.textColor, opacity: 0.4, letterSpacing: "0.1em" }}>
                 {project.number} · {project.year}
               </span>
@@ -77,7 +74,7 @@ function ProjectCard({ project, isEven }: { project: typeof projects[0]; isEven:
             </div>
 
             <h2 style={{
-              fontFamily: "var(--font-display)", fontSize: "clamp(40px, 6vw, 72px)",
+              fontFamily: "var(--font-display)", fontSize: "clamp(32px, 5vw, 72px)",
               lineHeight: "1.0", color: project.textColor,
               letterSpacing: "-0.02em", marginBottom: "20px", fontWeight: 400,
             }}>
@@ -85,7 +82,7 @@ function ProjectCard({ project, isEven }: { project: typeof projects[0]; isEven:
             </h2>
 
             <p style={{
-              fontSize: "16px", color: project.textColor, opacity: 0.75,
+              fontSize: "clamp(14px, 2vw, 16px)", color: project.textColor, opacity: 0.75,
               lineHeight: "1.75", maxWidth: "500px", marginBottom: "24px",
             }}>
               {project.description}
@@ -109,11 +106,11 @@ function ProjectCard({ project, isEven }: { project: typeof projects[0]; isEven:
             </div>
 
             {project.stats && (
-              <div style={{ display: "flex", gap: "32px", marginBottom: "28px", flexWrap: "wrap" }}>
+              <div className="stats-flex" style={{ marginBottom: "28px" }}>
                 {project.stats.map((s) => (
                   <div key={s.label}>
                     <div style={{
-                      fontFamily: "var(--font-display)", fontSize: "40px",
+                      fontFamily: "var(--font-display)", fontSize: "clamp(32px, 4vw, 40px)",
                       color: project.textColor, lineHeight: 1, marginBottom: "2px",
                     }}>{s.value}</div>
                     <div style={{ fontSize: "12px", color: project.textColor, opacity: 0.5 }}>{s.label}</div>
@@ -178,23 +175,24 @@ function ProjectCard({ project, isEven }: { project: typeof projects[0]; isEven:
             </div>
           </div>
 
-          {!isEven && project.image && (
+          {!isEven && (project.image ? (
             <motion.img
               whileHover={{ scale: project.slug === "whisker-haven" ? 1.18 : 1.02 }}
               initial={{ scale: project.slug === "whisker-haven" ? 1.15 : 1 }}
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
               src={project.image}
               alt={project.title}
+              className="project-image"
               style={{
                 width: "100%",
                 borderRadius: "12px",
               }}
             />
-          )}
-          {!isEven && !project.image && (
+          ) : (
             <motion.div
               whileHover={{ scale: 1.03, rotate: 1 }}
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="project-image"
               style={{
                 width: "100%", aspectRatio: "4/3",
                 background: "rgba(255,255,255,0.08)", borderRadius: "20px",
@@ -206,7 +204,7 @@ function ProjectCard({ project, isEven }: { project: typeof projects[0]; isEven:
                 <p style={{ fontSize: "11px", color: project.textColor, opacity: 0.25, letterSpacing: "0.08em" }}>PROJECT MOCKUP</p>
               </div>
             </motion.div>
-          )}
+          ))}
         </div>
       </div>
     </motion.div>
@@ -216,7 +214,7 @@ function ProjectCard({ project, isEven }: { project: typeof projects[0]; isEven:
 export function ProjectsSection() {
   return (
     <section id="work">
-      <div style={{ background: "#FAFAF8", padding: "80px 32px 40px", textAlign: "center" }}>
+      <div style={{ background: "#FAFAF8", padding: "clamp(60px, 8vw, 80px) clamp(20px, 4vw, 32px) 40px", textAlign: "center" }}>
         <div style={{ maxWidth: "800px", margin: "0 auto", textAlign: "center" }}>
           <motion.p
             initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }}
@@ -228,7 +226,7 @@ export function ProjectsSection() {
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }} transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
             style={{
-              fontFamily: "var(--font-display)", fontSize: "clamp(36px, 5vw, 56px)",
+              fontFamily: "var(--font-display)", fontSize: "clamp(28px, 5vw, 56px)",
               color: "#1A1A1A", letterSpacing: "-0.02em", fontWeight: 400,
               textAlign: "center",
             }}>

@@ -46,27 +46,27 @@ export function HeroSection() {
     <section
       ref={heroRef}
       id="hero"
+      className="hero-padding"
       style={{
         minHeight: "100vh",
         background: "linear-gradient(145deg, #FFFBF7 0%, #FFF0E4 45%, #FFE8F4 100%)",
         display: "flex", flexDirection: "column", justifyContent: "center",
-        padding: "120px 32px 80px",
         position: "relative", overflow: "hidden",
       }}
     >
       {/* Animated blobs */}
-      <FloatingBlob x="60%" y="5%" size="500px" color="rgba(255,180,100,0.22)" duration={7} />
-      <FloatingBlob x="70%" y="45%" size="360px" color="rgba(255,120,160,0.16)" duration={9} />
-      <FloatingBlob x="-5%" y="55%" size="320px" color="rgba(150,200,255,0.18)" duration={11} />
-      <FloatingBlob x="30%" y="-10%" size="280px" color="rgba(200,255,180,0.14)" duration={8} />
+      <FloatingBlob x="60%" y="5%" size="clamp(280px, 35vw, 500px)" color="rgba(255,180,100,0.22)" duration={7} />
+      <FloatingBlob x="70%" y="45%" size="clamp(200px, 30vw, 360px)" color="rgba(255,120,160,0.16)" duration={9} />
+      <FloatingBlob x="-5%" y="55%" size="clamp(180px, 28vw, 320px)" color="rgba(150,200,255,0.18)" duration={11} />
+      <FloatingBlob x="30%" y="-10%" size="clamp(160px, 25vw, 280px)" color="rgba(200,255,180,0.14)" duration={8} />
 
-      {/* Parallax circle decoration */}
+      {/* Parallax circle decoration - hide on mobile */}
       <motion.div
         animate={{ x: mouse.x * 0.6, y: mouse.y * 0.6 }}
         transition={{ type: "spring", stiffness: 60, damping: 20 }}
         style={{
           position: "absolute", top: "12%", right: "12%",
-          width: "320px", height: "320px", borderRadius: "50%",
+          width: "clamp(180px, 25vw, 320px)", height: "clamp(180px, 25vw, 320px)", borderRadius: "50%",
           border: "1px solid rgba(255,140,80,0.2)", pointerEvents: "none", zIndex: 0,
         }}
       />
@@ -75,7 +75,7 @@ export function HeroSection() {
         transition={{ type: "spring", stiffness: 50, damping: 20 }}
         style={{
           position: "absolute", top: "18%", right: "18%",
-          width: "200px", height: "200px", borderRadius: "50%",
+          width: "clamp(120px, 18vw, 200px)", height: "clamp(120px, 18vw, 200px)", borderRadius: "50%",
           border: "1px solid rgba(255,100,150,0.15)", pointerEvents: "none", zIndex: 0,
         }}
       />
@@ -87,7 +87,7 @@ export function HeroSection() {
               <div style={{
                 display: "inline-flex", alignItems: "center", gap: "8px",
                 background: "rgba(255,255,255,0.7)", borderRadius: "100px",
-                padding: "7px 18px", marginBottom: "36px",
+                padding: "clamp(6px, 1.5vw, 7px) clamp(14px, 2.5vw, 18px)", marginBottom: "clamp(24px, 4vw, 36px)",
                 backdropFilter: "blur(12px)", border: "1px solid rgba(255,255,255,0.9)",
                 boxShadow: "0 2px 16px rgba(255,140,80,0.1)",
               }}>
@@ -96,7 +96,7 @@ export function HeroSection() {
                   transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                   style={{ width: "7px", height: "7px", borderRadius: "50%", background: "#22C55E", display: "inline-block" }}
                 />
-                <span style={{ fontSize: "12px", color: "#555", letterSpacing: "0.04em" }}>
+                <span style={{ fontSize: "clamp(10px, 1.5vw, 12px)", color: "#555", letterSpacing: "0.04em" }}>
                   Open to Co-op Internship · Nov 23, 2026 – Mar 12, 2027
                 </span>
               </div>
@@ -105,9 +105,9 @@ export function HeroSection() {
             {/* Headline */}
             <motion.h1 initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }} transition={stagger(1)}
               style={{
-                fontFamily: "var(--font-display)", fontSize: "clamp(52px, 8vw, 100px)",
+                fontFamily: "var(--font-display)", fontSize: "clamp(40px, 10vw, 100px)",
                 lineHeight: "1.0", color: "#1A1A1A", letterSpacing: "-0.03em",
-                marginBottom: "20px", fontWeight: 400,
+                marginBottom: "clamp(16px, 3vw, 20px)", fontWeight: 400,
               }}>
               Hello,{" "}
               <motion.span
@@ -125,15 +125,15 @@ export function HeroSection() {
             {/* Sub */}
             {/* Buttons */}
             <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={stagger(4)}
-              style={{ display: "flex", gap: "12px", flexWrap: "wrap", marginBottom: "40px" }}>
+              style={{ display: "flex", gap: "clamp(8px, 2vw, 12px)", flexWrap: "wrap", marginBottom: "clamp(28px, 5vw, 40px)" }}>
               <motion.button
                 onClick={scrollToWork}
                 whileHover={{ scale: 1.04, y: -2 }} whileTap={{ scale: 0.97 }}
                 style={{
                   background: "#FF6B35",
                   color: "#FFFFFF", border: "none",
-                  borderRadius: "100px", padding: "14px 28px",
-                  fontSize: "14px", cursor: "pointer", letterSpacing: "0.02em",
+                  borderRadius: "100px", padding: "clamp(12px, 2vw, 14px) clamp(20px, 3.5vw, 28px)",
+                  fontSize: "clamp(12px, 1.5vw, 14px)", cursor: "pointer", letterSpacing: "0.02em",
                   boxShadow: "0 4px 16px rgba(255,107,53,0.35)",
                 }}
               >
@@ -147,7 +147,7 @@ export function HeroSection() {
                 style={{
                   background: "rgba(255,255,255,0.65)", color: "#1A1A1A",
                   border: "1.5px solid rgba(0,0,0,0.1)", borderRadius: "100px",
-                  padding: "14px 28px", fontSize: "14px",
+                  padding: "clamp(12px, 2vw, 14px) clamp(20px, 3.5vw, 28px)", fontSize: "clamp(12px, 1.5vw, 14px)",
                   letterSpacing: "0.02em", textDecoration: "none",
                   backdropFilter: "blur(10px)", display: "inline-block",
                 }}
@@ -158,14 +158,14 @@ export function HeroSection() {
 
             {/* Social links */}
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={stagger(5)}
-              style={{ display: "flex", gap: "20px", alignItems: "center", flexWrap: "wrap", position: "relative", zIndex: 2 }}>
+              style={{ display: "flex", gap: "clamp(12px, 3vw, 20px)", alignItems: "center", flexWrap: "wrap", position: "relative", zIndex: 2 }}>
               {[
                 { href: "mailto:rattikan.mm01@gmail.com", icon: <Mail size={14} />, label: "rattikan.mm01@gmail.com" },
                 { href: "https://www.linkedin.com/in/rattikan-muangmoon-9b0534405/", icon: <Linkedin size={14} />, label: "rattikan-muangmoon" },
               ].map((l) => (
                 <motion.a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer"
                   whileHover={{ x: 3 }}
-                  style={{ color: "#999", display: "flex", alignItems: "center", gap: "6px", fontSize: "13px", textDecoration: "none", transition: "color 0.2s", pointerEvents: "auto", cursor: "pointer" }}
+                  style={{ color: "#999", display: "flex", alignItems: "center", gap: "6px", fontSize: "clamp(11px, 1.5vw, 13px)", textDecoration: "none", transition: "color 0.2s", pointerEvents: "auto", cursor: "pointer" }}
                   onMouseEnter={(e) => (e.currentTarget.style.color = "#1A1A1A")}
                   onMouseLeave={(e) => (e.currentTarget.style.color = "#999")}
                 >
@@ -182,7 +182,7 @@ export function HeroSection() {
         animate={{ y: [0, 6, 0] }}
         transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
         style={{
-          position: "absolute", bottom: "40px", left: "50%", transform: "translateX(-50%)",
+          position: "absolute", bottom: "clamp(24px, 4vw, 40px)", left: "50%", transform: "translateX(-50%)",
           background: "none", border: "none", cursor: "pointer", color: "#BBAA99",
           display: "flex", flexDirection: "column", alignItems: "center", gap: "6px",
         }}

@@ -288,14 +288,15 @@ export function TerramonPage() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: i * 0.07 }}
+                  className="terramon-journey-grid"
                   style={{
                     background: "#FFFFFF", borderRadius: "10px", padding: "14px 20px",
                     border: "1px solid rgba(0,0,0,0.06)",
-                    display: "grid", gridTemplateColumns: "160px 180px 1fr", gap: "16px", alignItems: "center",
+                    display: "grid", gap: "16px", alignItems: "center",
                   }}>
-                  <p style={{ fontSize: "13px", color: ACCENT, fontWeight: 500 }}>{s.stage}</p>
-                  <p style={{ fontSize: "12px", color: TEXT, opacity: 0.6 }}>{s.emotion}</p>
-                  <p style={{ fontSize: "13px", color: TEXT, opacity: 0.65, lineHeight: "1.5", fontStyle: "italic" }}>{s.insight}</p>
+                  <p style={{ fontSize: "13px", color: ACCENT, fontWeight: 500, wordBreak: "break-word", overflowWrap: "break-word" }}>{s.stage}</p>
+                  <p style={{ fontSize: "12px", color: TEXT, opacity: 0.6, wordBreak: "break-word", overflowWrap: "break-word" }}>{s.emotion}</p>
+                  <p style={{ fontSize: "13px", color: TEXT, opacity: 0.65, lineHeight: "1.5", fontStyle: "italic", wordBreak: "break-word", overflowWrap: "break-word" }}>{s.insight}</p>
                 </motion.div>
               ))}
             </div>

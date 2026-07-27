@@ -2,15 +2,15 @@ import { Mail, Linkedin, Phone, MapPin, ArrowUpRight, Github } from "lucide-reac
 
 export function ContactSection() {
   return (
-    <section id="contact" style={{ background: "#1A1A1A", padding: "100px 32px 60px" }}>
+    <section id="contact" style={{ background: "#1A1A1A", padding: "clamp(72px, 10vw, 100px) clamp(24px, 5vw, 32px) clamp(48px, 8vw, 60px)" }}>
       <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
-        <div style={{ width: "100%", textAlign: "center", marginBottom: "80px" }}>
+        <div style={{ width: "100%", textAlign: "center", marginBottom: "clamp(48px, 8vw, 80px)" }}>
           <p style={{ fontSize: "12px", color: "#444", letterSpacing: "0.12em", marginBottom: "20px", textAlign: "center" }}>
             LET'S TALK
           </p>
           <h2 style={{
             fontFamily: "var(--font-display)",
-            fontSize: "clamp(28px, 4vw, 48px)",
+            fontSize: "clamp(24px, 5vw, 48px)",
             color: "#FFFFFF", letterSpacing: "-0.03em",
             lineHeight: "1.1", marginBottom: "16px", fontWeight: 400,
             textAlign: "center",
@@ -20,20 +20,20 @@ export function ContactSection() {
             <br />
             I'd love the chance to contribute.
           </h2>
-          <p style={{ fontSize: "16px", color: "#666", lineHeight: "1.6", maxWidth: "600px", margin: "0 auto 48px" }}>
+          <p style={{ fontSize: "clamp(14px, 2vw, 16px)", color: "#666", lineHeight: "1.6", maxWidth: "600px", margin: "0 auto clamp(32px, 5vw, 48px)" }}>
             Thank you for taking the time to look through my work.
             I'm seeking a Semester 2 Co-op Internship; if you'd like to talk,
             my inbox is always open.
           </p>
 
-          <div style={{ display: "flex", gap: "12px", justifyContent: "center", flexWrap: "wrap" }}>
+          <div style={{ display: "flex", gap: "clamp(8px, 2vw, 12px)", justifyContent: "center", flexWrap: "wrap" }}>
             <a
               href="mailto:rattikan.mm01@gmail.com"
               style={{
                 display: "inline-flex", alignItems: "center", gap: "8px",
                 background: "#FFFFFF", color: "#1A1A1A",
-                borderRadius: "100px", padding: "14px 28px",
-                fontSize: "14px", textDecoration: "none",
+                borderRadius: "100px", padding: "clamp(12px, 2vw, 14px) clamp(20px, 3.5vw, 28px)",
+                fontSize: "clamp(12px, 1.5vw, 14px)", textDecoration: "none",
                 transition: "opacity 0.2s", letterSpacing: "0.02em",
               }}
               onMouseEnter={(e) => (e.currentTarget.style.opacity = "0.85")}
@@ -47,7 +47,7 @@ export function ContactSection() {
                 display: "inline-flex", alignItems: "center", gap: "8px",
                 background: "transparent", color: "#FFFFFF",
                 border: "1.5px solid #333", borderRadius: "100px",
-                padding: "14px 28px", fontSize: "14px", textDecoration: "none",
+                padding: "clamp(12px, 2vw, 14px) clamp(20px, 3.5vw, 28px)", fontSize: "clamp(12px, 1.5vw, 14px)", textDecoration: "none",
                 transition: "border-color 0.2s",
               }}
               onMouseEnter={(e) => (e.currentTarget.style.borderColor = "#666")}
@@ -58,11 +58,7 @@ export function ContactSection() {
           </div>
         </div>
 
-        <div style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-          gap: "12px", marginBottom: "60px",
-        }}>
+        <div className="contact-grid" style={{ marginBottom: "clamp(40px, 6vw, 60px)" }}>
           {[
             { icon: Phone, label: "Phone", value: "+66 828906026", href: "tel:+66828906026", color: "#F5A623" },
             { icon: Github, label: "GitHub", value: "Rattikan-P", href: "https://github.com/Rattikan-P", color: "#86EFAC" },
@@ -76,7 +72,7 @@ export function ContactSection() {
                 rel="noopener noreferrer"
                 style={{
                   display: "flex", alignItems: "center", justifyContent: "space-between",
-                  background: "#252525", borderRadius: "14px", padding: "18px 20px",
+                  background: "#252525", borderRadius: "14px", padding: "clamp(14px, 2.5vw, 18px) clamp(16px, 3vw, 20px)",
                   textDecoration: "none", border: "1px solid #2A2A2A",
                   transition: "background 0.2s, transform 0.2s",
                 }}
@@ -111,7 +107,7 @@ export function ContactSection() {
                 key={label}
                 style={{
                   display: "flex", alignItems: "center", gap: "12px",
-                  background: "#252525", borderRadius: "14px", padding: "18px 20px",
+                  background: "#252525", borderRadius: "14px", padding: "clamp(14px, 2.5vw, 18px) clamp(16px, 3vw, 20px)",
                   border: "1px solid #2A2A2A",
                 }}
               >
@@ -134,12 +130,12 @@ export function ContactSection() {
         </div>
 
         <div style={{
-          borderTop: "1px solid #2A2A2A", paddingTop: "32px",
+          borderTop: "1px solid #2A2A2A", paddingTop: "clamp(24px, 4vw, 32px)",
           display: "flex", justifyContent: "space-between",
           alignItems: "center", flexWrap: "wrap", gap: "16px",
         }}>
           <p style={{
-            fontFamily: "var(--font-display)", fontSize: "22px",
+            fontFamily: "var(--font-display)", fontSize: "clamp(18px, 3vw, 22px)",
             color: "#333", letterSpacing: "-0.02em", fontWeight: 400, fontStyle: "italic",
           }}>
             Ratti.

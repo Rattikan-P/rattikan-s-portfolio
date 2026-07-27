@@ -318,6 +318,7 @@ function SideProgress({ activePhase }: { activePhase: number }) {
 
 export function WhiskerHavenPage() {
   const { next } = getAdjacentProjects("whisker-haven");
+  const { prev } = getAdjacentProjects("whisker-haven");
   const [activePhase, setActivePhase] = useState(0);
   const [isPersonaLightboxOpen, setPersonaLightboxOpen] = useState(false);
   const [isMoodboardLightboxOpen, setMoodboardLightboxOpen] = useState(false);
@@ -384,8 +385,12 @@ export function WhiskerHavenPage() {
             transition={{ duration: 0.5, delay: 0.1 }}
             style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "12px", flexWrap: "wrap" }}
           >
-            <span style={{ fontSize: "11px", color: DARK, opacity: 0.4, letterSpacing: "0.1em" }}>01 · 2026</span>
-            <span style={{ fontSize: "11px", color: DARK, background: "rgba(0,0,0,0.08)", borderRadius: "4px", padding: "2px 8px", opacity: 0.7 }}>Cat Hotel Booking & Management Platform</span>
+            <span style={{ fontSize: "11px", color: DARK, opacity: 0.4, letterSpacing: "0.1em", whiteSpace: "nowrap" }}>01 · 2026</span>
+            <span style={{
+              fontSize: "11px", color: DARK, background: "rgba(0,0,0,0.08)",
+              borderRadius: "4px", padding: "2px 8px", opacity: 0.7,
+              wordBreak: "break-word", overflowWrap: "break-word",
+            }}>Cat Hotel Booking & Management Platform</span>
           </motion.div>
 
           <motion.h1
@@ -396,6 +401,7 @@ export function WhiskerHavenPage() {
               fontSize: "clamp(48px, 6.5vw, 84px)",
               lineHeight: 1, color: DARK, letterSpacing: "-0.03em",
               marginBottom: "20px", fontWeight: 400,
+              wordBreak: "break-word", overflowWrap: "break-word",
             }}
           >
             Whisker Haven
@@ -404,7 +410,11 @@ export function WhiskerHavenPage() {
           <motion.p
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.25 }}
-            style={{ fontSize: "18px", color: DARK, opacity: 0.6, maxWidth: "540px", lineHeight: "1.7", marginBottom: "48px" }}
+            style={{
+              fontSize: "clamp(15px, 2.5vw, 18px)", color: DARK, opacity: 0.6,
+              maxWidth: "540px", lineHeight: "1.7", marginBottom: "48px",
+              wordBreak: "break-word", overflowWrap: "break-word",
+            }}
           >
             A booking platform designed to make reserving cat hotel stays simple and
             stress-free: from early research through to a validated high-fidelity prototype.
@@ -414,6 +424,7 @@ export function WhiskerHavenPage() {
           <motion.div
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.35 }}
+            className="meta-grid"
             style={{
               display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(130px, 1fr))",
               gap: "1px", background: "rgba(255,255,255,0.4)", borderRadius: "14px",
@@ -426,10 +437,16 @@ export function WhiskerHavenPage() {
               { label: "Platform", value: "Web App" },
             ].map((m) => (
               <div key={m.label} style={{ background: "rgba(255,255,255,0.2)", padding: "14px 18px" }}>
-                <p style={{ fontSize: "10px", color: DARK, opacity: 0.4, letterSpacing: "0.08em", marginBottom: "3px" }}>
+                <p style={{
+                  fontSize: "10px", color: DARK, opacity: 0.4, letterSpacing: "0.08em",
+                  marginBottom: "3px", wordBreak: "break-word", overflowWrap: "break-word",
+                }}>
                   {m.label.toUpperCase()}
                 </p>
-                <p style={{ fontSize: "13px", color: DARK }}>{m.value}</p>
+                <p style={{
+                  fontSize: "clamp(11px, 1.5vw, 13px)", color: DARK,
+                  wordBreak: "break-word", overflowWrap: "break-word",
+                }}>{m.value}</p>
               </div>
             ))}
           </motion.div>
@@ -1025,23 +1042,42 @@ export function WhiskerHavenPage() {
       </PhaseSection>
 
       {/* Prev / Next */}
-      {next && (
-        <motion.div whileHover={{ opacity: 0.88 }} style={{ opacity: 1 }}>
-          <Link to={`/${next.slug}`} style={{
-            display: "flex", flexDirection: "column", alignItems: "flex-end",
-            padding: "48px 40px", textDecoration: "none", background: next.bg,
-            borderTop: "1px solid rgba(0,0,0,0.07)",
-          }}>
-            <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px" }}>
-              <span style={{ fontSize: "11px", color: next.textColor, opacity: 0.5, letterSpacing: "0.08em" }}>NEXT PROJECT</span>
-              <ArrowRight size={14} color={next.textColor} style={{ opacity: 0.5 }} />
-            </div>
-            <p style={{ fontFamily: "var(--font-display)", fontSize: "28px", color: next.textColor, letterSpacing: "-0.02em", fontWeight: 400 }}>
-              {next.title}
-            </p>
-          </Link>
-        </motion.div>
-      )}
+      <div style={{ display: "grid", gridTemplateColumns: prev ? (next ? "1fr 1fr" : "1fr") : "1fr", borderTop: "1px solid rgba(0,0,0,0.07)" }}>
+        {prev && (
+          <motion.div whileHover={{ opacity: 0.88 }} style={{ opacity: 1 }}>
+            <Link to={`/${prev.slug}`} style={{
+              display: "flex", flexDirection: "column", padding: "48px 40px",
+              textDecoration: "none", background: prev.bg,
+              borderRight: next ? "1px solid rgba(255,255,255,0.08)" : "none", height: "100%",
+            }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px" }}>
+                <ArrowLeft size={14} color={prev.textColor} style={{ opacity: 0.5 }} />
+                <span style={{ fontSize: "11px", color: prev.textColor, opacity: 0.5, letterSpacing: "0.08em" }}>PREVIOUS</span>
+              </div>
+              <p style={{ fontFamily: "var(--font-display)", fontSize: "28px", color: prev.textColor, letterSpacing: "-0.02em", fontWeight: 400 }}>
+                {prev.title}
+              </p>
+            </Link>
+          </motion.div>
+        )}
+        {next && (
+          <motion.div whileHover={{ opacity: 0.88 }} style={{ opacity: 1 }}>
+            <Link to={`/${next.slug}`} style={{
+              display: "flex", flexDirection: "column", alignItems: "flex-end",
+              padding: "48px 40px", textDecoration: "none", background: next.bg,
+              borderTop: prev ? "none" : "1px solid rgba(0,0,0,0.07)", height: "100%",
+            }}>
+              <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "8px" }}>
+                <span style={{ fontSize: "11px", color: next.textColor, opacity: 0.5, letterSpacing: "0.08em" }}>NEXT PROJECT</span>
+                <ArrowRight size={14} color={next.textColor} style={{ opacity: 0.5 }} />
+              </div>
+              <p style={{ fontFamily: "var(--font-display)", fontSize: "28px", color: next.textColor, letterSpacing: "-0.02em", fontWeight: 400 }}>
+                {next.title}
+              </p>
+            </Link>
+          </motion.div>
+        )}
+      </div>
 
       {/* All projects */}
       <div style={{ background: "#111", padding: "40px" }}>

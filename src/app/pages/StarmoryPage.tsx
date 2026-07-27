@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ChevronDown } from "lucide-react";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 import { getAdjacentProjects, projects } from "../data/projects";
 import { motion } from "motion/react";
@@ -36,7 +36,7 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
   );
 }
 
-function Img({ src, alt, caption }: { src: string; alt: string; caption?: string }) {
+function Img({ src, alt, caption, captionStyle }: { src: string; alt: string; caption?: string; captionStyle?: React.CSSProperties }) {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
   return (
@@ -57,6 +57,7 @@ function Img({ src, alt, caption }: { src: string; alt: string; caption?: string
           <figcaption style={{
             fontSize: "11px", color: "#555", letterSpacing: "0.04em",
             marginTop: "10px", textAlign: "center",
+            ...captionStyle,
           }}>{caption}</figcaption>
         )}
         <Lightbox
@@ -114,6 +115,7 @@ export function StarmoryPage() {
   const { next } = getAdjacentProjects("starmory");
   const { prev } = getAdjacentProjects("starmory");
   const [activePhase, setActivePhase] = useState(0);
+  const [openTheory, setOpenTheory] = useState<string | null>(null);
 
   useEffect(() => {
     const sections = document.querySelectorAll("[data-starmory-phase]");
@@ -543,30 +545,89 @@ export function StarmoryPage() {
           />
 
           <FadeUp delay={0.1}>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: "10px", marginTop: "28px" }}>
+            <div style={{ marginTop: "28px" }}>
               {[
-                "Episodic Memory – Tulving, 1972",
-                "Self-Reference Effect – Rogers et al., 1977",
-                "Context-Dependent Memory – Godden & Baddeley, 1975",
-                "Depth of Processing – Craik & Lockhart, 1972",
-                "Input Hypothesis 'i+1' – Krashen, 1985",
-                "FSRS Spaced-Repetition – Ye et al., 2023",
-                "Speech Act Theory – Austin 1962; Searle 1969",
-              ].map((r, i) => (
-                <motion.span
-                  key={r}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
+                {
+                  name: "Episodic Memory",
+                  cite: "Tulving, 1972",
+                  desc: "We remember events tied to personal experiences better than isolated facts. Your own photos create episodic anchors for vocabulary.",
+                },
+                {
+                  name: "Self-Reference Effect",
+                  cite: "Rogers et al., 1977",
+                  desc: "Information connected to self is processed more deeply and recalled better. Your photos = your memories = deeper learning.",
+                },
+                {
+                  name: "Context-Dependent Memory",
+                  cite: "Godden & Baddeley, 1975",
+                  desc: "Recall improves when the context at encoding matches retrieval. Seeing the same photo triggers the original learning moment.",
+                },
+                {
+                  name: "Depth of Processing",
+                  cite: "Craik & Lockhart, 1972",
+                  desc: "Deeper semantic processing leads to stronger memory traces. Meaningful sentences about your photos create richer encoding.",
+                },
+                {
+                  name: "Input Hypothesis 'i+1'",
+                  cite: "Krashen, 1985",
+                  desc: "We acquire language when we understand input slightly beyond our current level. AI generates sentences matched to your level.",
+                },
+                {
+                  name: "FSRS Spaced-Repetition",
+                  cite: "Ye et al., 2023",
+                  desc: "Personalized scheduling based on your memory patterns. Review each word at its optimal forgetting moment, not fixed intervals.",
+                },
+                {
+                  name: "Speech Act Theory",
+                  cite: "Austin 1962; Searle 1969",
+                  desc: "Language is action. Lessons frame vocabulary by communicative intent — describing, commanding, wishing — real-world use.",
+                },
+              ].map((t, i) => (
+                <motion.div
+                  key={t.name}
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: i * 0.07 }}
+                  transition={{ duration: 0.4, delay: i * 0.06 }}
                   style={{
-                    background: "#FFFFFF", color: ACCENT,
-                    borderRadius: "8px", padding: "8px 14px", fontSize: "13px",
-                    border: "1px solid rgba(37,99,235,0.18)",
+                    background: "rgba(255,255,255,0.4)",
+                    borderRadius: "10px",
+                    padding: "12px 16px",
+                    marginBottom: i < 6 ? "10px" : 0,
                   }}
                 >
-                  {r}
-                </motion.span>
+                  <button
+                    onClick={() => setOpenTheory(openTheory === t.name ? null : t.name)}
+                    style={{
+                      width: "100%", display: "flex", alignItems: "center",
+                      justifyContent: "space-between", gap: "16px",
+                      padding: "0", background: "transparent",
+                      border: "none", cursor: "pointer", textAlign: "left",
+                    }}
+                  >
+                    <div style={{ flex: 1, display: "flex", alignItems: "baseline", gap: "10px", flexWrap: "wrap" }}>
+                      <p style={{ fontSize: "14px", color: TEXT, fontWeight: 500, margin: 0 }}>{t.name}</p>
+                      <span style={{ fontSize: "11px", color: TEXT, opacity: 0.4, letterSpacing: "0.04em", fontStyle: "italic" }}>{t.cite}</span>
+                    </div>
+                    <motion.div
+                      animate={{ rotate: openTheory === t.name ? 180 : 0 }}
+                      transition={{ duration: 0.2 }}
+                      style={{ flexShrink: 0 }}
+                    >
+                      <ChevronDown size={16} style={{ color: TEXT, opacity: 0.25 }} />
+                    </motion.div>
+                  </button>
+                  <motion.div
+                    initial={false}
+                    animate={{ height: openTheory === t.name ? "auto" : 0, opacity: openTheory === t.name ? 1 : 0 }}
+                    transition={{ duration: 0.25, ease: "easeOut" }}
+                    style={{ overflow: "hidden" }}
+                  >
+                    <div style={{ paddingTop: "4px" }}>
+                      <p style={{ fontSize: "13px", color: TEXT, opacity: 0.55, lineHeight: "1.65", margin: 0 }}>{t.desc}</p>
+                    </div>
+                  </motion.div>
+                </motion.div>
               ))}
             </div>
           </FadeUp>
