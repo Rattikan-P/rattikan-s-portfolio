@@ -92,12 +92,12 @@ export function HeroSection() {
                 boxShadow: "0 2px 16px rgba(255,140,80,0.1)",
               }}>
                 <motion.span
-                  animate={{ scale: [1, 1.3, 1] }}
+                  animate={{ scale: [1, 1.3, 1], opacity: [1, 0.4, 1] }}
                   transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                   style={{ width: "7px", height: "7px", borderRadius: "50%", background: "#22C55E", display: "inline-block" }}
                 />
                 <span style={{ fontSize: "12px", color: "#555", letterSpacing: "0.04em" }}>
-                  Open to Co-op Internship · Semester 2
+                  Open to Co-op Internship · Nov 23, 2026 – Mar 12, 2027
                 </span>
               </div>
             </motion.div>
@@ -111,7 +111,10 @@ export function HeroSection() {
               }}>
               Hello,{" "}
               <motion.span
-                style={{ fontStyle: "italic", display: "inline-block" }}
+                style={{
+                  fontStyle: "italic",
+                  display: "inline-block"
+                }}
                 animate={{ rotate: [-1, 1, -1] }}
                 transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
               >
@@ -137,7 +140,9 @@ export function HeroSection() {
                 View my work ↓
               </motion.button>
               <motion.a
-                href="#"
+                href="https://drive.google.com/file/d/1D0GKb8JGfyhlqowX2eYQhD3dUsEArl5-/view?usp=sharing"
+                target="_blank"
+                rel="noopener noreferrer"
                 whileHover={{ scale: 1.04, y: -2 }} whileTap={{ scale: 0.97 }}
                 style={{
                   background: "rgba(255,255,255,0.65)", color: "#1A1A1A",
@@ -158,7 +163,7 @@ export function HeroSection() {
                 { href: "mailto:rattikan.mm01@gmail.com", icon: <Mail size={14} />, label: "rattikan.mm01@gmail.com" },
                 { href: "https://www.linkedin.com/in/rattikan-muangmoon-9b0534405/", icon: <Linkedin size={14} />, label: "rattikan-muangmoon" },
               ].map((l) => (
-                <motion.a key={l.label} href={l.href}
+                <motion.a key={l.label} href={l.href} target="_blank" rel="noopener noreferrer"
                   whileHover={{ x: 3 }}
                   style={{ color: "#999", display: "flex", alignItems: "center", gap: "6px", fontSize: "13px", textDecoration: "none", transition: "color 0.2s", pointerEvents: "auto", cursor: "pointer" }}
                   onMouseEnter={(e) => (e.currentTarget.style.color = "#1A1A1A")}

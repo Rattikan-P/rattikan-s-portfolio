@@ -155,7 +155,9 @@ export function Navbar() {
               </button>
             ))}
             <a
-              href="#"
+              href="https://drive.google.com/file/d/1D0GKb8JGfyhlqowX2eYQhD3dUsEArl5-/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
               style={{
                 background: textColor, color: project ? project.bg : "#FFFFFF", borderRadius: "100px",
                 padding: "10px 22px", fontSize: "13px",
@@ -202,7 +204,9 @@ export function Navbar() {
             </button>
           ))}
           <a
-            href="#"
+            href="https://drive.google.com/file/d/1D0GKb8JGfyhlqowX2eYQhD3dUsEArl5-/view?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
             style={{
               background: textColor, color: project ? project.bg : "#FFFFFF", borderRadius: "100px",
               padding: "14px 32px", fontSize: "16px", textDecoration: "none", marginTop: "16px",

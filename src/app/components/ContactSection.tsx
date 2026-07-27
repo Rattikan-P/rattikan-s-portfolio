@@ -72,6 +72,8 @@ export function ContactSection() {
               <a
                 key={label}
                 href={href}
+                target="_blank"
+                rel="noopener noreferrer"
                 style={{
                   display: "flex", alignItems: "center", justifyContent: "space-between",
                   background: "#252525", borderRadius: "14px", padding: "18px 20px",

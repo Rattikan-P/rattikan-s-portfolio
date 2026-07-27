@@ -62,7 +62,21 @@ export function AboutSection() {
               lineHeight: "1.1", fontWeight: 400,
             }}>
             Still learning,{" "}
-            <span style={{ fontStyle: "italic", color: "#FF6B35" }}>still growing.</span>
+            <motion.span
+              style={{
+                fontStyle: "italic",
+                background: "linear-gradient(90deg, #FF6B35 0%, #FFD700 25%, #FF6B35 50%, #FFB347 75%, #FF6B35 100%)",
+                backgroundSize: "200% auto",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                display: "inline-block",
+              }}
+              animate={{ backgroundPosition: ["0% center", "200% center"] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+            >
+              still growing.
+            </motion.span>
           </motion.h2>
         </motion.div>
 
@@ -169,10 +183,10 @@ export function AboutSection() {
           style={{ display: "flex", justifyContent: "center", gap: "12px", flexWrap: "wrap" }}
         >
           {[
-            { flag: "🇹🇭", lang: "Thai", level: "Native" },
-            { flag: "🇬🇧", lang: "English", level: "Working Proficiency" },
-            { flag: "🇨🇳", lang: "Mandarin", level: "Elementary" },
-          ].map(({ flag, lang, level }) => (
+            { code: "TH", lang: "Thai", level: "Native" },
+            { code: "EN", lang: "English", level: "Working Proficiency" },
+            { code: "CN", lang: "Mandarin", level: "Elementary" },
+          ].map(({ code, lang, level }) => (
             <motion.span
               key={lang}
               whileHover={{ y: -2, backgroundColor: "#F5F5F5" }}
@@ -186,7 +200,14 @@ export function AboutSection() {
                 transition: "all 0.2s",
               }}
             >
-              <span style={{ fontSize: "16px" }}>{flag}</span>
+              <span style={{
+                fontSize: "11px",
+                fontWeight: "500",
+                color: "#888",
+                padding: "2px 6px",
+                borderRadius: "4px",
+                backgroundColor: "rgba(0,0,0,0.05)"
+              }}>{code}</span>
               <span>{lang}</span>
               <span style={{ fontSize: "11px", color: "#999" }}>· {level}</span>
             </motion.span>
