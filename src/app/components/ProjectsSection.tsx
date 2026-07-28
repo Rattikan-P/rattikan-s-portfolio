@@ -74,9 +74,10 @@ function ProjectCard({ project, isEven }: { project: typeof projects[0]; isEven:
             </div>
 
             <h2 style={{
-              fontFamily: "var(--font-display)", fontSize: "clamp(32px, 5vw, 72px)",
+              fontFamily: "var(--font-display)", fontSize: project.slug === "whisker-haven" ? "clamp(24px, 7vw, 72px)" : "clamp(32px, 5vw, 72px)",
               lineHeight: "1.0", color: project.textColor,
               letterSpacing: "-0.02em", marginBottom: "20px", fontWeight: 400,
+              whiteSpace: project.slug === "whisker-haven" ? "nowrap" : "normal",
             }}>
               {project.title}
             </h2>
@@ -84,6 +85,7 @@ function ProjectCard({ project, isEven }: { project: typeof projects[0]; isEven:
             <p style={{
               fontSize: "clamp(14px, 2vw, 16px)", color: project.textColor, opacity: 0.75,
               lineHeight: "1.75", maxWidth: "500px", marginBottom: "24px",
+              wordWrap: "break-word", overflowWrap: "break-word",
             }}>
               {project.description}
             </p>
@@ -177,8 +179,8 @@ function ProjectCard({ project, isEven }: { project: typeof projects[0]; isEven:
 
           {!isEven && (project.image ? (
             <motion.img
-              whileHover={{ scale: project.slug === "whisker-haven" ? 1.18 : 1.02 }}
-              initial={{ scale: project.slug === "whisker-haven" ? 1.15 : 1 }}
+              whileHover={{ scale: project.slug === "whisker-haven" ? 1.04 : 1.02 }}
+              initial={{ scale: project.slug === "whisker-haven" ? 1.02 : 1 }}
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
               src={project.image}
               alt={project.title}
